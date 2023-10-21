@@ -23,8 +23,6 @@ def compute_pyscf(atom, basis_option, verbose_option):
     time = None
     energy = None
     for line in outputFile.readlines():
-        # if line.startswith("    CPU time for scf_cycle"):
-        #     print(line.split(" ")[-2])
         if line.startswith("    CPU time for SCF"):
             time = float(line.split(" ")[-2])
 
@@ -55,7 +53,10 @@ xyz_input = st.text_area("XYZ Input")
 basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
 verbose_option = st.selectbox("Verbose", ["3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
 
-if st.button("Compute"):
+# Create two columns for the buttons
+col1, col2 = st.columns(2, gap="small")
+
+if col1.button("Compute"):
     if xyz_input:
         st.write("Computing...")
         energy, time_val = compute_pyscf(xyz_input, basis_option, verbose_option)
@@ -67,8 +68,12 @@ if st.button("Compute"):
     else:
         st.warning("Please provide an XYZ input.")
 
-
 if results:
     st.subheader("Results")
     for result_item in results:
         st.write(f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+
+if col2.button('View Log'):
+    with open('computed/output-test.txt', 'r') as file:
+        log_data = file.read()
+        st.markdown(f'```\n{log_data}\n```')
