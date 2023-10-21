@@ -1,14 +1,10 @@
 from time import sleep
-import time
-import Tkinter as tk
-import ScrolledText as st
-import pyscf
+import tkinter as tk
+from tkinter import scrolledtext as st
 import threading
-from pyscf import gto, scf
-
+from pyscf.pyscf import gto, scf
 queue = []
 results = []
-
 def pyscfThread():
     while (runThread):
         print(str(len(queue)) + " molecules in queue")
