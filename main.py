@@ -2,7 +2,7 @@ from time import sleep
 import tkinter as tk
 from tkinter import scrolledtext as st
 import threading
-from pyscf.pyscf import gto, scf
+from pyscf import gto, scf
 queue = []
 results = []
 def pyscfThread():
