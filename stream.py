@@ -1,5 +1,5 @@
 import streamlit as st
-from pyscf.pyscf import gto, scf
+from pyscf import gto, scf
 import time
 
 queue = []
