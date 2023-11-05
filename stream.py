@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 from pyscf import gto, scf
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import threading
@@ -8,6 +9,8 @@ if 'queue' not in st.session_state:
     st.session_state['queue'] = []
 if 'results' not in st.session_state:
     st.session_state['results'] = []
+if 'computing' not in st.session_state:
+    st.session_state['computing'] = False
 
 
 def compute_pyscf(atom, basis_option, verbose_option):
@@ -57,6 +60,16 @@ def getMoleculeName(atom):
 st.title("PySCF")
 
 xyz_input = st.text_area("XYZ Input")
+
+# Create a Streamlit button which gives example
+with st.expander("See Example Input"):
+    st.write("C 0.0000000 0.0000000 0.0000000")
+    st.write("H 0.6311940 0.6311940 0.6311940")
+    st.write("H -0.6311940 -0.6311940 0.6311940")
+    st.write("H -0.6311940 0.6311940 -0.6311940")
+    st.write("H 0.6311940 -0.6311940 -0.631194")
+
+
 basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
                               "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
@@ -74,22 +87,12 @@ if col1.button("Add to Queue"):
     else:
         st.warning("Please provide an XYZ input.")
 
+if 'queue' in st.session_state:
+    st.subheader("Queue")
+    for queue_item in st.session_state['queue']:
+        st.write(getMoleculeName(queue_item))
 
-if col2.button("Compute"):
-    if len(st.session_state['queue']) > 0:
-        st.write("Computing...")
-        for atom in st.session_state['queue']:
-            energy, time_val = compute_pyscf(
-                atom, basis_option, verbose_option)
-            molecule_name = getMoleculeName(atom)
-            st.session_state['results'].append(
-                (molecule_name, energy, time_val))
-            # st.write(
-            #     f"Result: {molecule_name} | Energy: {energy} | Time: {time_val} seconds")
-    else:
-        st.warning("Please add an XYZ input to the queue.")
-
-if st.session_state['results']:
+if 'results' in st.session_state:
     st.subheader("Results")
     for result_item in st.session_state['results']:
         st.write(
@@ -100,6 +103,31 @@ if col3.button('View Log'):
         log_data = file.read()
         st.markdown(f'```\n{log_data}\n```')
 
+if col2.button("Compute") or st.session_state['computing'] == True:
+    if len(st.session_state['queue']) > 0:
+        with st.spinner("Computing " + getMoleculeName(st.session_state['queue'][0]) + "..."):
+            st.session_state['computing'] = True
+            atom = st.session_state['queue'][0]
+            st.session_state['queue'].pop(0)
+            # st.write("Computing...")
+            # progress_text = "Computing..."
+            # my_bar = st.progress(0, text=progress_text)
+
+            # for percent_complete in range(100):
+            #     time.sleep(0.01)
+            #     my_bar.progress(percent_complete + 1, text=progress_text)
+            # time.sleep(1)
+            # my_bar.empty()
+            energy, time_val = compute_pyscf(
+                atom, basis_option, verbose_option)
+            molecule_name = getMoleculeName(atom)
+            st.session_state['results'].append(
+                (molecule_name, energy, time_val))
+            st.rerun()
+    elif st.session_state['computing'] == True:
+        st.session_state['computing'] = False
+    else:
+        st.warning("Please add an XYZ input to the queue.")
 
 # Attempt at creating an async queue, need to find a way to detect browser closing to stop the queue
 
@@ -114,3 +142,20 @@ if col3.button('View Log'):
 #     t = threading.Thread(target=runQueue)
 #     add_script_run_ctx(t)
 #     t.start()
+
+# components.html("""<html>
+# <script>
+#     const origClose = window.close;
+#     window.close = () => {
+#         console.log("asdf");
+#         // origClose();
+#     }
+#     document.addEventListener("beforeunload", () => {
+#                 alert(1);
+#                 console.log(a.a.a.a);
+#     })
+# </script>
+# <div style="color: white" onclick="">
+#                 hihihihi
+# </div>
+#                 </html>""")
