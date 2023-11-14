@@ -21,12 +21,12 @@ def compute_pyscf(atom, basis_option, verbose_option):
     mol.atom = atom
     mol.basis = basis_option
     mol.verbose = int(verbose_option[0])
-    mol.output = 'computed/output-test.txt'
+    mol.output = 'output-test.txt'
     mol.build()
 
     mf = scf.RHF(mol)
     mf.kernel()
-    outputFile = open("computed/output-test.txt", "r")
+    outputFile = open("output-test.txt", "r")
     # Extract energy and time information
     time = None
     energy = None
@@ -59,7 +59,25 @@ def getMoleculeName(atom):
 # Streamlit layout
 st.title("PySCF")
 
-xyz_input = st.text_area("XYZ Input")
+# Function to process the uploaded text file
+
+
+def process_text_file(uploaded_file):
+    if uploaded_file is not None:
+        # Read the contents of the file
+        text_contents = uploaded_file.getvalue().decode("utf-8")
+        return text_contents
+    else:
+        return None
+
+
+# Display file uploader for a single text file and processes it
+uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt"])
+text_contents = process_text_file(uploaded_file)
+
+# Fills xyz_input text area to the contents of the uploaded file
+xyz_input = st.text_area(
+    "XYZ Input", value=text_contents) if text_contents else st.text_area("XYZ Input")
 
 # Create a Streamlit button which gives example
 with st.expander("See Example Input"):
@@ -85,7 +103,8 @@ if col1.button("Add to Queue"):
     if xyz_input:
         addToQueue(xyz_input)
     else:
-        st.warning("Please provide an XYZ input.")
+        st.warning(
+            "Please provide an XYZ input using the text box or inputting a text file.")
 
 if 'queue' in st.session_state:
     st.subheader("Queue")
@@ -99,11 +118,13 @@ if 'results' in st.session_state:
             f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
 
 if col3.button('View Log'):
-    with open('computed/output-test.txt', 'r') as file:
+    with open('output-test.txt', 'r') as file:
         log_data = file.read()
         st.markdown(f'```\n{log_data}\n```')
 
-if col2.button("Compute") or st.session_state['computing'] == True:
+# Computes only if something is added to the queue; grayed out otherwise
+compute_disabled = len(st.session_state['queue']) == 0
+if col2.button("Compute", disabled=compute_disabled) or st.session_state['computing'] == True:
     if len(st.session_state['queue']) > 0:
         with st.spinner("Computing " + getMoleculeName(st.session_state['queue'][0]) + "..."):
             st.session_state['computing'] = True
