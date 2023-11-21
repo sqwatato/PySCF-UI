@@ -150,7 +150,7 @@ if col2.button("Compute", disabled=compute_disabled) or st.session_state['comput
             # my_bar.empty()
             
             # Delete empty lines
-            parsed = [line for line in atom.splitlines() if line.strip() != ""]
+            parsed = [line.strip() for line in atom.splitlines() if line.strip() != ""]
             xyz = "\n".join(parsed)
             mol = f"{len(parsed)}\nname\n{str(xyz)}"
             
