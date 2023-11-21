@@ -4,6 +4,10 @@ from pyscf import gto, scf
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import threading
 import time
+from stmol import *
+import py3Dmol
+
+
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -14,9 +18,9 @@ if 'computing' not in st.session_state:
 
 
 def compute_pyscf(atom, basis_option, verbose_option):
-    print(atom)
-    print(basis_option)
-    print(verbose_option)
+    # print(atom)
+    # print(basis_option)
+    # print(verbose_option)
     mol = gto.Mole()
     mol.atom = atom
     mol.basis = basis_option
@@ -111,11 +115,16 @@ if 'queue' in st.session_state:
     for queue_item in st.session_state['queue']:
         st.write(getMoleculeName(queue_item))
 
+
 if 'results' in st.session_state:
     st.subheader("Results")
     for result_item in st.session_state['results']:
-        st.write(
-            f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+        with st.container():
+            result_col_1, result_col_2 = st.columns([2,1])
+            result_col_1.write(
+                f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+            with result_col_2:
+                speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
 
 if col3.button('View Log'):
     with open('output-test.txt', 'r') as file:
@@ -140,12 +149,16 @@ if col2.button("Compute", disabled=compute_disabled) or st.session_state['comput
             # time.sleep(1)
             # my_bar.empty()
             
+            # Delete empty lines
+            parsed = [line for line in atom.splitlines() if line.strip() != ""]
+            xyz = "\n".join(parsed)
+            mol = f"{len(parsed)}\nname\n{str(xyz)}"
             
             energy, time_val = compute_pyscf(
                 atom, basis_option, verbose_option)
             molecule_name = getMoleculeName(atom)
             st.session_state['results'].append(
-                (molecule_name, energy, time_val))
+                (molecule_name, energy, time_val, mol))
             st.rerun()
     elif st.session_state['computing'] == True:
         st.session_state['computing'] = False
@@ -181,4 +194,3 @@ if col2.button("Compute", disabled=compute_disabled) or st.session_state['comput
 # <div style="color: white" onclick="">
 #                 hihihihi
 # </div>
-#                 </html>""")
