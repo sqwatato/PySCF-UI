@@ -6,8 +6,14 @@ import threading
 import time
 from stmol import *
 import py3Dmol
-
-
+from rdkit import Chem
+from rdkit.Chem import rdDetermineBonds
+from rdkit.Chem.rdmolfiles import MolFromXYZFile
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from collections import defaultdict
+import altair as alt
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -75,13 +81,11 @@ def process_text_file(uploaded_file):
         return None
 
 
+
+
 # Display file uploader for a single text file and processes it
 uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt"])
 text_contents = process_text_file(uploaded_file)
-
-# Fills xyz_input text area to the contents of the uploaded file
-xyz_input = st.text_area(
-    "XYZ Input", value=text_contents) if text_contents else st.text_area("XYZ Input")
 
 # Create a Streamlit button which gives example
 with st.expander("See Example Input"):
@@ -91,49 +95,37 @@ with st.expander("See Example Input"):
     st.write("H -0.6311940 0.6311940 -0.6311940")
     st.write("H 0.6311940 -0.6311940 -0.631194")
 
-
-basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
-verbose_option = st.selectbox("Verbose", index=2, options=[
-                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
-
-col1, col2, col3 = st.columns(3, gap="small")
-
+# Fills xyz_input text area to the contents of the uploaded file
+xyz_input = st.text_area(
+    "XYZ Input", value=text_contents) if text_contents else st.text_area("XYZ Input")
 
 def addToQueue(atom):
     st.session_state['queue'].append(atom)
 
-
-if col1.button("Add to Queue"):
+if st.button('Add to Queue', use_container_width=True):
     if xyz_input:
         addToQueue(xyz_input)
     else:
         st.warning(
             "Please provide an XYZ input using the text box or inputting a text file.")
 
-if 'queue' in st.session_state:
-    st.subheader("Queue")
-    for queue_item in st.session_state['queue']:
-        st.write(getMoleculeName(queue_item))
 
+basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
+verbose_option = st.selectbox("Verbose", index=2, options=[
+                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
 
-if 'results' in st.session_state:
-    st.subheader("Results")
-    for result_item in st.session_state['results']:
-        with st.container():
-            result_col_1, result_col_2 = st.columns([2,1])
-            result_col_1.write(
-                f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
-            with result_col_2:
-                speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+col1, col2, col3, col4 = st.columns(4, gap="small")
 
-if col3.button('View Log'):
-    with open('output-test.txt', 'r') as file:
-        log_data = file.read()
-        st.markdown(f'```\n{log_data}\n```')
+# if col1.button("Add to Queue"):
+#     if xyz_input:
+#         addToQueue(xyz_input)
+#     else:
+#         st.warning(
+#             "Please provide an XYZ input using the text box or inputting a text file.")
 
 # Computes only if something is added to the queue; grayed out otherwise
 compute_disabled = len(st.session_state['queue']) == 0
-if col2.button("Compute", disabled=compute_disabled) or st.session_state['computing'] == True:
+if st.button("Compute", disabled=compute_disabled, type="primary", use_container_width=True) or st.session_state['computing'] == True:
     if len(st.session_state['queue']) > 0:
         with st.spinner("Computing " + getMoleculeName(st.session_state['queue'][0]) + "..."):
             st.session_state['computing'] = True
@@ -154,16 +146,126 @@ if col2.button("Compute", disabled=compute_disabled) or st.session_state['comput
             xyz = "\n".join(parsed)
             mol = f"{len(parsed)}\nname\n{str(xyz)}"
             
+            # output xyz into molecule.xyz file
+            with open('molecule.xyz', 'w') as f:
+                f.write(f"{len(parsed)}\n\n{str(xyz)}")
+                
+            raw_mol = MolFromXYZFile('molecule.xyz')
+            rdkit_mol = Chem.Mol(raw_mol)
+            rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
+                
+            
             energy, time_val = compute_pyscf(
                 atom, basis_option, verbose_option)
             molecule_name = getMoleculeName(atom)
             st.session_state['results'].append(
-                (molecule_name, energy, time_val, mol))
+                (molecule_name, energy, time_val, mol, rdkit_mol))
             st.rerun()
     elif st.session_state['computing'] == True:
         st.session_state['computing'] = False
     else:
         st.warning("Please add an XYZ input to the queue.")
+
+if 'queue' in st.session_state:
+    st.subheader("Queue")
+    for queue_item in st.session_state['queue']:
+        st.write(getMoleculeName(queue_item))
+        
+
+tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
+        
+with tab1:
+    if 'results' in st.session_state:
+        st.subheader("Results")
+        for result_item in st.session_state['results']:
+            with st.container():
+                result_col_1, result_col_2 = st.columns([2,1])
+                result_col_1.write(
+                    f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+                result_col_1.write(
+                    f"\# of Atoms: {result_item[4].GetNumAtoms()} | \# of Bonds: {result_item[4].GetNumBonds()} | \# of Conformers:  {result_item[4].GetNumConformers()}")
+                with result_col_2:
+                    speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+
+with tab2:
+    def count_atoms(m):
+        atomic_count = defaultdict(lambda : 0)
+        for atom in m.GetAtoms():
+            atomic_count[atom.GetAtomicNum()] += 1
+        return atomic_count
+            
+    if 'results' in st.session_state and len(st.session_state['results']) > 1:
+        st.subheader("Comparative Graphs")
+        
+        atom_counts = [count_atoms(result_item[4]) for result_item in st.session_state['results']]
+        
+        # Prepare datasets
+        num_atoms = [result_item[4].GetNumAtoms() for result_item in st.session_state['results']]
+        num_bonds = [result_item[4].GetNumBonds() for result_item in st.session_state['results']]
+        num_conformers = [result_item[4].GetNumConformers() for result_item in st.session_state['results']]
+        # 6 and 1 are atomic code
+        num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
+        num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
+        
+        energies = [result_item[1] for result_item in st.session_state['results']]
+        runtimes = [result_item[2] for result_item in st.session_state['results']]
+
+        df_atoms = pd.DataFrame({'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
+        df_bonds = pd.DataFrame({'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
+        df_conformers = pd.DataFrame({'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
+        df_carbons = pd.DataFrame({'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
+        df_hydrogens = pd.DataFrame({'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
+        
+
+        # Generate Graphs  
+        for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
+            for target in ['Energy', 'Runtime']:
+                st.markdown(f'### Number of {label} vs. {target}')
+
+                # Linear Regression
+                coeffs_linear = np.polyfit(df[label].values, df[target].values, 1)
+                poly1d_fn_linear = np.poly1d(coeffs_linear)
+                x = np.linspace(min(df[label]), max(df[label]), 100)
+                
+                # Quadratic Regression
+                coeffs_quad = np.polyfit(df[label].values, df[target].values, 2)
+                poly1d_fn_quad = np.poly1d(coeffs_quad)
+                
+                # Display Equations
+                st.markdown(f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
+                st.markdown(f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
+
+                # Create a DataFrame for the regression lines
+                df_line = pd.DataFrame({label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
+
+                # Plot
+                scatter = alt.Chart(df).mark_circle(size=60).encode(
+                    x=label,
+                    y=target,
+                    tooltip=[label, target]
+                )
+
+                line_linear = alt.Chart(df_line).mark_line(color='red').encode(
+                    x=label,
+                    y='Linear'
+                )
+
+                line_quad = alt.Chart(df_line).mark_line(color='green').encode(
+                    x=label,
+                    y='Quadratic'
+                )
+
+                # Display the plot
+                st.altair_chart(scatter + line_linear + line_quad, use_container_width=True)
+ 
+            # Display Equation
+            # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
+
+with tab3:
+    with open('output-test.txt', 'r') as file:
+        log_data = file.read()
+        st.markdown(f'```\n{log_data}\n```')
+
         
 # xyzview = py3Dmol.view(query='pdb:1A2C') 
 # xyzview.setStyle({'cartoon':{'color':'spectrum'}})

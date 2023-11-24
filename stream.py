@@ -27,6 +27,7 @@ def compute_pyscf(atom, basis_option, verbose_option):
     mol.verbose = int(verbose_option[0])
     mol.output = 'output-test.txt'
     mol.build()
+    
 
     mf = scf.RHF(mol)
     mf.kernel()
