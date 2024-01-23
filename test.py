@@ -9,6 +9,7 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import rdDetermineBonds
 from rdkit.Chem.rdmolfiles import MolFromXYZFile
+from rdkit.Chem import Descriptors
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -148,7 +149,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             
             # output xyz into molecule.xyz file
             with open('molecule.xyz', 'w') as f:
-                f.write(f"{len(parsed)}\n\n{str(xyz)}")
+                f.write(f"{len(parsed)}\nhi\n{str(xyz)}")
                 
             raw_mol = MolFromXYZFile('molecule.xyz')
             rdkit_mol = Chem.Mol(raw_mol)
@@ -179,11 +180,14 @@ with tab1:
         st.subheader("Results")
         for result_item in st.session_state['results']:
             with st.container():
+                mol = result_item[4]
                 result_col_1, result_col_2 = st.columns([2,1])
                 result_col_1.write(
                     f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
                 result_col_1.write(
-                    f"\# of Atoms: {result_item[4].GetNumAtoms()} | \# of Bonds: {result_item[4].GetNumBonds()} | \# of Conformers:  {result_item[4].GetNumConformers()}")
+                    f"\# of Atoms: {mol.GetNumAtoms()} | \# of Bonds: {mol.GetNumBonds()} | \# of Rings:  {mol.GetRingInfo().NumRings()}")
+                result_col_1.write(f"Molecular Weight: {Descriptors.MolWt(mol)} | Topological Polar Surface Area: {Descriptors.TPSA(mol)}")
+    
                 with result_col_2:
                     speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
 

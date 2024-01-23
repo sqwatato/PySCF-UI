@@ -9,11 +9,13 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import rdDetermineBonds
 from rdkit.Chem.rdmolfiles import MolFromXYZFile
+from rdkit.Chem import Descriptors
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from collections import defaultdict
 import altair as alt
+import os
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -21,6 +23,9 @@ if 'results' not in st.session_state:
     st.session_state['results'] = []
 if 'computing' not in st.session_state:
     st.session_state['computing'] = False
+    
+# get all files in directory names precomputed_molecules:
+precomputed_molecules = list(map(lambda x: x.split(".")[0], os.listdir("precomputed_molecules")))
 
 
 def compute_pyscf(atom, basis_option, verbose_option):
@@ -79,35 +84,59 @@ def process_text_file(uploaded_file):
         return text_contents
     else:
         return None
-
-
-
-
-# Display file uploader for a single text file and processes it
-uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt"])
-text_contents = process_text_file(uploaded_file)
-
-# Create a Streamlit button which gives example
-with st.expander("See Example Input"):
-    st.write("C 0.0000000 0.0000000 0.0000000")
-    st.write("H 0.6311940 0.6311940 0.6311940")
-    st.write("H -0.6311940 -0.6311940 0.6311940")
-    st.write("H -0.6311940 0.6311940 -0.6311940")
-    st.write("H 0.6311940 -0.6311940 -0.631194")
-
-# Fills xyz_input text area to the contents of the uploaded file
-xyz_input = st.text_area(
-    "XYZ Input", value=text_contents) if text_contents else st.text_area("XYZ Input")
-
+    
 def addToQueue(atom):
     st.session_state['queue'].append(atom)
 
-if st.button('Add to Queue', use_container_width=True):
-    if xyz_input:
-        addToQueue(xyz_input)
-    else:
-        st.warning(
-            "Please provide an XYZ input using the text box or inputting a text file.")
+tabDatabase, tabTextInput, tabFileInput = st.tabs(["Database", "Text Input", "File Input"])
+with tabDatabase:
+    selectedMolecule = st.selectbox('Search Molecule Database', precomputed_molecules)
+    if st.button('Add to Queue', use_container_width=True, key="db"):
+        if selectedMolecule:
+            parseDatafile = open("precomputed_molecules/" + selectedMolecule + ".geom.txt", "r").readlines()[4:]
+            parseDatafile = "\n".join(parseDatafile[:-1])
+            addToQueue(parseDatafile)
+        else:
+            st.warning(
+                "Please select a molecule using dropdown menu or inputting a text file.")
+    
+with tabTextInput:
+    # Create a Streamlit button which gives example
+    with st.expander("See Example Input"):
+        st.write("C 0.0000000 0.0000000 0.0000000")
+        st.write("H 0.6311940 0.6311940 0.6311940")
+        st.write("H -0.6311940 -0.6311940 0.6311940")
+        st.write("H -0.6311940 0.6311940 -0.6311940")
+        st.write("H 0.6311940 -0.6311940 -0.631194")
+    # Fills xyz_input text area to the contents of the uploaded file
+    xyz_input = st.text_area("XYZ Input", key="textxyz")
+    
+    if st.button('Add to Queue', use_container_width=True, key="text"):
+        if xyz_input:
+            addToQueue(xyz_input)
+        else:
+            st.warning(
+                "Please provide an XYZ input using the text box or inputting a text file.")
+
+with tabFileInput:
+    # Create a Streamlit button which gives example
+    with st.expander("See Example Input"):
+        st.write("C 0.0000000 0.0000000 0.0000000")
+        st.write("H 0.6311940 0.6311940 0.6311940")
+        st.write("H -0.6311940 -0.6311940 0.6311940")
+        st.write("H -0.6311940 0.6311940 -0.6311940")
+        st.write("H 0.6311940 -0.6311940 -0.631194")
+    # Display file uploader for a single text file and processes it
+    uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt"])
+    text_contents = process_text_file(uploaded_file)
+    xyz_input = st.text_area(
+        "XYZ Input", value=text_contents, key="filexyz") if text_contents else None
+    if st.button('Add to Queue', use_container_width=True, key="filequeue"):
+        if text_contents:
+            addToQueue(text_contents)
+        else:
+            st.warning(
+                "Please provide an XYZ input using file uploader")
 
 
 basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
@@ -148,7 +177,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             
             # output xyz into molecule.xyz file
             with open('molecule.xyz', 'w') as f:
-                f.write(f"{len(parsed)}\n\n{str(xyz)}")
+                f.write(f"{len(parsed)}\nhi\n{str(xyz)}")
                 
             raw_mol = MolFromXYZFile('molecule.xyz')
             rdkit_mol = Chem.Mol(raw_mol)
@@ -179,11 +208,14 @@ with tab1:
         st.subheader("Results")
         for result_item in st.session_state['results']:
             with st.container():
+                mol = result_item[4]
                 result_col_1, result_col_2 = st.columns([2,1])
                 result_col_1.write(
                     f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
                 result_col_1.write(
-                    f"\# of Atoms: {result_item[4].GetNumAtoms()} | \# of Bonds: {result_item[4].GetNumBonds()} | \# of Conformers:  {result_item[4].GetNumConformers()}")
+                    f"\# of Atoms: {mol.GetNumAtoms()} | \# of Bonds: {mol.GetNumBonds()} | \# of Rings:  {mol.GetRingInfo().NumRings()}")
+                result_col_1.write(f"Molecular Weight: {Descriptors.MolWt(mol)}")
+    
                 with result_col_2:
                     speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
 
