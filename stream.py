@@ -23,9 +23,10 @@ if 'results' not in st.session_state:
     st.session_state['results'] = []
 if 'computing' not in st.session_state:
     st.session_state['computing'] = False
-    
+
 # get all files in directory names precomputed_molecules:
-precomputed_molecules = list(map(lambda x: x.split(".")[0], os.listdir("precomputed_molecules")))
+precomputed_molecules = list(map(lambda x: x.split(
+    ".")[0], os.listdir("precomputed_molecules")))
 
 
 def compute_pyscf(atom, basis_option, verbose_option):
@@ -84,22 +85,33 @@ def process_text_file(uploaded_file):
         return text_contents
     else:
         return None
-    
-def addToQueue(atom):
-    st.session_state['queue'].append(atom)
 
-tabDatabase, tabTextInput, tabFileInput = st.tabs(["Database", "Text Input", "File Input"])
+
+def addToQueue(atom, basis):
+    st.session_state['queue'].append((atom, basis))
+
+
+tabDatabase, tabTextInput, tabFileInput = st.tabs(
+    ["Database", "Text Input", "File Input"])
+
+basis_option = st.selectbox(
+    "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z"])
+verbose_option = st.selectbox("Verbose", index=2, options=[
+                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
+
 with tabDatabase:
-    selectedMolecule = st.selectbox('Search Molecule Database', precomputed_molecules)
+    selectedMolecule = st.selectbox(
+        'Search Molecule Database', precomputed_molecules)
     if st.button('Add to Queue', use_container_width=True, key="db"):
         if selectedMolecule:
-            parseDatafile = open("precomputed_molecules/" + selectedMolecule + ".geom.txt", "r").readlines()[4:]
+            parseDatafile = open(
+                "precomputed_molecules/" + selectedMolecule + ".geom.txt", "r").readlines()[4:]
             parseDatafile = "\n".join(parseDatafile[:-1])
-            addToQueue(parseDatafile)
+            addToQueue(parseDatafile, basis_option)
         else:
             st.warning(
                 "Please select a molecule using dropdown menu or inputting a text file.")
-    
+
 with tabTextInput:
     # Create a Streamlit button which gives example
     with st.expander("See Example Input"):
@@ -110,10 +122,10 @@ with tabTextInput:
         st.write("H 0.6311940 -0.6311940 -0.631194")
     # Fills xyz_input text area to the contents of the uploaded file
     xyz_input = st.text_area("XYZ Input", key="textxyz")
-    
+
     if st.button('Add to Queue', use_container_width=True, key="text"):
         if xyz_input:
-            addToQueue(xyz_input)
+            addToQueue(xyz_input, basis_option)
         else:
             st.warning(
                 "Please provide an XYZ input using the text box or inputting a text file.")
@@ -133,15 +145,10 @@ with tabFileInput:
         "XYZ Input", value=text_contents, key="filexyz") if text_contents else None
     if st.button('Add to Queue', use_container_width=True, key="filequeue"):
         if text_contents:
-            addToQueue(text_contents)
+            addToQueue(text_contents, basis_option)
         else:
             st.warning(
                 "Please provide an XYZ input using file uploader")
-
-
-basis_option = st.selectbox("Basis", ["cc-pVTZ", "asdf"])
-verbose_option = st.selectbox("Verbose", index=2, options=[
-                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
 
 col1, col2, col3, col4 = st.columns(4, gap="small")
 
@@ -156,9 +163,10 @@ col1, col2, col3, col4 = st.columns(4, gap="small")
 compute_disabled = len(st.session_state['queue']) == 0
 if st.button("Compute", disabled=compute_disabled, type="primary", use_container_width=True) or st.session_state['computing'] == True:
     if len(st.session_state['queue']) > 0:
-        with st.spinner("Computing " + getMoleculeName(st.session_state['queue'][0]) + "..."):
+        with st.spinner("Computing " + getMoleculeName(st.session_state['queue'][0][0]) + "..."):
             st.session_state['computing'] = True
-            atom = st.session_state['queue'][0]
+            atom = st.session_state['queue'][0][0]
+            basis = st.session_state['queue'][0][1]
             st.session_state['queue'].pop(0)
             # st.write("Computing...")
             # progress_text = "Computing..."
@@ -169,26 +177,25 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             #     my_bar.progress(percent_complete + 1, text=progress_text)
             # time.sleep(1)
             # my_bar.empty()
-            
+
             # Delete empty lines
             parsed = [line for line in atom.splitlines() if line.strip() != ""]
             xyz = "\n".join(parsed)
             mol = f"{len(parsed)}\nname\n{str(xyz)}"
-            
+
             # output xyz into molecule.xyz file
             with open('molecule.xyz', 'w') as f:
                 f.write(f"{len(parsed)}\nhi\n{str(xyz)}")
-                
+
             raw_mol = MolFromXYZFile('molecule.xyz')
             rdkit_mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
-                
-            
+
             energy, time_val = compute_pyscf(
-                atom, basis_option, verbose_option)
+                atom, basis, verbose_option)
             molecule_name = getMoleculeName(atom)
             st.session_state['results'].append(
-                (molecule_name, energy, time_val, mol, rdkit_mol))
+                (molecule_name, energy, time_val, mol, rdkit_mol, basis))
             st.rerun()
     elif st.session_state['computing'] == True:
         st.session_state['computing'] = False
@@ -198,77 +205,94 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
 if 'queue' in st.session_state:
     st.subheader("Queue")
     for queue_item in st.session_state['queue']:
-        st.write(getMoleculeName(queue_item))
-        
+        st.write(f"{getMoleculeName(queue_item[0])} | {queue_item[1]}")
+
 
 tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
-        
+
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
         for result_item in st.session_state['results']:
             with st.container():
                 mol = result_item[4]
-                result_col_1, result_col_2 = st.columns([2,1])
+                result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{result_item[0]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+                    f"{result_item[0]} | {result_item[5]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
                 result_col_1.write(
                     f"\# of Atoms: {mol.GetNumAtoms()} | \# of Bonds: {mol.GetNumBonds()} | \# of Rings:  {mol.GetRingInfo().NumRings()}")
-                result_col_1.write(f"Molecular Weight: {Descriptors.MolWt(mol)}")
-    
+                result_col_1.write(
+                    f"Molecular Weight: {Descriptors.MolWt(mol)}")
+
                 with result_col_2:
-                    speck_plot(result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                    speck_plot(
+                        result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
 
 with tab2:
     def count_atoms(m):
-        atomic_count = defaultdict(lambda : 0)
+        atomic_count = defaultdict(lambda: 0)
         for atom in m.GetAtoms():
             atomic_count[atom.GetAtomicNum()] += 1
         return atomic_count
-            
+
     if 'results' in st.session_state and len(st.session_state['results']) > 1:
         st.subheader("Comparative Graphs")
-        
-        atom_counts = [count_atoms(result_item[4]) for result_item in st.session_state['results']]
-        
+
+        atom_counts = [count_atoms(result_item[4])
+                       for result_item in st.session_state['results']]
+
         # Prepare datasets
-        num_atoms = [result_item[4].GetNumAtoms() for result_item in st.session_state['results']]
-        num_bonds = [result_item[4].GetNumBonds() for result_item in st.session_state['results']]
-        num_conformers = [result_item[4].GetNumConformers() for result_item in st.session_state['results']]
+        num_atoms = [result_item[4].GetNumAtoms()
+                     for result_item in st.session_state['results']]
+        num_bonds = [result_item[4].GetNumBonds()
+                     for result_item in st.session_state['results']]
+        num_conformers = [result_item[4].GetNumConformers()
+                          for result_item in st.session_state['results']]
         # 6 and 1 are atomic code
         num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
         num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
-        
-        energies = [result_item[1] for result_item in st.session_state['results']]
-        runtimes = [result_item[2] for result_item in st.session_state['results']]
 
-        df_atoms = pd.DataFrame({'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
-        df_bonds = pd.DataFrame({'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
-        df_conformers = pd.DataFrame({'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
-        df_carbons = pd.DataFrame({'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
-        df_hydrogens = pd.DataFrame({'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
-        
+        energies = [result_item[1]
+                    for result_item in st.session_state['results']]
+        runtimes = [result_item[2]
+                    for result_item in st.session_state['results']]
 
-        # Generate Graphs  
+        df_atoms = pd.DataFrame(
+            {'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
+        df_bonds = pd.DataFrame(
+            {'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
+        df_conformers = pd.DataFrame(
+            {'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
+        df_carbons = pd.DataFrame(
+            {'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
+        df_hydrogens = pd.DataFrame(
+            {'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
+
+        # Generate Graphs
         for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
             for target in ['Energy', 'Runtime']:
                 st.markdown(f'### Number of {label} vs. {target}')
 
                 # Linear Regression
-                coeffs_linear = np.polyfit(df[label].values, df[target].values, 1)
+                coeffs_linear = np.polyfit(
+                    df[label].values, df[target].values, 1)
                 poly1d_fn_linear = np.poly1d(coeffs_linear)
                 x = np.linspace(min(df[label]), max(df[label]), 100)
-                
+
                 # Quadratic Regression
-                coeffs_quad = np.polyfit(df[label].values, df[target].values, 2)
+                coeffs_quad = np.polyfit(
+                    df[label].values, df[target].values, 2)
                 poly1d_fn_quad = np.poly1d(coeffs_quad)
-                
+
                 # Display Equations
-                st.markdown(f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
-                st.markdown(f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
 
                 # Create a DataFrame for the regression lines
-                df_line = pd.DataFrame({label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
+                df_line = pd.DataFrame(
+                    {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
 
                 # Plot
                 scatter = alt.Chart(df).mark_circle(size=60).encode(
@@ -288,8 +312,9 @@ with tab2:
                 )
 
                 # Display the plot
-                st.altair_chart(scatter + line_linear + line_quad, use_container_width=True)
- 
+                st.altair_chart(scatter + line_linear +
+                                line_quad, use_container_width=True)
+
             # Display Equation
             # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
 
@@ -298,8 +323,8 @@ with tab3:
         log_data = file.read()
         st.markdown(f'```\n{log_data}\n```')
 
-        
-# xyzview = py3Dmol.view(query='pdb:1A2C') 
+
+# xyzview = py3Dmol.view(query='pdb:1A2C')
 # xyzview.setStyle({'cartoon':{'color':'spectrum'}})
 # showmol(xyzview, height = 500,width=800)
 
