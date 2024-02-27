@@ -16,6 +16,8 @@ import matplotlib.pyplot as plt
 from collections import defaultdict
 import altair as alt
 import os
+from pyscf.hessian import thermo
+from streamlit_extras.row import row
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -29,7 +31,7 @@ precomputed_molecules = list(map(lambda x: x.split(
     ".")[0], os.listdir("precomputed_molecules")))
 
 
-def compute_pyscf(atom, basis_option, verbose_option):
+def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     # print(atom)
     # print(basis_option)
     # print(verbose_option)
@@ -40,8 +42,13 @@ def compute_pyscf(atom, basis_option, verbose_option):
     mol.output = 'output-test.txt'
     mol.build()
 
-    mf = scf.RHF(mol)
-    mf.kernel()
+    # mf = scf.RHF(mol)
+    # mf.kernel()
+    mf =mol.UHF().run()
+    hessian = mf.Hessian().kernel()
+    harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
+    thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
+    
     outputFile = open("output-test.txt", "r")
     # Extract energy and time information
     time = None
@@ -52,7 +59,23 @@ def compute_pyscf(atom, basis_option, verbose_option):
 
         elif line.startswith("converged SCF energy = "):
             energy = float(line.split(" ")[-1])
-    return energy, time
+    data = {
+        'energy': energy,
+        'time': time,
+        'nuclear energy': mf.energy_nuc(),
+        'electronic energy': mf.energy_elec(),
+        'total energy': mf.energy_tot(),
+        # thermodynamics
+        'entropy': thermo_info['S_tot'][0],
+        'zero point energy': thermo_info['ZPE'][0],
+        '0K internal energy': thermo_info['E_0K'][0],
+        'internal energy': thermo_info['E_tot'][0],
+        'enthalpy': thermo_info['H_tot'][0],
+        'gibbs free energy': thermo_info['G_tot'][0],
+        # 'Helmholtz free energy': thermo_info['Helmholtz'][0],
+        # 'Helmholtz energy': thermo_info['Helmholtz'][0],
+    }
+    return data
 
 
 def getMoleculeName(atom):
@@ -98,6 +121,14 @@ basis_option = st.selectbox(
     "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
                               "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
+
+#Second Input (NEW) - Pressure of the system
+# pressure = 101325 #in Pascals (Pa), 101325 Pa = 1 atm
+#Third Input (NEW) - Temperature of the system
+# temperature = 298.15 #in K, 298.15K = room temperature (25 degrees Celsius) 
+thermo_row = row(2)
+temp = thermo_row.number_input("Temperature", min_value=0.0)
+press = thermo_row.number_input("Pressure", min_value=0.0)
 
 with tabDatabase:
     selectedMolecule = st.selectbox(
@@ -191,12 +222,20 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             rdkit_mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
 
-            energy, time_val = compute_pyscf(
-                atom, basis, verbose_option)
-            molecule_name = getMoleculeName(atom)
-            st.session_state['results'].append(
-                (molecule_name, energy, time_val, mol, rdkit_mol, basis))
+            data = compute_pyscf(
+                atom, basis, verbose_option, temp, press)
+            data['atoms'] = rdkit_mol.GetNumAtoms()
+            data['bonds'] = rdkit_mol.GetNumBonds()
+            data['rings'] = rdkit_mol.GetRingInfo().NumRings()
+            data['weight'] = Descriptors.MolWt(rdkit_mol)
+            data['mol'] = mol
+            data['rdkit_mol'] = rdkit_mol
+            data['basis'] = basis
+            data['molecule_name'] = getMoleculeName(atom)
+            
+            st.session_state['results'].append(data)
             st.rerun()
+            
     elif st.session_state['computing'] == True:
         st.session_state['computing'] = False
     else:
@@ -214,109 +253,124 @@ with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
         for result_item in st.session_state['results']:
+            data = result_item
             with st.container():
-                mol = result_item[4]
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{result_item[0]} | {result_item[5]} | Energy: {result_item[1]} | Time: {result_item[2]} seconds")
+                    f"{data['molecule_name']} | {data['basis']} | Energy: {data['energy']} | Time: {data['time']} seconds")
                 result_col_1.write(
-                    f"\# of Atoms: {mol.GetNumAtoms()} | \# of Bonds: {mol.GetNumBonds()} | \# of Rings:  {mol.GetRingInfo().NumRings()}")
+                    f"\# of Atoms: {data['atoms']} | \# of Bonds: {data['bonds']} | \# of Rings:  {data['rings']}")
                 result_col_1.write(
-                    f"Molecular Weight: {Descriptors.MolWt(mol)}")
+                    f"Molecular Weight: {data['weight']}")
+                # energy data
+                result_col_1.write(f"Nuclear Energy: {data['nuclear energy']}")
+                result_col_1.write(f"Electronic Energy: {data['electronic energy']}")
+                result_col_1.write(f"Total Energy: {data['total energy']}")
+                # thermodynamic data
+                result_col_1.write(f"Entropy: {data['entropy']}")
+                result_col_1.write(f"Zero-Point Energy: {data['zero point energy']}")
+                result_col_1.write(f"0K Internal Energy: {data['0K internal energy']}")
+                result_col_1.write(f"Internal Energy: {data['internal energy']}")
+                result_col_1.write(f"Enthalpy: {data['enthalpy']}")
+                result_col_1.write(f"Gibbs Free Energy: {data['gibbs free energy']}")
 
                 with result_col_2:
                     speck_plot(
-                        result_item[3], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                        data['mol'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                # linebreak
+                st.write("")
+                st.write("")
 
 with tab2:
-    def count_atoms(m):
-        atomic_count = defaultdict(lambda: 0)
-        for atom in m.GetAtoms():
-            atomic_count[atom.GetAtomicNum()] += 1
-        return atomic_count
+    st.subheader("Comparative Graphs (WIP)")
+    # def count_atoms(m):
+    #     atomic_count = defaultdict(lambda: 0)
+    #     for atom in m.GetAtoms():
+    #         atomic_count[atom.GetAtomicNum()] += 1
+    #     return atomic_count
 
-    if 'results' in st.session_state and len(st.session_state['results']) > 1:
-        st.subheader("Comparative Graphs")
+    # if 'results' in st.session_state and len(st.session_state['results']) > 1:
+    #     st.subheader("Comparative Graphs")
 
-        atom_counts = [count_atoms(result_item[4])
-                       for result_item in st.session_state['results']]
+    #     atom_counts = [count_atoms(result_item[4])
+    #                    for result_item in st.session_state['results']]
 
-        # Prepare datasets
-        num_atoms = [result_item[4].GetNumAtoms()
-                     for result_item in st.session_state['results']]
-        num_bonds = [result_item[4].GetNumBonds()
-                     for result_item in st.session_state['results']]
-        num_conformers = [result_item[4].GetNumConformers()
-                          for result_item in st.session_state['results']]
-        # 6 and 1 are atomic code
-        num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
-        num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
+    #     # Prepare datasets
+    #     num_atoms = [result_item[4].GetNumAtoms()
+    #                  for result_item in st.session_state['results']]
+    #     num_bonds = [result_item[4].GetNumBonds()
+    #                  for result_item in st.session_state['results']]
+    #     num_conformers = [result_item[4].GetNumConformers()
+    #                       for result_item in st.session_state['results']]
+    #     # 6 and 1 are atomic code
+    #     num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
+    #     num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
 
-        energies = [result_item[1]
-                    for result_item in st.session_state['results']]
-        runtimes = [result_item[2]
-                    for result_item in st.session_state['results']]
+    #     energies = [result_item[1]
+    #                 for result_item in st.session_state['results']]
+    #     runtimes = [result_item[2]
+    #                 for result_item in st.session_state['results']]
 
-        df_atoms = pd.DataFrame(
-            {'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
-        df_bonds = pd.DataFrame(
-            {'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
-        df_conformers = pd.DataFrame(
-            {'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
-        df_carbons = pd.DataFrame(
-            {'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
-        df_hydrogens = pd.DataFrame(
-            {'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
+    #     df_atoms = pd.DataFrame(
+    #         {'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
+    #     df_bonds = pd.DataFrame(
+    #         {'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
+    #     df_conformers = pd.DataFrame(
+    #         {'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
+    #     df_carbons = pd.DataFrame(
+    #         {'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
+    #     df_hydrogens = pd.DataFrame(
+    #         {'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
 
-        # Generate Graphs
-        for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
-            for target in ['Energy', 'Runtime']:
-                st.markdown(f'### Number of {label} vs. {target}')
+    #     # Generate Graphs
+    #     for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
+    #         for target in ['Energy', 'Runtime']:
+    #             st.markdown(f'### Number of {label} vs. {target}')
 
-                # Linear Regression
-                coeffs_linear = np.polyfit(
-                    df[label].values, df[target].values, 1)
-                poly1d_fn_linear = np.poly1d(coeffs_linear)
-                x = np.linspace(min(df[label]), max(df[label]), 100)
+    #             # Linear Regression
+    #             coeffs_linear = np.polyfit(
+    #                 df[label].values, df[target].values, 1)
+    #             poly1d_fn_linear = np.poly1d(coeffs_linear)
+    #             x = np.linspace(min(df[label]), max(df[label]), 100)
 
-                # Quadratic Regression
-                coeffs_quad = np.polyfit(
-                    df[label].values, df[target].values, 2)
-                poly1d_fn_quad = np.poly1d(coeffs_quad)
+    #             # Quadratic Regression
+    #             coeffs_quad = np.polyfit(
+    #                 df[label].values, df[target].values, 2)
+    #             poly1d_fn_quad = np.poly1d(coeffs_quad)
 
-                # Display Equations
-                st.markdown(
-                    f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
-                st.markdown(
-                    f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
+    #             # Display Equations
+    #             st.markdown(
+    #                 f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
+    #             st.markdown(
+    #                 f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
 
-                # Create a DataFrame for the regression lines
-                df_line = pd.DataFrame(
-                    {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
+    #             # Create a DataFrame for the regression lines
+    #             df_line = pd.DataFrame(
+    #                 {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
 
-                # Plot
-                scatter = alt.Chart(df).mark_circle(size=60).encode(
-                    x=label,
-                    y=target,
-                    tooltip=[label, target]
-                )
+    #             # Plot
+    #             scatter = alt.Chart(df).mark_circle(size=60).encode(
+    #                 x=label,
+    #                 y=target,
+    #                 tooltip=[label, target]
+    #             )
 
-                line_linear = alt.Chart(df_line).mark_line(color='red').encode(
-                    x=label,
-                    y='Linear'
-                )
+    #             line_linear = alt.Chart(df_line).mark_line(color='red').encode(
+    #                 x=label,
+    #                 y='Linear'
+    #             )
 
-                line_quad = alt.Chart(df_line).mark_line(color='green').encode(
-                    x=label,
-                    y='Quadratic'
-                )
+    #             line_quad = alt.Chart(df_line).mark_line(color='green').encode(
+    #                 x=label,
+    #                 y='Quadratic'
+    #             )
 
-                # Display the plot
-                st.altair_chart(scatter + line_linear +
-                                line_quad, use_container_width=True)
+    #             # Display the plot
+    #             st.altair_chart(scatter + line_linear +
+    #                             line_quad, use_container_width=True)
 
-            # Display Equation
-            # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
+    #         # Display Equation
+    #         # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
 
 with tab3:
     with open('output-test.txt', 'r') as file:
