@@ -269,7 +269,7 @@ with tab1:
             with st.container():
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds | Hessian Runtime: {data['hessian']}")
+                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds | Hessian Runtime: {data['hessian']} seconds")
                 result_col_1.write(
                     f"\# of Atoms: {data['atoms']} | \# of Bonds: {data['bonds']} | \# of Rings:  {data['rings']}")
                 result_col_1.write(
