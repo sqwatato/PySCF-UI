@@ -18,6 +18,12 @@ import altair as alt
 import os
 from pyscf.hessian import thermo
 from streamlit_extras.row import row
+from utils import getAtomicToMoleculeName
+# R^2
+from sklearn.metrics import r2_score
+
+moleculeNames = getAtomicToMoleculeName()
+trend_threshold = 0.95
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -38,6 +44,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     mol = gto.Mole()
     mol.atom = atom
     mol.basis = basis_option
+    # mol.verbose = verbose_option
     mol.verbose = int(verbose_option[0])
     mol.output = 'output-test.txt'
     mol.build()
@@ -58,7 +65,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
             time = float(line.split(" ")[-2])
 
         elif line.startswith("converged SCF energy = "):
-            energy = float(line.split(" ")[-1])
+            energy = float([i for i in line.split() if i != ''][4])
     data = {
         'energy': energy,
         'time': time,
@@ -121,14 +128,15 @@ basis_option = st.selectbox(
     "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
                               "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
+# verbose_option = st.slider("Verbose", min_value=0, max_value=9, value=2)
 
 #Second Input (NEW) - Pressure of the system
 # pressure = 101325 #in Pascals (Pa), 101325 Pa = 1 atm
 #Third Input (NEW) - Temperature of the system
 # temperature = 298.15 #in K, 298.15K = room temperature (25 degrees Celsius) 
 thermo_row = row(2)
-temp = thermo_row.number_input("Temperature", min_value=0.0)
-press = thermo_row.number_input("Pressure", min_value=0.0)
+temp = thermo_row.number_input("Temperature (K)", min_value=0.0, value=298.15)
+press = thermo_row.number_input("Pressure (Pa)", min_value=0.0, value=101325.0)
 
 with tabDatabase:
     selectedMolecule = st.selectbox(
@@ -257,7 +265,7 @@ with tab1:
             with st.container():
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{data['molecule_name']} | {data['basis']} | Energy: {data['energy']} | Time: {data['time']} seconds")
+                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds")
                 result_col_1.write(
                     f"\# of Atoms: {data['atoms']} | \# of Bonds: {data['bonds']} | \# of Rings:  {data['rings']}")
                 result_col_1.write(
@@ -282,95 +290,201 @@ with tab1:
                 st.write("")
 
 with tab2:
-    st.subheader("Comparative Graphs (WIP)")
-    # def count_atoms(m):
-    #     atomic_count = defaultdict(lambda: 0)
-    #     for atom in m.GetAtoms():
-    #         atomic_count[atom.GetAtomicNum()] += 1
-    #     return atomic_count
+    # st.subheader("Comparative Graphs (WIP)")
+    
+    def count_atoms(molecule):
+    # Check that there is a valid molecule
+        if molecule:
 
-    # if 'results' in st.session_state and len(st.session_state['results']) > 1:
-    #     st.subheader("Comparative Graphs")
+            # Add hydrogen atoms--RDKit excludes them by default
+            molecule_with_Hs = Chem.AddHs(molecule)
+            comp = defaultdict(lambda: 0)
 
-    #     atom_counts = [count_atoms(result_item[4])
-    #                    for result_item in st.session_state['results']]
+            # Get atom counts
+            for atom in molecule_with_Hs.GetAtoms():
+                comp[atom.GetAtomicNum()] += 1
 
-    #     # Prepare datasets
-    #     num_atoms = [result_item[4].GetNumAtoms()
-    #                  for result_item in st.session_state['results']]
-    #     num_bonds = [result_item[4].GetNumBonds()
-    #                  for result_item in st.session_state['results']]
-    #     num_conformers = [result_item[4].GetNumConformers()
-    #                       for result_item in st.session_state['results']]
-    #     # 6 and 1 are atomic code
-    #     num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
-    #     num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
+            # # If charged, add charge as "atomic number" 0
+            # charge = GetFormalCharge(molecule_with_Hs)
+            # if charge != 0:
+            #     comp[0] = charge
+            return comp
 
-    #     energies = [result_item[1]
-    #                 for result_item in st.session_state['results']]
-    #     runtimes = [result_item[2]
-    #                 for result_item in st.session_state['results']]
+    if 'results' in st.session_state and len(st.session_state['results']) > 1:
+        st.subheader("Comparative Graphs")
 
-    #     df_atoms = pd.DataFrame(
-    #         {'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
-    #     df_bonds = pd.DataFrame(
-    #         {'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
-    #     df_conformers = pd.DataFrame(
-    #         {'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
-    #     df_carbons = pd.DataFrame(
-    #         {'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
-    #     df_hydrogens = pd.DataFrame(
-    #         {'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
+        independent = [
+            'Atoms',
+            'Bonds',
+            # 'Rings',
+            'Weight',
+        ]
+        dependent = [
+            # 'Energy', 
+            'Runtime',
+            'Nuclear Energy',
+            # 'Electronic Energy',
+            'Total Energy',
+            'Entropy',
+            'Zero Point Energy',
+            '0K Internal Energy',
+            'Internal Energy',
+            'Enthalpy',
+            'Gibbs Free Energy'
+        ]
+        
+        df = pd.DataFrame({
+            'Atoms' : [result_item['atoms'] for result_item in st.session_state['results']],
+            'Bonds' : [result_item['bonds'] for result_item in st.session_state['results']],
+            # 'Rings' : [result_item['rings'] for result_item in st.session_state['results']],
+            'Weight' : [result_item['weight'] for result_item in st.session_state['results']],
+            # 'Energy' : [result_item['energy'] for result_item in st.session_state['results']],
+            'Runtime' : [result_item['time'] for result_item in st.session_state['results']],
+            'Nuclear Energy' : [result_item['nuclear energy'] for result_item in st.session_state['results']],
+            # 'Electronic Energy' : [result_item['electronic energy'] for result_item in st.session_state['results']],
+            'Total Energy' : [result_item['total energy'] for result_item in st.session_state['results']],
+            'Entropy' : [result_item['entropy'] for result_item in st.session_state['results']],
+            'Zero Point Energy' : [result_item['zero point energy'] for result_item in st.session_state['results']],
+            '0K Internal Energy' : [result_item['0K internal energy'] for result_item in st.session_state['results']],
+            'Internal Energy' : [result_item['internal energy'] for result_item in st.session_state['results']],
+            'Enthalpy' : [result_item['enthalpy'] for result_item in st.session_state['results']],
+            'Gibbs Free Energy' : [result_item['gibbs free energy'] for result_item in st.session_state['results']],
+        })
+        
+        for label in independent:
+            for target in dependent:
+                print(label, target)
+                print(df[label].values, df[target].values)
+                # Linear Regression
+                coeffs_linear = np.polyfit(
+                    df[label].values, df[target].values, 1)
+                poly1d_fn_linear = np.poly1d(coeffs_linear)
+                x = np.linspace(min(df[label]), max(df[label]), 100)
 
-    #     # Generate Graphs
-    #     for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
-    #         for target in ['Energy', 'Runtime']:
-    #             st.markdown(f'### Number of {label} vs. {target}')
+                # Quadratic Regression
+                coeffs_quad = np.polyfit(
+                    df[label].values, df[target].values, 2)
+                poly1d_fn_quad = np.poly1d(coeffs_quad)
+                
+                # calculate R^2
+                r2_linear = r2_score(df[target], poly1d_fn_linear(df[label]))
+                r2_quad = r2_score(df[target], poly1d_fn_quad(df[label]))
+                
+                if r2_linear >= trend_threshold or r2_quad >= trend_threshold:
+                    st.markdown(f'### Number of {label} vs. {target}')
+                    # Display Equations
+                    st.markdown(
+                        f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f} (R^2 = {r2_linear:.4f})</span>", unsafe_allow_html=True)
+                    st.markdown(
+                        f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f} (R^2 = {r2_quad:.4f})</span>", unsafe_allow_html=True)
 
-    #             # Linear Regression
-    #             coeffs_linear = np.polyfit(
-    #                 df[label].values, df[target].values, 1)
-    #             poly1d_fn_linear = np.poly1d(coeffs_linear)
-    #             x = np.linspace(min(df[label]), max(df[label]), 100)
+                    # Create a DataFrame for the regression lines
+                    df_line = pd.DataFrame(
+                        {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
 
-    #             # Quadratic Regression
-    #             coeffs_quad = np.polyfit(
-    #                 df[label].values, df[target].values, 2)
-    #             poly1d_fn_quad = np.poly1d(coeffs_quad)
+                    # Plot
+                    scatter = alt.Chart(df).mark_circle(size=60).encode(
+                        x=label,
+                        y=target,
+                        tooltip=[label, target]
+                    )
 
-    #             # Display Equations
-    #             st.markdown(
-    #                 f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
-    #             st.markdown(
-    #                 f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
+                    line_linear = alt.Chart(df_line).mark_line(color='red').encode(
+                        x=label,
+                        y='Linear'
+                    )
 
-    #             # Create a DataFrame for the regression lines
-    #             df_line = pd.DataFrame(
-    #                 {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
+                    line_quad = alt.Chart(df_line).mark_line(color='green').encode(
+                        x=label,
+                        y='Quadratic'
+                    )
 
-    #             # Plot
-    #             scatter = alt.Chart(df).mark_circle(size=60).encode(
-    #                 x=label,
-    #                 y=target,
-    #                 tooltip=[label, target]
-    #             )
+                    # Display the plot
+                    st.altair_chart(scatter + line_linear +
+                                    line_quad, use_container_width=True)
+        
+        
+        # for atomic_num, count in count_atoms(st.session_state['results'][0]['rdkit_mol']).items():
+        
+        # atom_counts = [count_atoms(result_item['rdkit_mol'])
+        #                for result_item in st.session_state['results']]
 
-    #             line_linear = alt.Chart(df_line).mark_line(color='red').encode(
-    #                 x=label,
-    #                 y='Linear'
-    #             )
+        # # Prepare datasets
+        # num_atoms = [result_item['atoms']
+        #              for result_item in st.session_state['results']]
+        # num_bonds = [result_item['bonds'].GetNumBonds()
+        #              for result_item in st.session_state['results']]
+        # num_conformers = [result_item[4].GetNumConformers()
+        #                   for result_item in st.session_state['results']]
+        # # 6 and 1 are atomic code
+        # num_carbons = [atom_counts[i][6] for i in range(len(atom_counts))]
+        # num_hydrogens = [atom_counts[i][1] for i in range(len(atom_counts))]
 
-    #             line_quad = alt.Chart(df_line).mark_line(color='green').encode(
-    #                 x=label,
-    #                 y='Quadratic'
-    #             )
+        # energies = [result_item[1]
+        #             for result_item in st.session_state['results']]
+        # runtimes = [result_item[2]
+        #             for result_item in st.session_state['results']]
 
-    #             # Display the plot
-    #             st.altair_chart(scatter + line_linear +
-    #                             line_quad, use_container_width=True)
+        # df_atoms = pd.DataFrame(
+        #     {'Atoms': num_atoms, 'Energy': energies, 'Runtime': runtimes})
+        # df_bonds = pd.DataFrame(
+        #     {'Bonds': num_bonds, 'Energy': energies, 'Runtime': runtimes})
+        # df_conformers = pd.DataFrame(
+        #     {'Conformers': num_conformers, 'Energy': energies, 'Runtime': runtimes})
+        # df_carbons = pd.DataFrame(
+        #     {'Carbons': num_carbons, 'Energy': energies, 'Runtime': runtimes})
+        # df_hydrogens = pd.DataFrame(
+        #     {'Hydrogens': num_hydrogens, 'Energy': energies, 'Runtime': runtimes})
 
-    #         # Display Equation
-    #         # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
+        # Generate Graphs
+        # for df, label in zip([df_atoms, df_bonds, df_carbons, df_hydrogens], ['Atoms', 'Bonds', 'Carbons', 'Hydrogens']):
+        #     for target in ['Energy', 'Runtime']:
+        #         st.markdown(f'### Number of {label} vs. {target}')
+
+        #         # Linear Regression
+        #         coeffs_linear = np.polyfit(
+        #             df[label].values, df[target].values, 1)
+        #         poly1d_fn_linear = np.poly1d(coeffs_linear)
+        #         x = np.linspace(min(df[label]), max(df[label]), 100)
+
+        #         # Quadratic Regression
+        #         coeffs_quad = np.polyfit(
+        #             df[label].values, df[target].values, 2)
+        #         poly1d_fn_quad = np.poly1d(coeffs_quad)
+
+        #         # Display Equations
+        #         st.markdown(
+        #             f"<span style='color: red;'>Best Fit Linear Equation ({target}): Y = {coeffs_linear[0]:.4f}x + {coeffs_linear[1]:.4f}</span>", unsafe_allow_html=True)
+        #         st.markdown(
+        #             f"<span style='color: green;'>Best Fit Quadratic Equation ({target}): Y = {coeffs_quad[0]:.4f}x² + {coeffs_quad[1]:.4f}x + {coeffs_quad[2]:.4f}</span>", unsafe_allow_html=True)
+
+        #         # Create a DataFrame for the regression lines
+        #         df_line = pd.DataFrame(
+        #             {label: x, 'Linear': poly1d_fn_linear(x), 'Quadratic': poly1d_fn_quad(x)})
+
+        #         # Plot
+        #         scatter = alt.Chart(df).mark_circle(size=60).encode(
+        #             x=label,
+        #             y=target,
+        #             tooltip=[label, target]
+        #         )
+
+        #         line_linear = alt.Chart(df_line).mark_line(color='red').encode(
+        #             x=label,
+        #             y='Linear'
+        #         )
+
+        #         line_quad = alt.Chart(df_line).mark_line(color='green').encode(
+        #             x=label,
+        #             y='Quadratic'
+        #         )
+
+        #         # Display the plot
+        #         st.altair_chart(scatter + line_linear +
+        #                         line_quad, use_container_width=True)
+
+        #     # Display Equation
+        #     # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
 
 with tab3:
     with open('output-test.txt', 'r') as file:
