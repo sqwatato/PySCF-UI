@@ -59,6 +59,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     outputFile = open("output-test.txt", "r")
     # Extract energy and time information
     time = None
+    hessian_time = None
     energy = None
     for line in outputFile.readlines():
         if line.startswith("    CPU time for SCF"):
@@ -66,9 +67,12 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
 
         elif line.startswith("converged SCF energy = "):
             energy = float([i for i in line.split() if i != ''][4])
+        elif line.startswith("    CPU time for UHF hessian"):
+            hessian_time = float(line.split(" ")[-2])
     data = {
         'energy': energy,
         'time': time,
+        'hessian time': hessian_time,
         'nuclear energy': mf.energy_nuc(),
         'electronic energy': mf.energy_elec(),
         'total energy': mf.energy_tot(),
@@ -265,7 +269,7 @@ with tab1:
             with st.container():
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds")
+                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds | Hessian Runtime: {data['hessian']}")
                 result_col_1.write(
                     f"\# of Atoms: {data['atoms']} | \# of Bonds: {data['bonds']} | \# of Rings:  {data['rings']}")
                 result_col_1.write(
