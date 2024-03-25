@@ -99,6 +99,9 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
         'Converged SCF-HF Electronic Energy (in Ha)': mf.energy_elec(),
         'Converged SCF-HF Total Energy (in Ha)': mf.energy_tot(),
         # thermodynamic data
+        # Heat Capacity
+        'Constant Volume Heat Capacity (Ha/K)': thermo_info['Cv_tot'][0],
+        'Constant Pressure Heat Capacity (Ha/K)': thermo_info['Cp_tot'][0],
         'Zero-Point Energy (Ha)': thermo_info['ZPE'][0],
         '0K Internal Energy (Ha)': thermo_info['E_0K'][0],
         'Internal Energy (at given T) (Ha)': thermo_info['E_tot'][0],
