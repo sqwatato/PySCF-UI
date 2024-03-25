@@ -69,22 +69,79 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
             energy = float([i for i in line.split() if i != ''][4])
         elif line.startswith("    CPU time for UHF hessian"):
             hessian_time = float(line.split(" ")[-2])
+    
+    #Helmholtz Free Energy
+    F_elec = (thermo_info['E_elec'][0] - temperature * thermo_info['S_elec' ][0], 'Eh')
+    F_trans = (thermo_info['E_trans'][0] - temperature * thermo_info['S_trans'][0], 'Eh')
+    F_rot = (thermo_info['E_rot'][0] - temperature * thermo_info['S_rot'][0], 'Eh')
+    F_vib = (thermo_info['E_vib'][0] - temperature * thermo_info['S_vib'][0], 'Eh')
+    F_tot = (F_elec[0] + F_trans[0] + F_rot[0] + F_vib[0], 'Eh') 
+    
+    #Massieu Potential/Helmholtz Free Entropy
+    Φ_elec = (F_elec[0]/(-1*temperature), 'Eh/K')
+    Φ_trans = (F_trans[0]/(-1*temperature), 'Eh/K')
+    Φ_rot = (F_rot[0]/(-1*temperature), 'Eh/K')
+    Φ_vib = (F_vib[0]/(-1*temperature), 'Eh/K')
+    Φ_tot = (F_tot[0]/(-1*temperature), 'Eh/K')    
+    
+    #Planck Potential/Gibbs Free Entropy
+    Ξ_elec = (thermo_info['G_elec'][0]/(-1*temperature), 'Eh/K')
+    Ξ_trans = (thermo_info['G_trans'][0]/(-1*temperature), 'Eh/K')
+    Ξ_rot = (thermo_info['G_rot'][0]/(-1*temperature), 'Eh/K')
+    Ξ_vib = (thermo_info['G_vib'][0]/(-1*temperature), 'Eh/K')
+    Ξ_tot = (thermo_info['G_tot'][0]/(-1*temperature), 'Eh/K')   
+    
     data = {
-        'energy': energy,
-        'time': time,
-        'hessian time': hessian_time,
-        'nuclear energy': mf.energy_nuc(),
-        'electronic energy': mf.energy_elec(),
-        'total energy': mf.energy_tot(),
-        # thermodynamics
-        'entropy': thermo_info['S_tot'][0],
-        'zero point energy': thermo_info['ZPE'][0],
-        '0K internal energy': thermo_info['E_0K'][0],
-        'internal energy': thermo_info['E_tot'][0],
-        'enthalpy': thermo_info['H_tot'][0],
-        'gibbs free energy': thermo_info['G_tot'][0],
-        # 'Helmholtz free energy': thermo_info['Helmholtz'][0],
-        # 'Helmholtz energy': thermo_info['Helmholtz'][0],
+        # 'energy': energy,
+        'Runtime': time,
+        'Hessian Runtime': hessian_time,
+        'Converged SCF-HF Nuclear Energy (in Ha)': mf.energy_nuc(),
+        'Converged SCF-HF Electronic Energy (in Ha)': mf.energy_elec(),
+        'Converged SCF-HF Total Energy (in Ha)': mf.energy_tot(),
+        # thermodynamic data
+        'Zero-Point Energy (Ha)': thermo_info['ZPE'][0],
+        '0K Internal Energy (Ha)': thermo_info['E_0K'][0],
+        'Internal Energy (at given T) (Ha)': thermo_info['E_tot'][0],
+            'Electronic Internal Energy (Ha)': thermo_info['E_elec'][0],
+            'Vibrational Internal Energy (Ha)': thermo_info['E_vib'][0],
+            'Translational Internal Energy (Ha)': thermo_info['E_trans'][0],
+            'Rotational Internal Energy (Ha)': thermo_info['E_rot'][0],
+        # enthalpy
+        'Enthalpy (Ha)': thermo_info['H_tot'][0],
+            'Electronic Enthalpy (Ha)': thermo_info['H_elec'][0],
+            'Vibrational Enthalpy (Ha)': thermo_info['H_vib'][0],
+            'Translational Enthalpy (Ha)': thermo_info['H_trans'][0],
+            'Rotational Enthalpy (Ha)': thermo_info['H_rot'][0],
+        # gibbs free energy
+        'Gibbs Free Energy (Ha)': thermo_info['G_tot'][0],
+            'Electronic Gibbs Free Energy (Ha)': thermo_info['G_elec'][0],
+            'Vibrational Gibbs Free Energy (Ha)': thermo_info['G_vib'][0],
+            'Translational Gibbs Free Energy (Ha)': thermo_info['G_trans'][0],
+            'Rotational Gibbs Free Energy (Ha)': thermo_info['G_rot'][0],
+        # Helmholtz free energy
+        'Helmholtz Free Energy (Ha)': F_tot[0],
+            'Electronic Helmholtz Free Energy (Ha)': F_elec[0],
+            'Vibrational Helmholtz Free Energy (Ha)': F_vib[0],
+            'Translational Helmholtz Free Energy (Ha)': F_trans[0],
+            'Rotational Helmholtz Free Energy (Ha)': F_rot[0],
+        # Entropy
+        'Entropy (Ha/K)': thermo_info['S_tot'][0],
+            'Electronic Entropy (Ha/K)': thermo_info['S_elec'][0],
+            'Vibrational Entropy (Ha/K)': thermo_info['S_vib'][0],
+            'Translational Entropy (Ha/K)': thermo_info['S_trans'][0],
+            'Rotational Entropy (Ha/K)': thermo_info['S_rot'][0],
+        # Massieu Potential/Helmholtz Free Entropy
+        'Massieu Potential/Helmholtz Free Potential (Ha/K)': Φ_tot[0],
+            'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)': Φ_elec[0],
+            'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)': Φ_vib[0],
+            'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)': Φ_trans[0],
+            'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)': Φ_rot[0],
+        # Planck Potential/Gibbs Free Entropy
+        'Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_tot[0],
+            'Electronic Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_elec[0],
+            'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_vib[0],
+            'Translational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_trans[0],
+            'Rotational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_rot[0],
     }
     return data
 
@@ -236,14 +293,14 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
 
             data = compute_pyscf(
                 atom, basis, verbose_option, temp, press)
-            data['atoms'] = rdkit_mol.GetNumAtoms()
-            data['bonds'] = rdkit_mol.GetNumBonds()
-            data['rings'] = rdkit_mol.GetRingInfo().NumRings()
-            data['weight'] = Descriptors.MolWt(rdkit_mol)
-            data['mol'] = mol
-            data['rdkit_mol'] = rdkit_mol
-            data['basis'] = basis
-            data['molecule_name'] = getMoleculeName(atom)
+            data['Atoms'] = rdkit_mol.GetNumAtoms()
+            data['Bonds'] = rdkit_mol.GetNumBonds()
+            data['Rings'] = rdkit_mol.GetRingInfo().NumRings()
+            data['Weight'] = Descriptors.MolWt(rdkit_mol)
+            data['Molecule'] = mol
+            data['Rdkit Molecule'] = rdkit_mol
+            data['Basis'] = basis
+            data['Molecule Name'] = getMoleculeName(atom)
             
             st.session_state['results'].append(data)
             st.rerun()
@@ -269,26 +326,19 @@ with tab1:
             with st.container():
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{data['molecule_name']} | {data['basis']} | Runtime: {data['time']} seconds | Hessian Runtime: {data['hessian']} seconds")
+                    f"{data['Molecule Name']} | {data['Basis']} | Runtime: {data['Runtime']} seconds | Hessian Runtime: {data['Hessian Runtime']} seconds")
                 result_col_1.write(
-                    f"\# of Atoms: {data['atoms']} | \# of Bonds: {data['bonds']} | \# of Rings:  {data['rings']}")
+                    f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
                 result_col_1.write(
-                    f"Molecular Weight: {data['weight']}")
+                    f"Molecular Weight: {data['Weight']}")
                 # energy data
-                result_col_1.write(f"Nuclear Energy: {data['nuclear energy']}")
-                result_col_1.write(f"Electronic Energy: {data['electronic energy']}")
-                result_col_1.write(f"Total Energy: {data['total energy']}")
-                # thermodynamic data
-                result_col_1.write(f"Entropy: {data['entropy']}")
-                result_col_1.write(f"Zero-Point Energy: {data['zero point energy']}")
-                result_col_1.write(f"0K Internal Energy: {data['0K internal energy']}")
-                result_col_1.write(f"Internal Energy: {data['internal energy']}")
-                result_col_1.write(f"Enthalpy: {data['enthalpy']}")
-                result_col_1.write(f"Gibbs Free Energy: {data['gibbs free energy']}")
+                for key, value in data.items():
+                    if key not in ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'Runtime', 'Hessian Runtime']:
+                        result_col_1.write(f"{key}: {value}")
 
                 with result_col_2:
                     speck_plot(
-                        data['mol'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                        data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
                 # linebreak
                 st.write("")
                 st.write("")
@@ -323,37 +373,24 @@ with tab2:
             # 'Rings',
             'Weight',
         ]
-        dependent = [
-            # 'Energy', 
-            'Runtime',
-            'Nuclear Energy',
-            # 'Electronic Energy',
-            'Total Energy',
-            'Entropy',
-            'Zero Point Energy',
-            '0K Internal Energy',
-            'Internal Energy',
-            'Enthalpy',
-            'Gibbs Free Energy'
+        
+        exclude = [
+            'Basis',
+            'Rings',
+            'Rdkit Molecule',
+            'Converged SCF-HF Electronic Energy (in Ha)',
+            'Molecule',
+            'Molecule Name',
         ]
         
-        df = pd.DataFrame({
-            'Atoms' : [result_item['atoms'] for result_item in st.session_state['results']],
-            'Bonds' : [result_item['bonds'] for result_item in st.session_state['results']],
-            # 'Rings' : [result_item['rings'] for result_item in st.session_state['results']],
-            'Weight' : [result_item['weight'] for result_item in st.session_state['results']],
-            # 'Energy' : [result_item['energy'] for result_item in st.session_state['results']],
-            'Runtime' : [result_item['time'] for result_item in st.session_state['results']],
-            'Nuclear Energy' : [result_item['nuclear energy'] for result_item in st.session_state['results']],
-            # 'Electronic Energy' : [result_item['electronic energy'] for result_item in st.session_state['results']],
-            'Total Energy' : [result_item['total energy'] for result_item in st.session_state['results']],
-            'Entropy' : [result_item['entropy'] for result_item in st.session_state['results']],
-            'Zero Point Energy' : [result_item['zero point energy'] for result_item in st.session_state['results']],
-            '0K Internal Energy' : [result_item['0K internal energy'] for result_item in st.session_state['results']],
-            'Internal Energy' : [result_item['internal energy'] for result_item in st.session_state['results']],
-            'Enthalpy' : [result_item['enthalpy'] for result_item in st.session_state['results']],
-            'Gibbs Free Energy' : [result_item['gibbs free energy'] for result_item in st.session_state['results']],
-        })
+        dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
+        dependent = [i for i in dependent if i not in exclude]
+        
+        df_columns = list(st.session_state['results'][0].keys())
+        df_columns.remove('Rdkit Molecule')
+        
+        df = pd.DataFrame(st.session_state['results'], columns=df_columns)
+        
         
         for label in independent:
             for target in dependent:
