@@ -95,9 +95,9 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
         # 'energy': energy,
         'Runtime': time,
         'Hessian Runtime': hessian_time,
-        'Converged SCF-HF Nuclear Energy (in Ha)': mf.energy_nuc(),
-        'Converged SCF-HF Electronic Energy (in Ha)': mf.energy_elec(),
-        'Converged SCF-HF Total Energy (in Ha)': mf.energy_tot(),
+        'Converged SCF-HF Nuclear Energy (Ha)': mf.energy_nuc(),
+        'Converged SCF-HF Electronic Energy (Ha)': mf.energy_elec(),
+        'Converged SCF-HF Total Energy (Ha)': mf.energy_tot(),
         # thermodynamic data
         # Heat Capacity
         'Constant Volume Heat Capacity (Ha/K)': thermo_info['Cv_tot'][0],
