@@ -326,6 +326,26 @@ with tab1:
         st.subheader("Results")
         for result_item in st.session_state['results']:
             data = result_item
+            energy = {
+                'Internal Energy (E - Ha)':[data['Internal Energy (at given T) (Ha)'],data['Electronic Internal Energy (Ha)'],data['Vibrational Internal Energy (Ha)'],data['Translational Internal Energy (Ha)'],data['Rotational Internal Energy (Ha)']],
+                'Helmholtz Free Energy (F - Ha)':[data['Helmholtz Free Energy (Ha)'],data['Electronic Helmholtz Free Energy (Ha)'],data['Vibrational Helmholtz Free Energy (Ha)'],data['Translational Helmholtz Free Energy (Ha)'],data['Rotational Helmholtz Free Energy (Ha)']],
+                'Gibbs Free Energy (G - Ha)':[data['Gibbs Free Energy (Ha)'],data['Electronic Gibbs Free Energy (Ha)'],data['Vibrational Gibbs Free Energy (Ha)'],data['Translational Gibbs Free Energy (Ha)'],data['Rotational Gibbs Free Energy (Ha)']],
+                'Enthalpy (H - Ha)':[data['Enthalpy (Ha)'],data['Electronic Enthalpy (Ha)'],data['Vibrational Enthalpy (Ha)'],data['Translational Enthalpy (Ha)'],data['Rotational Enthalpy (Ha)']],  
+            }
+            pd.set_option("display.precision", 16)
+            enerdf = pd.DataFrame(energy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
+            
+            entropy = {
+                'Entropy (S - Ha/K)':[data['Entropy (Ha/K)'],data['Electronic Entropy (Ha/K)'],data['Vibrational Entropy (Ha/K)'],data['Translational Entropy (Ha/K)'],data['Rotational Entropy (Ha/K)']],
+                'Helmholtz Free Entropy (Φ - Ha/K)':[data['Massieu Potential/Helmholtz Free Potential (Ha/K)'],data['Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)'],data['Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)'],data['Translational Massieu Potential/Helmholtz Free Potential (Ha/K)'],data['Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)']],
+                'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
+            }
+            
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'Runtime', 'Hessian Runtime']
+            
+            pd.set_option("display.precision", 16)
+            entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
+            
             with st.container():
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
@@ -336,7 +356,7 @@ with tab1:
                     f"Molecular Weight: {data['Weight']}")
                 # energy data
                 for key, value in data.items():
-                    if key not in ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'Runtime', 'Hessian Runtime']:
+                    if key not in excluded_keys:
                         result_col_1.write(f"{key}: {value}")
 
                 with result_col_2:
@@ -345,6 +365,9 @@ with tab1:
                 # linebreak
                 st.write("")
                 st.write("")
+                st.table(data=enerdf)
+                st.table(data=entrodf)
+                
 
 with tab2:
     # st.subheader("Comparative Graphs (WIP)")
@@ -397,8 +420,8 @@ with tab2:
         
         for label in independent:
             for target in dependent:
-                print(label, target)
-                print(df[label].values, df[target].values)
+                # print(label, target)
+                # print(df[label].values, df[target].values)
                 # Linear Regression
                 coeffs_linear = np.polyfit(
                     df[label].values, df[target].values, 1)
