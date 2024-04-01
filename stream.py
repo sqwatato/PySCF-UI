@@ -146,15 +146,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
             'Translational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_trans[0],
             'Rotational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_rot[0],
     }
-    energydata = {
-    'Internal Energy (E - Ha)':[thermo_info['E_tot'][0],thermo_info['E_elec'][0],thermo_info['E_vib'][0],thermo_info['E_trans'][0],thermo_info['E_rot'][0]],
-    'Helmholtz Free Energy (F - Ha)':[F_tot[0],F_elec[0],F_vib[0],F_trans[0],F_rot[0]],
-    'Gibbs Free Energy (G - Ha)':[thermo_info['G_tot'][0],thermo_info['G_elec'][0],thermo_info['G_vib'][0],thermo_info['G_trans'][0],thermo_info['G_rot'][0]],
-    'Enthalpy (H - Ha)':[thermo_info['H_tot'][0],thermo_info['H_elec'][0],thermo_info['H_vib'][0],thermo_info['H_trans'][0],thermo_info['H_rot'][0]]  
-         }
-    pd.set_option("display.precision", 16)
-    enerdf = pd.DataFrame(energydata, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
-    st.dataframe(enerdf)
+
     return data
 
 
