@@ -422,8 +422,8 @@ with tab2:
         
         for label in independent:
             for target in dependent:
-                # print(label, target)
-                # print(df[label].values, df[target].values)
+                print(label, target)
+                print(df[label].values, df[target].values)
                 # Linear Regression
                 coeffs_linear = np.polyfit(
                     df[label].values, df[target].values, 1)
@@ -609,7 +609,7 @@ System: uname_result(system='Darwin', node='jaydens-macbook.lan', release='23.0.
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1
-Date: Sun Mar 31 23:21:47 2024
+Date: Mon Apr  8 20:36:09 2024
 PySCF version 2.4.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -653,7 +653,7 @@ number of NR pGTOs = 84
 number of NR cGTOs = 60
 basis = cc-pVTZ
 ecp = {}
-CPU time:        88.16
+CPU time:        45.57
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -669,14 +669,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp7rmm_v86
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpe2x9ch8a
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 8  beta = 8
 Set gradient conv threshold to 3.16228e-05
 E1 = -265.86436031078676  Ecoul = 86.44334193562811
 init E= -150.193085169827
 cond(S) = 1066.1426858368727
-    CPU time for initialize scf      1.29 sec, wall time      0.21 sec
+    CPU time for initialize scf      1.21 sec, wall time      0.20 sec
 
 WARN: alpha nocc = 8  HOMO -0.107255123455229 >= LUMO -0.107255123455228
 
@@ -715,7 +715,7 @@ WARN: system HOMO -0.107379349202583 >= system LUMO -0.107379349202582
 multiplicity <S^2> = 0.95058923  2S+1 = 2.1914281
 E1 = -261.9722805445639  Ecoul = 83.1671671178166
 cycle= 1 E= -149.577180221416  delta_E= 0.616  |g|= 0.438  |ddm|= 1.13
-    CPU time for cycle= 1      0.31 sec, wall time      0.05 sec
+    CPU time for cycle= 1      0.20 sec, wall time      0.03 sec
   alpha nocc = 8  HOMO = -0.559139907338795  LUMO = 0.00306585764836959
   beta  nocc = 8  HOMO = -0.55915002501954  LUMO = 0.00361813146190081
   alpha mo_energy =
@@ -753,7 +753,7 @@ cycle= 1 E= -149.577180221416  delta_E= 0.616  |g|= 0.438  |ddm|= 1.13
 multiplicity <S^2> = 0.97192867  2S+1 = 2.2108177
 E1 = -264.5015324977996  Ecoul = 85.63157710882462
 cycle= 2 E= -149.642022183644  delta_E= -0.0648  |g|= 0.159  |ddm|= 0.313
-    CPU time for cycle= 2      0.14 sec, wall time      0.02 sec
+    CPU time for cycle= 2      0.19 sec, wall time      0.03 sec
   alpha nocc = 8  HOMO = -0.487717717987927  LUMO = 0.0975577700148008
   beta  nocc = 8  HOMO = -0.487870588010586  LUMO = 0.0977604823545792
   alpha mo_energy =
@@ -785,7 +785,7 @@ cycle= 2 E= -149.642022183644  delta_E= -0.0648  |g|= 0.159  |ddm|= 0.313
 multiplicity <S^2> = 0.98726914  2S+1 = 2.224652
 E1 = -263.8490888740066  Ecoul = 84.97156194070465
 cycle= 3 E= -149.649593727971  delta_E= -0.00757  |g|= 0.0365  |ddm|= 0.064
-    CPU time for cycle= 3      0.22 sec, wall time      0.04 sec
+    CPU time for cycle= 3      0.16 sec, wall time      0.02 sec
   alpha nocc = 8  HOMO = -0.501571263412818  LUMO = 0.103014411584843
   beta  nocc = 8  HOMO = -0.501822012351754  LUMO = 0.102910060843539
   alpha mo_energy =
@@ -817,7 +817,7 @@ cycle= 3 E= -149.649593727971  delta_E= -0.00757  |g|= 0.0365  |ddm|= 0.064
 multiplicity <S^2> = 1.0040744  2S+1 = 2.2397092
 E1 = -263.8990140968259  Ecoul = 85.02014712108024
 cycle= 4 E= -149.650933770414  delta_E= -0.00134  |g|= 0.0131  |ddm|= 0.042
-    CPU time for cycle= 4      0.30 sec, wall time      0.04 sec
+    CPU time for cycle= 4      0.19 sec, wall time      0.03 sec
   alpha nocc = 8  HOMO = -0.503222999490472  LUMO = 0.105351250057747
   beta  nocc = 8  HOMO = -0.503352093292123  LUMO = 0.105277165649802
   alpha mo_energy =
@@ -849,7 +849,7 @@ cycle= 4 E= -149.650933770414  delta_E= -0.00134  |g|= 0.0131  |ddm|= 0.042
 multiplicity <S^2> = 1.0121583  2S+1 = 2.2469164
 E1 = -263.89684686327143  Ecoul = 85.01757592505002
 cycle= 5 E= -149.65133773289  delta_E= -0.000404  |g|= 0.00906  |ddm|= 0.0208
-    CPU time for cycle= 5      0.20 sec, wall time      0.04 sec
+    CPU time for cycle= 5      0.16 sec, wall time      0.03 sec
   alpha nocc = 8  HOMO = -0.505313384147984  LUMO = 0.105582562544613
   beta  nocc = 8  HOMO = -0.50525211745181  LUMO = 0.10561736719055
   alpha mo_energy =
@@ -881,7 +881,7 @@ cycle= 5 E= -149.65133773289  delta_E= -0.000404  |g|= 0.00906  |ddm|= 0.0208
 multiplicity <S^2> = 1.0202494  2S+1 = 2.2541068
 E1 = -263.903601679218  Ecoul = 85.02390085251719
 cycle= 6 E= -149.651767621369  delta_E= -0.00043  |g|= 0.00498  |ddm|= 0.033
-    CPU time for cycle= 6      0.15 sec, wall time      0.02 sec
+    CPU time for cycle= 6      0.11 sec, wall time      0.02 sec
   alpha nocc = 8  HOMO = -0.504943076804876  LUMO = 0.106416031342441
   beta  nocc = 8  HOMO = -0.50485451380767  LUMO = 0.106467483986792
   alpha mo_energy =
@@ -945,7 +945,7 @@ cycle= 7 E= -149.651938777185  delta_E= -0.000171  |g|= 0.000965  |ddm|= 0.0327
 multiplicity <S^2> = 1.0230163  2S+1 = 2.2565604
 E1 = -263.90023036039327  Ecoul = 85.02035488339862
 cycle= 8 E= -149.651942271663  delta_E= -3.49e-06  |g|= 0.000113  |ddm|= 0.00483
-    CPU time for cycle= 8      0.32 sec, wall time      0.05 sec
+    CPU time for cycle= 8      0.17 sec, wall time      0.03 sec
   alpha nocc = 8  HOMO = -0.504546199705195  LUMO = 0.105847811306886
   beta  nocc = 8  HOMO = -0.504539196833961  LUMO = 0.105850690250403
   alpha mo_energy =
@@ -977,7 +977,7 @@ cycle= 8 E= -149.651942271663  delta_E= -3.49e-06  |g|= 0.000113  |ddm|= 0.00483
 multiplicity <S^2> = 1.0230399  2S+1 = 2.2565814
 E1 = -263.90017521297125  Ecoul = 85.02029971463767
 cycle= 9 E= -149.651942293002  delta_E= -2.13e-08  |g|= 1.8e-05  |ddm|= 0.000401
-    CPU time for cycle= 9      0.28 sec, wall time      0.05 sec
+    CPU time for cycle= 9      0.18 sec, wall time      0.02 sec
   alpha nocc = 8  HOMO = -0.504520199356723  LUMO = 0.105826422472812
   beta  nocc = 8  HOMO = -0.504518060288958  LUMO = 0.105827289401564
   alpha mo_energy =
@@ -1009,7 +1009,7 @@ cycle= 9 E= -149.651942293002  delta_E= -2.13e-08  |g|= 1.8e-05  |ddm|= 0.000401
 multiplicity <S^2> = 1.0230358  2S+1 = 2.2565778
 E1 = -263.9001594242729  Ecoul = 85.02028392563508
 cycle= 10 E= -149.651942293306  delta_E= -3.04e-10  |g|= 4.29e-06  |ddm|= 4.41e-05
-    CPU time for cycle= 10      0.16 sec, wall time      0.02 sec
+    CPU time for cycle= 10      0.11 sec, wall time      0.02 sec
   alpha nocc = 8  HOMO = -0.504523731352294  LUMO = 0.105830302554353
   beta  nocc = 8  HOMO = -0.504522679970322  LUMO = 0.105830725418452
   alpha mo_energy =
@@ -1041,10 +1041,10 @@ cycle= 10 E= -149.651942293306  delta_E= -3.04e-10  |g|= 4.29e-06  |ddm|= 4.41e-
 multiplicity <S^2> = 1.0230363  2S+1 = 2.2565782
 E1 = -263.9001642384021  Ecoul = 85.02028873975019
 Extra cycle  E= -149.651942293321  delta_E= -1.41e-11  |g|= 1.97e-06  |ddm|= 3.62e-06
-    CPU time for scf_cycle      3.72 sec, wall time      0.60 sec
-    CPU time for SCF      3.74 sec, wall time      0.60 sec
+    CPU time for scf_cycle      3.02 sec, wall time      0.48 sec
+    CPU time for SCF      3.02 sec, wall time      0.48 sec
 converged SCF energy = -149.651942293321  <S^2> = 1.0230363  2S+1 = 2.2565782
-    CPU time for UHF partial hessian      6.05 sec, wall time      5.04 sec
-    CPU time for UHF hessian      8.59 sec, wall time      6.97 sec
+    CPU time for UHF partial hessian      6.08 sec, wall time      4.48 sec
+    CPU time for UHF hessian      8.23 sec, wall time      6.02 sec
 E1 = -263.9001642384021  Ecoul = 85.02028873975019
 E1 = -263.9001642384021  Ecoul = 85.02028873975019

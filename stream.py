@@ -405,13 +405,14 @@ with tab2:
             'Basis',
             'Rings',
             'Rdkit Molecule',
-            'Converged SCF-HF Electronic Energy (in Ha)',
+            'Converged SCF-HF Electronic Energy (Ha)',
             'Molecule',
             'Molecule Name',
         ]
         
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
         dependent = [i for i in dependent if i not in exclude]
+        # print(dependent)
         
         df_columns = list(st.session_state['results'][0].keys())
         df_columns.remove('Rdkit Molecule')
