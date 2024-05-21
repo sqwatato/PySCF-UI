@@ -21,7 +21,9 @@ from streamlit_extras.row import row
 from utils import getAtomicToMoleculeName
 # R^2
 from sklearn.metrics import r2_score
+import requests
 
+api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = getAtomicToMoleculeName()
 trend_threshold = 0.95
 
@@ -295,8 +297,17 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             rdkit_mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
 
-            data = compute_pyscf(
-                atom, basis, verbose_option, temp, press)
+            # data = compute_pyscf(
+                # atom, basis, verbose_option, temp, press)
+            
+            tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
+            response = requests.post(api_url, params=tdict)
+            
+            if response.status_code == 200:
+                data = response.json()
+                print("Yay, it worked!")
+            else:
+                print(f"Error: {response.status_code} - {response.text}")   
             data['Atoms'] = rdkit_mol.GetNumAtoms()
             data['Bonds'] = rdkit_mol.GetNumBonds()
             data['Rings'] = rdkit_mol.GetRingInfo().NumRings()
