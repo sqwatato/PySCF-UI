@@ -9,7 +9,7 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import rdDetermineBonds
 from rdkit.Chem.rdmolfiles import MolFromXYZFile
-from rdkit.Chem import Descriptors
+from rdkit.Chem import Descriptors, Draw, AllChem
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -296,6 +296,9 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             raw_mol = MolFromXYZFile('molecule.xyz')
             rdkit_mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
+            tmpmol = Chem.AddHs(rdkit_mol)
+            AllChem.EmbedMolecule(tmpmol)
+            smiles = Chem.MolToSmiles(tmpmol)
 
             data = compute_pyscf(
                 atom, basis, verbose_option, temp, press)
@@ -316,6 +319,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             data['Rdkit Molecule'] = rdkit_mol
             data['Basis'] = basis
             data['Molecule Name'] = getMoleculeName(atom)
+            data['Smiles'] = smiles
             
             st.session_state['results'].append(data)
             st.rerun()
@@ -374,6 +378,8 @@ with tab1:
                 with result_col_2:
                     speck_plot(
                         data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                    st.image(Draw.MolToImage(data['Rdkit Molecule'], size=(200, 200)))
+                    st.image(Draw.MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
                 # linebreak
                 st.write("")
                 st.write("")
@@ -419,6 +425,7 @@ with tab2:
             'Converged SCF-HF Electronic Energy (Ha)',
             'Molecule',
             'Molecule Name',
+            'Smiles',
         ]
         
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
