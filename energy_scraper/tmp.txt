@@ -1,0 +1,647 @@
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<title>CCCBDB tab delimited dump</title>
+<meta charset="utf-8"/>
+<link href="cccbdbx.css" rel="stylesheet" type="text/css"/>
+<link href="pulldown.css" rel="stylesheet" type="text/css"/>
+<style id="antiClickjack">body{display:none !important;}</style>
+<script type="text/javascript">
+   if (self === top) {
+       var antiClickjack = document.getElementById("antiClickjack");
+       antiClickjack.parentNode.removeChild(antiClickjack);
+   } else {
+       top.location = self.location;
+   }
+</script>
+<script async="" id="_fed_an_ua_tag" src="https://cccbdb.nist.gov/js/federated-analytics.all.min.js?agency=NIST&amp;subagency=cccbdb&amp;pua=UA-37115410-45&amp;yt=true%20HTTP/1.1" type="text/javascript"></script> </head>
+<body>
+<table class="noborder">
+<tr>
+<td class="noborder" rowspan="2"> <a href="introx.asp"> <img alt="return to home page" height="60" src="gifs/cccbdb_logosmall.gif" title="Computational Chemistry Comparison and Benchmark Database" width="42"/> </a>
+</td>
+<td class="noborder"><span class="title"><b>C</b>omputational <b>C</b>hemistry <b>C</b>omparison and <b>B</b>enchmark <b>D</b>ata<b>B</b>ase</span>
+Release  () Standard Reference Database 101 
+<a href="https://www.nist.gov">National Institute of Standards and Technology</a>
+</td>
+</tr>
+<tr>
+<td class="noborder">
+<div class="pdmenu">
+<ul> <li class="homeclass pdheading">
+<a href="introx.asp">Home</a>
+<ul> <li class="homesubclass">
+<a href="alldata1x.asp">All data for one species</a>
+<li class="homesubclass">
+<a href="geometriesx.asp">Geometry</a>
+<ul> <li class="homesub2class">Experimental<ul> <li class="homesub3class">
+<a href="expgeom1x.asp">Experimental Geometries</a>
+<li class="homesub3class">
+<a href="listbondexpx.asp">Same bond/angle many molecules</a>
+<li class="homesub3class">
+<a href="expbondlengths1x.asp">Internal Coordinates by type</a>
+<li class="homesub3class">
+<a href="expangle1x.asp">Bond angles</a>
+</li></li></li></li></ul> <li class="homesub2class">Calculated<ul> <li class="homesub3class">
+<a href="geom1x.asp">Calculated geometry</a>
+<li class="homesub3class">
+<a href="rotcalc1x.asp">Rotational constant</a>
+<li class="homesub3class">
+<a href="calcmomint1x.asp">Moments of inertia</a>
+<li class="homesub3class">
+<a href="momint1x.asp">Products of moments of inertia</a>
+<li class="homesub3class">
+<a href="bsebond1x.asp">BSE Bond lengths</a>
+<li class="homesub3class">
+<a href="justgeomx.asp">Show me a  calculated geometry</a>
+</li></li></li></li></li></li></ul> <li class="homesub2class">Comparisons<ul> <li class="homesub3class">
+<a href="compgeom1x.asp">Bonds, angles</a>
+<li class="homesub3class">
+<a href="rotcomp1x.asp">Rotational Constants</a>
+<li class="homesub3class">
+<a href="compmomint1x.asp">Products of moments of inertia</a>
+<li class="homesub3class">
+<a href="comppg1x.asp">Point group</a>
+</li></li></li></li></ul> <li class="homesub2class">Bad Calculations<ul> <li class="homesub3class">
+<a href="badcalcgeomx.asp">Bad moment of inertia</a>
+</li></ul> <li class="homesub2class">Tutorials and Explanations<ul> <li class="homesub3class">
+<a href="anglesx.asp">Angle formulas</a>
+</li></ul> </li></li></li></li></li></ul> <li class="homesubclass">
+<a href="vibrationsx.asp">Vibrations</a>
+<ul> <li class="homesub2class">Experimental<ul> <li class="homesub3class">
+<a href="expvibs1x.asp">Vibrational frequencies</a>
+</li></ul> <li class="homesub2class">Calculated<ul> <li class="homesub3class">
+<a href="vibs1x.asp">Frequencies</a>
+</li></ul> <li class="homesub2class">
+<a href="vibscalejustx.asp">Scale factors</a>
+</li></li></li></ul> <li class="homesubclass">
+<a href="reactionsx.asp">Reactions</a>
+<li class="homesubclass">
+<a href="entropiesx.asp">Entropies</a>
+<li class="homesubclass">
+<a href="ionsx.asp">Ions</a>
+<ul> <li class="homesub2class">
+<a href="ionlistx.asp">List Ions</a>
+<li class="homesub2class">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="homesub3class">
+<a href="ie1x.asp">Calculated Ionization Energy</a>
+<li class="homesub3class">
+<a href="compie1x.asp">Compare Ionzation energy</a>
+</li></li></ul> <li class="homesub2class">Electron Affinity<ul> <li class="homesub3class">
+<a href="elecaff1x.asp">Calculated Electron affinity</a>
+<li class="homesub3class">
+<a href="compea1x.asp">Compare Electron affinity</a>
+</li></li></ul> <li class="homesub2class">Proton Affinity<ul> <li class="homesub3class">
+<a href="pa1x.asp">Calculated Proton affinity</a>
+<li class="homesub3class">
+<a href="comppa1x.asp">Compare Proton affinity</a>
+</li></li></ul> <li class="homesub2class">
+<a href="ionpgdiffx.asp">Ionization changes point group</a>
+</li></li></li></li></li></ul> </li></li></li></li></li></li></ul> <li class="experclass pdheading">
+<a href="expdatax.asp">Experimental</a>
+<ul> <li class="expersubclass">
+<a href="exp1x.asp">One molecule all properties</a>
+<li class="expersubclass">
+<a href="xpx.asp">One property a few molecules</a>
+<ul> <li class="expersub2class">
+<a href="xp1x.asp?prop=1">Enthalpy of formation</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=2">Entropy</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=3">Integrated Heat Capacity</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=4">Heat Capacity</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=5">Rotational Constants</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=6">Vibrational Frequencies</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=7">Dipole moment</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=8">Ionization Energy</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=9">Polarizability</a>
+<li class="expersub2class">
+<a href="xp1x.asp?prop=10">Quadrupole</a>
+<li class="expersub2class">
+<a href="exppg1x.asp">Point Groups</a>
+</li></li></li></li></li></li></li></li></li></li></li></ul> <li class="expersubclass">Geometry<ul> <li class="expersub2class">
+<a href="expgeom1x.asp">Experimental Geometries</a>
+<li class="expersub2class">
+<a href="expbondlengths1x.asp">Internal Coordinates by type</a>
+<li class="expersub2class">
+<a href="expangle1x.asp">Bond angles</a>
+<li class="expersub2class">
+<a href="exprot1x.asp">Rotational Constants</a>
+<li class="expersub2class">
+<a href="exppg1x.asp">Point Groups</a>
+<li class="expersub2class">
+<a href="diatomicexpbondx.asp">Diatomic bond lengths</a>
+</li></li></li></li></li></li></ul> <li class="expersubclass">Vibrations<ul> <li class="expersub2class">
+<a href="expvibs1x.asp">Vibrational frequencies</a>
+<li class="expersub2class">
+<a href="expdiatomicsx.asp">Diatomic</a>
+<li class="expersub2class">
+<a href="exptriatomicsx.asp">Triatomics</a>
+</li></li></li></ul> <li class="expersubclass">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="expersub2class">
+<a href="ea1x.asp">Atomization Energy</a>
+<li class="expersub2class">
+<a href="exprotbarx.asp">Internal Rotation</a>
+</li></li></ul> <li class="expersubclass">Electrostatics<ul> <li class="expersub2class">
+<a href="diplistx.asp">Dipole</a>
+<li class="expersub2class">
+<a href="quadlistx.asp">Quadrupole</a>
+<li class="expersub2class">
+<a href="pollistx.asp">Polarizability</a>
+</li></li></li></ul> <li class="expersubclass">Reference Data<ul> <li class="expersub2class">
+<a href="refstatex.asp">Reference states</a>
+<li class="expersub2class">
+<a href="elecspinx.asp">Spin Splittings</a>
+<li class="expersub2class">
+<a href="goodlistx.asp">Molecules with good enthalpy</a>
+<li class="expersub2class">
+<a href="hf0kx.asp">Enthalpy at 0 Kelvin</a>
+</li></li></li></li></ul> </li></li></li></li></li></li></li></ul> <li class="calcclass pdheading">Calculated<ul> <li class="calcsubclass">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="calcsub2class">Optimized<ul> <li class="calcsub3class">
+<a href="energy1x.asp">Energy</a>
+<li class="calcsub3class">
+<a href="energy1_298x.asp">Energy 298K</a>
+<li class="calcsub3class">
+<a href="confmin1x.asp">Minimum conformation</a>
+<li class="calcsub3class">
+<a href="dimer_bond1x.asp">Hydrogen bonds</a>
+<li class="calcsub3class">
+<a href="dimer_cp_energy1x.asp">H bond with counterpoise</a>
+</li></li></li></li></li></ul> <li class="calcsub2class">Reaction<ul> <li class="calcsub3class">
+<a href="spec1x.asp">Reaction Energy 0K</a>
+<li class="calcsub3class">
+<a href="spec1_298x.asp">Reaction Energy 298K</a>
+</li></li></ul> <li class="calcsub2class">Internal Rotation<ul> <li class="calcsub3class">
+<a href="rotbar1x.asp">Barriers to internal rotation</a>
+<li class="calcsub3class">
+<a href="rotdip1x.asp">Rotational barrier and dipole</a>
+<li class="calcsub3class">
+<a href="rbc1x.asp">Rotational Barrier 2 molecules</a>
+</li></li></li></ul> <li class="calcsub2class">Orbital<ul> <li class="calcsub3class">
+<a href="gap1x.asp">HOMO LUMO gap</a>
+<li class="calcsub3class">
+<a href="homo1x.asp">HOMO</a>
+<li class="calcsub3class">
+<a href="orbitalenergy1x.asp">Orbital Energies</a>
+</li></li></li></ul> <li class="calcsub2class">
+<a href="nure1x.asp">Nuclear repulsion energy</a>
+<li class="calcsub2class">Correlation<ul> <li class="calcsub3class">
+<a href="coreenergy1x.asp">Full vs Frozen core energies</a>
+<li class="calcsub3class">
+<a href="correlation1x.asp">Partial correlation energies</a>
+</li></li></ul> <li class="calcsub2class">Ion<ul> <li class="calcsub3class">
+<a href="ie1x.asp">Calculated Ionization Energy</a>
+<li class="calcsub3class">
+<a href="vertie1x.asp">Vertical ionization Energy</a>
+<li class="calcsub3class">
+<a href="elecaff1x.asp">Calculated Electron affinity</a>
+<li class="calcsub3class">
+<a href="pa1x.asp">Calculated Proton affinity</a>
+<li class="calcsub3class">
+<a href="bondcharge1x.asp">Atom charge differences</a>
+</li></li></li></li></li></ul> <li class="calcsub2class">Excited State<ul> <li class="calcsub3class">
+<a href="stgap1x.asp">Singlet triplet gap</a>
+<li class="calcsub3class">
+<a href="calcES1x.asp">Electronic state</a>
+<li class="calcsub3class">
+<a href="ts1x.asp">Transition state</a>
+</li></li></li></ul> <li class="calcsub2class">Basis Set Extrapolation<ul> <li class="calcsub3class">
+<a href="bseenergy1x.asp">BSE energy</a>
+<li class="calcsub3class">
+<a href="bsebond1x.asp">BSE Bond lengths</a>
+</li></li></ul> </li></li></li></li></li></li></li></li></li></ul> <li class="calcsubclass">Geometry<ul> <li class="calcsub2class">
+<a href="geom1x.asp">Calculated geometry</a>
+<ul> <li class="calcsub3class">
+<a href="bondorder1x.asp">AIM bond orders</a>
+<li class="calcsub3class">
+<a href="calcbondcomp1x.asp">One type of bond</a>
+</li></li></ul> <li class="calcsub2class">Rotation<ul> <li class="calcsub3class">
+<a href="rotcalc1x.asp">Rotational constant</a>
+<li class="calcsub3class">
+<a href="momint1x.asp">Products of moments of inertia</a>
+<li class="calcsub3class">
+<a href="mieigen1x.asp">Moments of inertia</a>
+<li class="calcsub3class">
+<a href="inertialdefect1x.asp">Inertial defects</a>
+<li class="calcsub3class">
+<a href="calc2moment1x.asp">Second moments</a>
+</li></li></li></li></li></ul> <li class="calcsub2class">
+<a href="pg1x.asp">Point group</a>
+<li class="calcsub2class">
+<a href="elecstate1x.asp">State symmetry</a>
+<li class="calcsub2class">
+<a href="r2_1x.asp">&lt;r2&gt;</a>
+<ul> <li class="calcsub3class">
+<a href="r2comp1x.asp">Sorted by r2</a>
+</li></ul> <li class="calcsub2class">
+<a href="zmatx.asp">Z-matrix</a>
+<li class="calcsub2class">Bad Calculations<ul> <li class="calcsub3class">
+<a href="badcalcgeomx.asp">Bad moment of inertia</a>
+<li class="calcsub3class">
+<a href="badbondlengths1x.asp">Bad Calculated Bond Lengths</a>
+<li class="calcsub3class">
+<a href="diffpgx.asp">Bad point group</a>
+<li class="calcsub3class">
+<a href="badbondsmostx.asp">Worst molecules</a>
+</li></li></li></li></ul> </li></li></li></li></li></li></li></ul> <li class="calcsubclass">Vibrations<ul> <li class="calcsub2class">
+<a href="vibs1x.asp">Frequencies</a>
+<ul> <li class="calcsub3class">
+<a href="anivib1x.asp">Animated vibrations</a>
+<li class="calcsub3class">
+<a href="anharm1x.asp">Anharmonic</a>
+</li></li></ul> <li class="calcsub2class">
+<a href="zpe1x.asp">Zero point energy (ZPE)</a>
+<li class="calcsub2class">Scale Factors<ul> <li class="calcsub3class">
+<a href="vibscalejustx.asp">Scale factors</a>
+<li class="calcsub3class">
+<a href="vibscalex.asp">Scale factor uncertainty</a>
+<li class="calcsub3class">
+<a href="vsfcalc1x.asp">Calculate a scale factor</a>
+<li class="calcsub3class">
+<a href="vibnotesx.asp">Why scale vibrations</a>
+<li class="calcsub3class">
+<a href="vsfx.asp">Set scaling factors</a>
+</li></li></li></li></li></ul> <li class="calcsub2class">Bad Calculations<ul> <li class="calcsub3class">
+<a href="badvibpred1x.asp">Bad Vib. HF vs MP2</a>
+<li class="calcsub3class">
+<a href="badvib1x.asp">Bad vib. Calc. vs exp.</a>
+<li class="calcsub3class">
+<a href="biganharm1x.asp">Big anharmonicity</a>
+</li></li></li></ul> </li></li></li></li></ul> <li class="calcsubclass">Electrostatics<ul> <li class="calcsub2class">Charges<ul> <li class="calcsub3class">
+<a href="mulliken1x.asp">Mulliken</a>
+<li class="calcsub3class">
+<a href="chelpg1x.asp">CHELP</a>
+<li class="calcsub3class">
+<a href="aimcharge1x.asp">Aim</a>
+<li class="calcsub3class">
+<a href="esp1x.asp">ESP</a>
+</li></li></li></li></ul> <li class="calcsub2class">Dipole<ul> <li class="calcsub3class">
+<a href="dipole1x.asp">Dipole</a>
+<li class="calcsub3class">
+<a href="dipoleangle1x.asp">Dipole angle</a>
+<li class="calcsub3class">
+<a href="diprecalcx.asp">Dipole calculation types</a>
+</li></li></li></ul> <li class="calcsub2class">
+<a href="quadrupole1x.asp">Quadrupole</a>
+<li class="calcsub2class">
+<a href="polcalc1x.asp">Polarizability</a>
+<li class="calcsub2class">
+<a href="spin1x.asp">Spin</a>
+<ul> <li class="calcsub3class">
+<a href="spindensity1x.asp">Spin density</a>
+</li></ul> </li></li></li></li></li></ul> <li class="calcsubclass">
+<a href="sanyt1x.asp">Entropy and Heat Capacity</a>
+<ul> <li class="calcsub2class">
+<a href="entropy1x.asp">Entropy</a>
+<li class="calcsub2class">
+<a href="re1x.asp">Reaction entropy</a>
+<li class="calcsub2class">
+<a href="cp1x.asp">Heat Capacity</a>
+</li></li></li></ul> <li class="calcsubclass">Reaction<ul> <li class="calcsub2class">
+<a href="spec1x.asp">Reaction Energy 0K</a>
+<li class="calcsub2class">
+<a href="spec1_298x.asp">Reaction Energy 298K</a>
+<li class="calcsub2class">
+<a href="isodesmicx.asp">Isodesmic reactions</a>
+<li class="calcsub2class">Transition State<ul> <li class="calcsub3class">
+<a href="ts1x.asp">Transition state</a>
+<li class="calcsub3class">
+<a href="tsvib1x.asp">Transition state frequencies</a>
+<li class="calcsub3class">
+<a href="tsgeom1x.asp">Transition state geometries</a>
+<li class="calcsub3class">
+<a href="irc1x.asp">IRC</a>
+</li></li></li></li></ul> </li></li></li></li></ul> <li class="calcsubclass">Lookup by property<ul> <li class="calcsub2class">
+<a href="viblookup1x.asp">By frequency</a>
+</li></ul> </li></li></li></li></li></li></li></ul> <li class="compclass pdheading">Comparisons<ul> <li class="compsubclass">Geometry<ul> <li class="compsub2class">
+<a href="compgeom1x.asp">Bonds, angles</a>
+<ul> <li class="compsub3class">
+<a href="geomcalc1x.asp">Bond, angle, or dihedral</a>
+<li class="compsub3class">
+<a href="compufpgx.asp">DFT grid size on point group</a>
+<li class="compsub3class">
+<a href="compufb1x.asp">DFT grid on bond length</a>
+<li class="compsub3class">
+<a href="corebond1x.asp">Core correlation - bond length</a>
+<li class="compsub3class">
+<a href="listbondexpx.asp">Same bond/angle many molecules</a>
+<li class="compsub3class">
+<a href="isoelectronic1x.asp">Isoelectronic diatomics</a>
+<li class="compsub3class">
+<a href="angleiso1x.asp">Isoelectronic triatomic angles</a>
+<li class="compsub3class">
+<a href="bondlengthmodel1x.asp">Average bond lengths</a>
+</li></li></li></li></li></li></li></li></ul> <li class="compsub2class">Rotation<ul> <li class="compsub3class">
+<a href="rotcomp1x.asp">Rotational Constants</a>
+<li class="compsub3class">
+<a href="compmomint1x.asp">Products of moments of inertia</a>
+</li></li></ul> <li class="compsub2class">
+<a href="comppg1x.asp">Point group</a>
+</li></li></li></ul> <li class="compsubclass">Vibrations<ul> <li class="compsub2class">
+<a href="compvibs1x.asp">Vibrations</a>
+<ul> <li class="compsub3class">
+<a href="comp2vib1x.asp">2 calculations</a>
+<li class="compsub3class">
+<a href="vibdiff1x.asp">Frequency differences</a>
+</li></li></ul> <li class="compsub2class">
+<a href="comp1vib1x.asp">One frequency</a>
+<li class="compsub2class">
+<a href="compzpe1x.asp">Zero point energy</a>
+<li class="compsub2class">Intensity<ul> <li class="compsub3class">
+<a href="comp1int1x.asp">Intensity for one mode</a>
+<li class="compsub3class">
+<a href="compint1x.asp">Vibrational intensities</a>
+<li class="compsub3class">
+<a href="comp1redmass1x.asp">Reduced mass comparison</a>
+</li></li></li></ul> <li class="compsub2class">
+<a href="companhvibs1x.asp">Anharmonic</a>
+<ul> <li class="compsub3class">
+<a href="comptriatomic1x.asp">Triatomic</a>
+</li></ul> <li class="compsub2class">
+<a href="vibscalejustx.asp">Scale factors</a>
+</li></li></li></li></li></li></ul> <li class="compsubclass">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="compsub2class">Reaction<ul> <li class="compsub3class">
+<a href="spec1x.asp">Reaction Energy 0K</a>
+<li class="compsub3class">
+<a href="spec1_298x.asp">Reaction Energy 298K</a>
+<li class="compsub3class">
+<a href="atomize1x.asp">Atomization 0K</a>
+<li class="compsub3class">
+<a href="atomize298_1x.asp">Atomization 298K</a>
+</li></li></li></li></ul> <li class="compsub2class">
+<a href="specomp1x.asp">Single point vs optimized</a>
+<li class="compsub2class">
+<a href="compufex.asp">DFT grid size on energy</a>
+<li class="compsub2class">
+<a href="se298ax.asp">Semiempirical enthalpy</a>
+<li class="compsub2class">
+<a href="comprotbarx.asp">Internal rotation</a>
+<li class="compsub2class">Similar molecules<ul> <li class="compsub3class">
+<a href="confenergy1x.asp">Conformation</a>
+<li class="compsub3class">
+<a href="isoset1x.asp">Sets of isomers</a>
+<li class="compsub3class">
+<a href="tauto1x.asp">Sets of tautomers</a>
+<li class="compsub3class">
+<a href="isocountx.asp">Isomers</a>
+</li></li></li></li></ul> </li></li></li></li></li></li></ul> <li class="compsubclass">Entropy<ul> <li class="compsub2class">
+<a href="entropy1x.asp">Entropy</a>
+<li class="compsub2class">
+<a href="compcpx.asp">Heat capacity</a>
+<li class="compsub2class">
+<a href="entropyhist1x.asp">Entropy of several molecules</a>
+<li class="compsub2class">
+<a href="compihc1x.asp">Integrated heat capacity</a>
+<li class="compsub2class">
+<a href="re1x.asp">Reaction entropy</a>
+</li></li></li></li></li></ul> <li class="compsubclass">Electrostatics<ul> <li class="compsub2class">
+<a href="compdipole1x.asp">Dipole</a>
+<li class="compsub2class">
+<a href="polcomp1x.asp">Polarizability</a>
+<ul> <li class="compsub3class">
+<a href="polcalccomp1x.asp">Several molecules</a>
+</li></ul> <li class="compsub2class">
+<a href="compquad1x.asp">Quadrupole</a>
+</li></li></li></ul> <li class="compsubclass">Ion<ul> <li class="compsub2class">
+<a href="compie1x.asp">Compare Ionzation energy</a>
+<ul> <li class="compsub3class">
+<a href="koopman1x.asp">Koopman ionization energy</a>
+<li class="compsub3class">
+<a href="koopmany1x.asp">Koopman IE for a few molecules</a>
+</li></li></ul> <li class="compsub2class">
+<a href="compea1x.asp">Compare Electron affinity</a>
+<li class="compsub2class">
+<a href="comppa1x.asp">Compare Proton affinity</a>
+<li class="compsub2class">
+<a href="protonationsitex.asp">Protonation Site</a>
+</li></li></li></li></ul> </li></li></li></li></li></li></ul> <li class="resclass pdheading">Resources<ul> <li class="ressubclass">Info on Results<ul> <li class="ressub2class">Calculations Done<ul> <li class="ressub3class">
+<a href="calcdonex.asp">Method and basis set</a>
+<li class="ressub3class">
+<a href="moleculedonex.asp">List molecules</a>
+<li class="ressub3class">
+<a href="onecalc1x.asp">One molecule</a>
+<li class="ressub3class">
+<a href="conformers1x.asp">Multiple conformers, states</a>
+<li class="ressub3class">
+<a href="conformerlistx.asp">Multiple conformers, states</a>
+</li></li></li></li></li></ul> <li class="ressub2class">
+<a href="nbfx.asp">Basis functions used</a>
+<li class="ressub2class">
+<a href="outputx.asp">I/O files</a>
+<ul> <li class="ressub3class">
+<a href="gaufiles1x.asp">Input/output files</a>
+<li class="ressub3class">
+<a href="mdlmol1x.asp">MOL file</a>
+<li class="ressub3class">
+<a href="zmatx.asp">Z-matrix</a>
+<li class="ressub3class">
+<a href="wfn1x.asp">wfn files</a>
+</li></li></li></li></ul> </li></li></li></ul> <li class="ressubclass">
+<a href="glossaryx.asp">Glossary</a>
+<li class="ressubclass">Conversion Forms<ul> <li class="ressub2class">
+<a href="convertmomintx.asp">B to I, I to B</a>
+<li class="ressub2class">
+<a href="anglesx.asp">Angle formulas</a>
+<li class="ressub2class">
+<a href="ihccalc1x.asp">Integrated heat Capacity</a>
+<li class="ressub2class">
+<a href="enthcalcx.asp">Calculating Enthalpy</a>
+</li></li></li></li></ul> <li class="ressubclass">Links<ul> <li class="ressub2class">NIST Links<ul> <li class="ressub3class">
+<a href="http://webbook.nist.gov/chemistry">NIST webbook</a>
+<li class="ressub3class">
+<a href="bibliox.asp">bibliographic data</a>
+<li class="ressub3class">
+<a href="http://catalog.data.gov/dataset/nist-computational-chemistry-comparison-and-benchmark-database-srd-101">CCCBDB Experimental data</a>
+</li></li></li></ul> <li class="ressub2class">External links<ul> <li class="ressub3class">
+<a href="https://www.basissetexchange.org/">Basis Set Exchange</a>
+<li class="ressub3class">
+<a href="http://www.ccl.net/chemistry">Computational Chemistry List</a>
+<li class="ressub3class">
+<a href="http://www.gaussian.com/g_whitepap/thermo.htm">Thermochemistry in Gaussian</a>
+<li class="ressub3class">
+<a href="http://t1.chem.umn.edu/misc/database_group/database_therm_bh/">Minnesota Database Collection</a>
+<li class="ressub3class">
+<a href="http://www.begdb.com">Benchmark Energy and Geometry</a>
+<li class="ressub3class">
+<a href="http://symmetry.jacobs-university.de">Point Groups</a>
+</li></li></li></li></li></li></ul> </li></li></ul> <li class="ressubclass">Thermochemistry<ul> <li class="ressub2class">
+<a href="thermox.asp">Thermochemistry</a>
+<li class="ressub2class">
+<a href="goodlistx.asp">Molecules with good enthalpy</a>
+<li class="ressub2class">
+<a href="binary1x.asp">A → B + C</a>
+<li class="ressub2class">
+<a href="refstatex.asp">Reference states</a>
+</li></li></li></li></ul> <li class="ressubclass">Tutorials<ul> <li class="ressub2class">Vibrations<ul> <li class="ressub3class">
+<a href="vibnotesx.asp">Why scale vibrations</a>
+<li class="ressub3class">
+<a href="zpenotesx.asp">Zero-point energies</a>
+</li></li></ul> <li class="ressub2class">Entropy<ul> <li class="ressub3class">
+<a href="methylrotorx.asp">Methyl rotor entropy</a>
+<li class="ressub3class">
+<a href="configx.asp">Entropy and conformations</a>
+</li></li></ul> <li class="ressub2class">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="ressub3class">
+<a href="enthformationx.asp">Getting enthalpy of formation</a>
+<li class="ressub3class">
+<a href="adiabaticx.asp">Vertical vs adiabatic IE</a>
+<li class="ressub3class">
+<a href="nato_asi_1/index.htm">Thermo from calculations</a>
+</li></li></li></ul> <li class="ressub2class">Electrostatics<ul> <li class="ressub3class">
+<a href="elecmomsymx.asp">Dipole parts  by point group</a>
+<li class="ressub3class">
+<a href="quadrupolex.asp">Quadrupoles</a>
+</li></li></ul> <li class="ressub2class">Geometry<ul> <li class="ressub3class">
+<a href="anglesx.asp">Angle formulas</a>
+</li></ul> <li class="ressub2class">Cost<ul> <li class="ressub3class">
+<a href="costirikurax.asp">Cost Comparison</a>
+<li class="ressub3class">
+<a href="timingsx.asp">Timings Comparison</a>
+</li></li></ul> </li></li></li></li></li></li></ul> <li class="ressubclass">Bad Calculations<ul> <li class="ressub2class">Geometry<ul> <li class="ressub3class">
+<a href="badcalcgeomx.asp">Bad moment of inertia</a>
+<li class="ressub3class">
+<a href="badbondlengths1x.asp">Bad Calculated Bond Lengths</a>
+<li class="ressub3class">
+<a href="diffpgx.asp">Bad point group</a>
+<li class="ressub3class">
+<a href="badbondsmostx.asp">Worst molecules</a>
+</li></li></li></li></ul> <li class="ressub2class">Vibrations<ul> <li class="ressub3class">
+<a href="badvib1x.asp">Bad vib. Calc. vs exp.</a>
+<li class="ressub3class">
+<a href="badvibpred1x.asp">Bad Vib. HF vs MP2</a>
+<li class="ressub3class">
+<a href="vsfratiox.asp">Bad scale factors</a>
+</li></li></li></ul> <li class="ressub2class">
+<a href="cis1x.asp">Low excited states</a>
+<li class="ressub2class">
+<a href="odditiesx.asp">Oddities</a>
+<ul> <li class="ressub3class">
+<a href="nacnx.asp">NaCN Is not linear</a>
+</li></ul> </li></li></li></li></ul> </li></li></li></li></li></li></li></ul> <li class="faqclass pdheading">FAQ Help<ul> <li class="faqsubclass">Units<ul> <li class="faqsub2class">Choose Units<ul> <li class="faqsub3class">
+<a href="unitsx.asp">Energy</a>
+<li class="faqsub3class">
+<a href="bondunitsx.asp">Bond length</a>
+<li class="faqsub3class">
+<a href="rotunitsx.asp">Rotational Constant</a>
+<li class="faqsub3class">
+<a href="momintunitsx.asp">Moment of Inertia</a>
+<li class="faqsub3class">
+<a href="dipunitsx.asp">Dipole and Quadrupole</a>
+<li class="faqsub3class">
+<a href="punitsx.asp">Polarizability</a>
+</li></li></li></li></li></li></ul> <li class="faqsub2class">Explanations<ul> <li class="faqsub3class">
+<a href="hartreex.asp">Hartree</a>
+<li class="faqsub3class">
+<a href="wavenumberx.asp">cm-1</a>
+<li class="faqsub3class">
+<a href="debyex.asp">Debye</a>
+</li></li></li></ul> </li></li></ul> <li class="faqsubclass">
+<a href="creditsx.asp">Credits</a>
+<li class="faqsubclass">Just show me<ul> <li class="faqsub2class">
+<a href="justgeomx.asp">Show me a  calculated geometry</a>
+</li></ul> <li class="faqsubclass">
+<a href="summaryx.asp">Summary</a>
+<li class="faqsubclass">
+<a href="usingx.asp">Using</a>
+<ul> <li class="faqsub2class">
+<a href="oldinterfacex.asp">older interface</a>
+<li class="faqsub2class">
+<a href="selectbasis1x.asp">Limit Basis sets</a>
+<li class="faqsub2class">
+<a href="mboptionsx.asp">Method options</a>
+</li></li></li></ul> <li class="faqsubclass">
+<a href="listx.asp">List</a>
+<ul> <li class="faqsub2class">
+<a href="newlistx.asp">Recent molecules</a>
+<ul> <li class="faqsub3class">
+<a href="listsomex.asp">Choose a few</a>
+</li></ul> <li class="faqsub2class">Molecules<ul> <li class="faqsub3class">
+<a href="listallnumx.asp">Number of atoms</a>
+<li class="faqsub3class">
+<a href="listallx.asp">By heavy atoms</a>
+<li class="faqsub3class">
+<a href="diatomics1x.asp">Diatomics</a>
+<li class="faqsub3class">
+<a href="inchix.asp">InChI</a>
+<li class="faqsub3class">
+<a href="deuteratedx.asp">Deuterated</a>
+<li class="faqsub3class">
+<a href="dimerlistx.asp">Dimers</a>
+</li></li></li></li></li></li></ul> <li class="faqsub2class">Geometry<ul> <li class="faqsub3class">
+<a href="pglistx.asp">Point group</a>
+<li class="faqsub3class">
+<a href="bypg1x.asp">Point group count</a>
+<li class="faqsub3class">
+<a href="listbondtypesx.asp">Bonds types</a>
+<li class="faqsub3class">
+<a href="isodesmicx.asp">Isodesmic reactions</a>
+<li class="faqsub3class">
+<a href="diffpgx.asp">Bad point group</a>
+<li class="faqsub3class">
+<a href="conformerlistx.asp">Multiple conformers, states</a>
+</li></li></li></li></li></li></ul> <li class="faqsub2class">Vibrations<ul> <li class="faqsub3class">
+<a href="biganharm1x.asp">Big anharmonicity</a>
+</li></ul> <li class="faqsub2class">
+<a href="energy1x.asp">Energy</a>
+<ul> <li class="faqsub3class">
+<a href="hf0kx.asp">Enthalpy at 0 Kelvin</a>
+</li></ul> <li class="faqsub2class">Similar molecules<ul> <li class="faqsub3class">
+<a href="similarx.asp">Similar</a>
+<li class="faqsub3class">
+<a href="isocountx.asp">Isomers</a>
+<li class="faqsub3class">
+<a href="cistransx.asp">Cis/trans</a>
+<li class="faqsub3class">
+<a href="tautomersx.asp">Tautomers</a>
+<li class="faqsub3class">
+<a href="conformerlistx.asp">Multiple conformers, states</a>
+</li></li></li></li></li></ul> <li class="faqsub2class">Ions, Dipoles, etc.<ul> <li class="faqsub3class">
+<a href="ionlistx.asp">List Ions</a>
+<li class="faqsub3class">
+<a href="ionpgdiffx.asp">Ionization changes point group</a>
+<li class="faqsub3class">
+<a href="diplistx.asp">Dipole</a>
+<li class="faqsub3class">
+<a href="quadlistx.asp">Quadrupole</a>
+<li class="faqsub3class">
+<a href="pollistx.asp">Polarizability</a>
+<li class="faqsub3class">
+<a href="palistx.asp">Proton Affinities</a>
+</li></li></li></li></li></li></ul> </li></li></li></li></li></li></li></ul> <li class="faqsubclass">
+<a href="cccbdbindexx.asp">Index of CCCBDB</a>
+<li class="faqsubclass">Feedback<ul> <li class="faqsub2class">
+<a href="errorformx.asp">Error form</a>
+<li class="faqsub2class">
+<a href="wantsx.asp">Wants</a>
+</li></li></ul></li></li></li></li></li></li></li></li></ul></li></li></li></li></li></li></ul>
+</div>
+</td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td class="noborder" colspan="2">
+You are here: <b></b>
+</td>
+</tr>
+</table>
+<h1>Tab delimited dump of table</h1>
+<form> <textarea cols="80" rows="50">modenumber	Symmetry	Frequency	IR_Intensity	Raman_Activ	depolarp	depolaru1	A1	3082.449	0	144.3664	0	02	E	1565.255	0	21.0262	0.75	0.85712	E	1565.255	0	21.0262	0.75	0.85713	T2	3233.797	17.0186	59.9028	0.75	0.85713	T2	3233.797	17.0186	59.9028	0.75	0.85713	T2	3233.797	17.0186	59.9028	0.75	0.85714	T2	1338.281	11.4855	1.1703	0.75	0.85714	T2	1338.281	11.4855	1.1703	0.75	0.85714	T2	1338.281	11.4855	1.1703	0.75	0.8571
+
+    </textarea>
+</form>
+</body>
+</html>

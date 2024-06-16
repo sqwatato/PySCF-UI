@@ -1,0 +1,5704 @@
+[
+  {
+    "level": "MNDOd",
+    "bond": "",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=50&basis=0&charge=0"
+  },
+  {
+    "level": "G1",
+    "bond": "-40.407733",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=20&basis=0&charge=0"
+  },
+  {
+    "level": "G2MP2",
+    "bond": "-40.409667",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=19&basis=0&charge=0"
+  },
+  {
+    "level": "G2",
+    "bond": "-40.410894",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=7&basis=0&charge=0"
+  },
+  {
+    "level": "G3",
+    "bond": "-40.457629",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=21&basis=0&charge=0"
+  },
+  {
+    "level": "G3B3",
+    "bond": "-40.458275",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=64&basis=0&charge=0"
+  },
+  {
+    "level": "G3MP2",
+    "bond": "-40.422103",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=67&basis=0&charge=0"
+  },
+  {
+    "level": "G4",
+    "bond": "-40.465302",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=74&basis=0&charge=0"
+  },
+  {
+    "level": "CBS-Q",
+    "bond": "-40.409586",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=24&basis=0&charge=0"
+  },
+  {
+    "level": "MM3",
+    "bond": "",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=49&basis=0&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "STO-3G",
+    "bond": "-39.726864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=20&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "3-21G",
+    "bond": "-39.976878",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=2&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "3-21G*",
+    "bond": "-39.976878",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=8&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-31G",
+    "bond": "-40.180554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=9&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-31G*",
+    "bond": "-40.195172",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=1&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-31G**",
+    "bond": "-40.201705",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=3&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-31+G**",
+    "bond": "-40.202131",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=4&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-311G*",
+    "bond": "-40.202637",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=7&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-311G**",
+    "bond": "-40.209012",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=21&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.203459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=19&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.212376",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=10&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.212930",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=22&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "TZVP",
+    "bond": "-40.212321",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=32&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "cc-pVDZ",
+    "bond": "-40.198712",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=5&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "cc-pVTZ",
+    "bond": "-40.213466",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=6&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "cc-pVQZ",
+    "bond": "-40.216302",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=25&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.199633",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=17&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.213703",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=18&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.216346",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=26&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.213466",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=27&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "Sadlej_pVTZ",
+    "bond": "-40.203402",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=29&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.199739",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=36&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.213738",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=35&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.304546",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=10&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.305523",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=22&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "TZVP",
+    "bond": "-40.305037",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=32&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "cc-pVQZ",
+    "bond": "-40.309689",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=25&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.306788",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=18&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.309839",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=26&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.288520",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=36&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.306806",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=35&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "STO-3G",
+    "bond": "-39.995298",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=20&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "3-21G",
+    "bond": "-40.262080",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=2&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "3-21G*",
+    "bond": "-40.262080",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=8&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-31G",
+    "bond": "-40.472692",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=9&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-31G*",
+    "bond": "-40.479124",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=1&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-31G**",
+    "bond": "-40.484667",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=3&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-31+G**",
+    "bond": "-40.487805",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=4&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-311G*",
+    "bond": "-40.490528",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=7&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-311G**",
+    "bond": "-40.496229",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=21&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.484032",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=19&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.499295",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=10&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.500152",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=22&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "TZVP",
+    "bond": "-40.499531",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=32&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "cc-pVDZ",
+    "bond": "-40.475861",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=5&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "cc-pVTZ",
+    "bond": "-40.500771",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=6&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "cc-pVQZ",
+    "bond": "-40.504318",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=25&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.481844",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=17&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.501027",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=18&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.504501",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=26&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.500778",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=27&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.482010",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=36&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.501069",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=35&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "STO-3G",
+    "bond": "-40.006960",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=20&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "3-21G",
+    "bond": "-40.262639",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=2&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "3-21G*",
+    "bond": "-40.262639",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=8&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-31G",
+    "bond": "-40.472904",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=9&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-31G*",
+    "bond": "-40.480005",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=1&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-31G**",
+    "bond": "-40.480005",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=3&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-31+G**",
+    "bond": "-40.486834",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=4&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-311G*",
+    "bond": "-40.488273",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=7&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-311G**",
+    "bond": "-40.493746",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=21&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.485612",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=19&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.496385",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=10&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.497034",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=22&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "TZVP",
+    "bond": "-40.497001",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=32&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "cc-pVDZ",
+    "bond": "-40.479483",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=5&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "cc-pVTZ",
+    "bond": "-40.497652",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=6&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "cc-pVQZ",
+    "bond": "-40.501011",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=25&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.482554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=17&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.497864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=18&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.501119",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=26&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.497657",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=27&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.482686",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=36&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.497905",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=35&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "STO-3G",
+    "bond": "-40.038920",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=20&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "3-21G",
+    "bond": "-40.301593",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=2&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "3-21G*",
+    "bond": "-40.301593",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=8&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-31G",
+    "bond": "-40.510643",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=9&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-31G*",
+    "bond": "-40.518383",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=1&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-31G**",
+    "bond": "-40.524014",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=3&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-31+G**",
+    "bond": "-40.526138",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=4&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-311G*",
+    "bond": "-40.527936",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=7&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-311G**",
+    "bond": "-40.533743",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=21&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.523681",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=19&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.536783",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=10&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.537556",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=22&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "TZVP",
+    "bond": "-40.537040",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=32&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "cc-pVDZ",
+    "bond": "-40.516349",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=5&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "cc-pVTZ",
+    "bond": "-40.538238",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=6&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "cc-pVQZ",
+    "bond": "-40.541504",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=25&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.520622",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=17&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.538425",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=18&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.541623",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=26&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.538244",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=27&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "Sadlej_pVTZ",
+    "bond": "-40.521988",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=29&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.520766",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=36&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.538459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=35&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "STO-3G",
+    "bond": "-40.038920",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=20&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "3-21G",
+    "bond": "-40.301593",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=2&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "3-21G*",
+    "bond": "-40.301593",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=8&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-31G",
+    "bond": "-40.510643",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=9&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-31G*",
+    "bond": "-40.518383",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=1&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-31G**",
+    "bond": "-40.524014",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=3&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-31+G**",
+    "bond": "-40.526138",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=4&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-311G*",
+    "bond": "-40.527936",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=7&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-311G**",
+    "bond": "-40.533743",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=21&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.523681",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=19&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.536783",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=10&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.537551",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=22&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "TZVP",
+    "bond": "-40.537040",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=32&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "cc-pVDZ",
+    "bond": "-40.516349",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=5&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "cc-pVTZ",
+    "bond": "-40.538238",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=6&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "cc-pVQZ",
+    "bond": "-40.541504",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=25&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.520622",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=17&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.538425",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=18&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.541623",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=26&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.520766",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=36&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.538459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=35&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "STO-3G",
+    "bond": "-40.029867",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=20&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "3-21G",
+    "bond": "-40.287363",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=2&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "3-21G*",
+    "bond": "-40.287363",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=8&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-31G",
+    "bond": "-40.496129",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=9&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-31G*",
+    "bond": "-40.503363",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=1&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-31G**",
+    "bond": "-40.508698",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=3&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-31+G**",
+    "bond": "-40.510073",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=4&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-311G*",
+    "bond": "-40.511152",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=7&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-311G**",
+    "bond": "-40.517123",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=21&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.508762",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=19&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.519845",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=10&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.520592",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=22&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "TZVP",
+    "bond": "-40.520360",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=32&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "cc-pVDZ",
+    "bond": "-40.503237",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=5&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "cc-pVTZ",
+    "bond": "-40.521285",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=6&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "cc-pVQZ",
+    "bond": "-40.524438",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=25&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.505948",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=17&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.521459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=18&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.524554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=26&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.521285",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=27&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.506079",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=36&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.521489",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=35&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "STO-3G",
+    "bond": "-40.031098",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=20&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "3-21G",
+    "bond": "-40.287643",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=2&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "3-21G*",
+    "bond": "-40.287643",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=8&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-31G",
+    "bond": "-40.496537",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=9&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-31G*",
+    "bond": "-40.504016",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=1&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-31G**",
+    "bond": "-40.509415",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=3&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-31+G**",
+    "bond": "-40.510834",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=4&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-311G*",
+    "bond": "-40.511735",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=7&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-311G**",
+    "bond": "-40.517728",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=21&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.509639",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=19&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.520496",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=10&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.521243",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=22&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "TZVP",
+    "bond": "-40.521076",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=32&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "cc-pVDZ",
+    "bond": "-40.504427",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=5&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "cc-pVTZ",
+    "bond": "-40.521909",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=6&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "cc-pVQZ",
+    "bond": "-40.525042",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=25&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.507056",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=17&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.522099",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=18&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.525159",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=26&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.521338",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=27&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.507196",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=36&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.522128",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=35&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "STO-3G",
+    "bond": "-40.022554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=20&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "3-21G",
+    "bond": "-40.264962",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=2&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "3-21G*",
+    "bond": "-40.264962",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=8&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-31G",
+    "bond": "-40.474544",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=9&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-31G*",
+    "bond": "-40.482038",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=1&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-31G**",
+    "bond": "-40.486522",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=3&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-31+G**",
+    "bond": "-40.487945",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=4&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-311G*",
+    "bond": "-40.492205",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=7&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-311G**",
+    "bond": "-40.496654",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=21&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.487011",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=19&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.499545",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=10&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.500342",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=22&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "TZVP",
+    "bond": "-40.499850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=32&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "cc-pVDZ",
+    "bond": "-40.481196",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=5&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "cc-pVTZ",
+    "bond": "-40.501416",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=6&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "cc-pVQZ",
+    "bond": "-40.504923",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=25&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.484255",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=17&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.501737",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=18&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.505056",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=26&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.484411",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=36&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.501786",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=35&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "STO-3G",
+    "bond": "-39.967466",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=20&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "3-21G",
+    "bond": "-40.228616",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=2&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "3-21G*",
+    "bond": "-40.228616",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=8&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-31G",
+    "bond": "-40.438666",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=9&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-31G*",
+    "bond": "-40.444606",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=1&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-31G**",
+    "bond": "-40.449915",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=3&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-31+G**",
+    "bond": "-40.452399",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=4&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-311G*",
+    "bond": "-40.453564",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=7&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-311G**",
+    "bond": "-40.459486",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=21&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.449640",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=19&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.462007",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=10&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.462792",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=22&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "TZVP",
+    "bond": "-40.462644",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=32&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "cc-pVDZ",
+    "bond": "-40.443708",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=5&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "cc-pVTZ",
+    "bond": "-40.463384",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=6&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "cc-pVQZ",
+    "bond": "-40.466720",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=25&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.448012",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=17&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.463614",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=18&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.466908",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=26&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.463391",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=27&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "Sadlej_pVTZ",
+    "bond": "-40.449508",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=29&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.448159",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=36&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.463647",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=35&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "STO-3G",
+    "bond": "-39.967466",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=20&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "3-21G",
+    "bond": "-40.228616",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=2&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "3-21G*",
+    "bond": "-40.228616",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=8&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-31G",
+    "bond": "-40.438665",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=9&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-31G*",
+    "bond": "-40.444606",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=1&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-31G**",
+    "bond": "-40.449915",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=3&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-31+G**",
+    "bond": "-40.452399",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=4&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-311G*",
+    "bond": "-40.453564",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=7&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-311G**",
+    "bond": "-40.459486",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=21&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.449640",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=19&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.462007",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=10&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.462786",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=22&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "TZVP",
+    "bond": "-40.462644",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=32&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "cc-pVDZ",
+    "bond": "-40.443708",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=5&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "cc-pVTZ",
+    "bond": "-40.463384",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=6&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "cc-pVQZ",
+    "bond": "-40.466713",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=25&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.448012",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=17&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.463614",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=18&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.466901",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=26&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.448159",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=36&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.463647",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=35&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "STO-3G",
+    "bond": "-39.984344",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=20&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "3-21G",
+    "bond": "-40.240903",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=2&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "3-21G*",
+    "bond": "-40.240903",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=8&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-31G",
+    "bond": "-40.449371",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=9&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-31G*",
+    "bond": "-40.456864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=1&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-31G**",
+    "bond": "-40.456864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=3&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-31+G**",
+    "bond": "-40.463789",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=4&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-311G*",
+    "bond": "-40.464521",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=7&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-311G**",
+    "bond": "-40.470534",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=21&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.462549",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=19&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.473100",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=10&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.473783",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=22&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "TZVP",
+    "bond": "-40.473690",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=32&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "cc-pVDZ",
+    "bond": "-40.457431",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=5&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "cc-pVTZ",
+    "bond": "-40.474422",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=6&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "cc-pVQZ",
+    "bond": "-40.477489",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=25&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.460113",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=17&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.474586",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=18&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.477605",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=26&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.460245",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=36&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.474613",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=35&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "STO-3G",
+    "bond": "-39.987771",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=20&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "3-21G",
+    "bond": "-40.244145",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=2&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "3-21G*",
+    "bond": "-40.244145",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=8&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-31G",
+    "bond": "-40.452605",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=9&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-31G*",
+    "bond": "-40.460172",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=1&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-31G**",
+    "bond": "-40.465638",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=3&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-31+G**",
+    "bond": "-40.467115",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=4&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-311G*",
+    "bond": "-40.467921",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=7&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-311G**",
+    "bond": "-40.473909",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=21&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.465755",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=19&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.476554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=10&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.477288",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=22&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "TZVP",
+    "bond": "-40.477099",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=32&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "cc-pVDZ",
+    "bond": "-40.460364",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=5&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "cc-pVTZ",
+    "bond": "-40.477998",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=6&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "cc-pVQZ",
+    "bond": "-40.481044",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=25&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.463128",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=17&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.478163",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=18&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.481160",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=26&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.463257",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=36&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.478191",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=35&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "STO-3G",
+    "bond": "-40.050537",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=20&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "3-21G",
+    "bond": "-40.303321",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=2&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "3-21G*",
+    "bond": "-40.303321",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=8&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-31G",
+    "bond": "-40.512259",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=9&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-31G*",
+    "bond": "-40.519844",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=1&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-31G**",
+    "bond": "-40.524794",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=3&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-31+G**",
+    "bond": "-40.526165",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=4&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-311G*",
+    "bond": "-40.527771",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=7&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-311G**",
+    "bond": "-40.533416",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=21&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.525351",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=19&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.536134",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=10&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "TZVP",
+    "bond": "-40.536600",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=32&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "cc-pVDZ",
+    "bond": "-40.520251",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=5&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "cc-pVTZ",
+    "bond": "-40.537533",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=6&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "cc-pVQZ",
+    "bond": "-40.540584",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=25&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.522971",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=17&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.537721",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=18&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.540675",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=26&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.523112",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=36&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.537743",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=35&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "STO-3G",
+    "bond": "-40.031801",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=20&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "3-21G",
+    "bond": "-40.286137",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=2&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "3-21G*",
+    "bond": "-40.286137",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=8&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-31G",
+    "bond": "-40.494278",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=9&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-31G*",
+    "bond": "-40.501863",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=1&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-31G**",
+    "bond": "-40.507143",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=3&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-31+G**",
+    "bond": "-40.508374",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=4&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-311G*",
+    "bond": "-40.509565",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=7&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-311G**",
+    "bond": "-40.515319",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=21&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.507332",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=19&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.518395",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=10&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "TZVP",
+    "bond": "-40.518898",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=32&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "cc-pVDZ",
+    "bond": "-40.501688",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=5&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "cc-pVTZ",
+    "bond": "-40.519820",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=6&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "cc-pVQZ",
+    "bond": "-40.523217",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=25&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.504112",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=17&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.520074",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=18&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.523338",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=26&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.504244",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=36&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.520114",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=35&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "STO-3G",
+    "bond": "-40.025423",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=20&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "3-21G",
+    "bond": "-40.276465",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=2&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "3-21G*",
+    "bond": "-40.276465",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=8&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-31G",
+    "bond": "-40.485956",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=9&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-31G*",
+    "bond": "-40.492038",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=1&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-31G**",
+    "bond": "-40.497557",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=3&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-31+G**",
+    "bond": "-40.499655",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=4&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-311G*",
+    "bond": "-40.501408",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=7&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-311G**",
+    "bond": "-40.507267",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=21&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.497755",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=19&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.510003",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=10&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "TZVP",
+    "bond": "-40.510547",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=32&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "cc-pVDZ",
+    "bond": "-40.491803",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=5&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "cc-pVTZ",
+    "bond": "-40.511570",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=6&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "cc-pVQZ",
+    "bond": "-40.514562",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=25&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.495750",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=17&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.511798",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=18&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.514690",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=26&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.495892",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=36&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.511824",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=35&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "STO-3G",
+    "bond": "-39.783069",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=20&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "3-21G",
+    "bond": "-40.075513",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=2&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "3-21G*",
+    "bond": "-40.075513",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=8&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-31G",
+    "bond": "-40.279129",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=9&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-31G*",
+    "bond": "-40.332552",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=1&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-31G**",
+    "bond": "-40.364626",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=3&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-31+G**",
+    "bond": "-40.365953",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=4&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-311G*",
+    "bond": "-40.349339",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=7&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-311G**",
+    "bond": "-40.379234",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=21&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.384935",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=19&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.405705",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=10&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.411679",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=22&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "TZVP",
+    "bond": "-40.382232",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=32&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pVDZ",
+    "bond": "-40.360175",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=5&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pVTZ",
+    "bond": "-40.411667",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=6&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pVQZ",
+    "bond": "-40.426306",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=25&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.367727",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=17&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.414459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=18&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.427406",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=26&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.411667",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=27&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.361950",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=23&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.412793",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=24&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "Sadlej_pVTZ",
+    "bond": "-40.365683",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=29&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.368275",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=36&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.414739",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=35&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "STO-3G",
+    "bond": "-39.783524",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=20&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "3-21G",
+    "bond": "-40.077106",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=2&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.077106",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=8&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-31G",
+    "bond": "-40.280398",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=9&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.337043",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=1&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.369856",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=3&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.371223",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=4&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.367614",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=7&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.398043",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=21&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.392271",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=19&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.427561",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=10&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.433833",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=22&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "TZVP",
+    "bond": "-40.399196",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=32&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.363027",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=5&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.427995",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=6&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.455025",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=25&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.370821",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=17&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.432995",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=18&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.456615",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=26&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.427994",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=27&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.397328",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=23&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.460422",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=24&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "Sadlej_pVTZ",
+    "bond": "-40.381083",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=29&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.371394",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=36&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.433800",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=35&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "STO-3G",
+    "bond": "-39.798499",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=20&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "3-21G",
+    "bond": "-40.088863",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=2&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "3-21G*",
+    "bond": "-40.088863",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=8&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-31G",
+    "bond": "-40.292937",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=9&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-31G*",
+    "bond": "-40.348628",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=1&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-31G**",
+    "bond": "-40.382850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=3&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-31+G**",
+    "bond": "-40.384123",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=4&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-311G*",
+    "bond": "-40.365961",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=7&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-311G**",
+    "bond": "-40.398298",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=21&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.404583",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=19&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.424605",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=10&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.429831",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=22&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "TZVP",
+    "bond": "-40.400699",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=32&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "cc-pVDZ",
+    "bond": "-40.380520",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=5&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "cc-pVTZ",
+    "bond": "-40.429940",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=6&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "cc-pVQZ",
+    "bond": "-40.442310",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=25&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.388218",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=17&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.432565",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=18&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.443068",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=26&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.388750",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=36&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.432810",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=35&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "3-21G",
+    "bond": "-40.090388",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=2&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.090388",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=8&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-31G",
+    "bond": "-40.294145",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=9&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.353088",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=1&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.388049",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=3&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.389362",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=4&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.385003",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=7&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.417901",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=21&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.412001",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=19&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "TZVP",
+    "bond": "-40.418507",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=32&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.383243",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=5&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.446845",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=6&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.391185",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=17&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.451856",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=18&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.391742",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=36&charge=0"
+  },
+  {
+    "level": "MP3=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.452666",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=71&basis=35&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "STO-3G",
+    "bond": "-39.803613",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=20&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "3-21G",
+    "bond": "-40.094416",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=2&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "3-21G*",
+    "bond": "-40.094416",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=8&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-31G",
+    "bond": "-40.298249",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=9&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-31G*",
+    "bond": "-40.354840",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=1&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-31G**",
+    "bond": "-40.388654",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=3&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-31+G**",
+    "bond": "-40.390098",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=4&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-311G*",
+    "bond": "-40.372943",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=7&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-311G**",
+    "bond": "-40.405070",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=21&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.411140",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=19&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.432470",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=10&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.437649",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=22&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "TZVP",
+    "bond": "-40.407571",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=32&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "cc-pVDZ",
+    "bond": "-40.386611",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=5&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "cc-pVTZ",
+    "bond": "-40.437598",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=6&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "cc-pVQZ",
+    "bond": "-40.450469",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=25&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.394874",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=17&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.440418",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=18&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.451304",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=26&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.395438",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=36&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.440676",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=35&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "STO-3G",
+    "bond": "-39.804025",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=20&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "3-21G",
+    "bond": "-40.095945",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=2&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.095945",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=8&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-31G",
+    "bond": "-40.299458",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=9&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.359314",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=1&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.393863",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=3&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.395346",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=4&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.392068",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=7&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.424765",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=21&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.418596",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=19&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.455487",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=10&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.461005",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=22&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "TZVP",
+    "bond": "-40.425484",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=32&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.389316",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=5&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.454636",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=6&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.480819",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=25&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.397825",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=17&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.459876",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=18&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.482182",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=26&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.398415",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=36&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.460700",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=35&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "STO-3G",
+    "bond": "-39.947659",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=20&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "3-21G",
+    "bond": "-40.219011",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=2&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "3-21G*",
+    "bond": "-40.219011",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=8&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-31G",
+    "bond": "-40.426216",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=9&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-31G*",
+    "bond": "-40.448689",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=1&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-31G**",
+    "bond": "-40.462386",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=3&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-31+G**",
+    "bond": "-40.464110",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=4&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-311G*",
+    "bond": "-40.460343",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=7&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-311G**",
+    "bond": "-40.473451",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=21&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.468697",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=19&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.483749",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=10&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.485951",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=22&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "TZVP",
+    "bond": "-40.476639",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=32&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "cc-pVDZ",
+    "bond": "-40.456459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=5&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "cc-pVTZ",
+    "bond": "-40.486385",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=6&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "cc-pVQZ",
+    "bond": "-40.492864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=25&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.461415",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=17&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.487374",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=18&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.493253",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=26&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.461675",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=36&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.487477",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=35&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "STO-3G",
+    "bond": "-39.947797",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=20&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "3-21G",
+    "bond": "-40.219488",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=2&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.219488",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=8&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-31G",
+    "bond": "-40.426595",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=9&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.450018",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=1&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.463928",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=3&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.465664",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=4&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.465574",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=7&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.478842",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=21&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.470837",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=19&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.490043",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=10&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "TZVP",
+    "bond": "-40.481503",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=32&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.457308",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=5&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.491123",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=6&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.462337",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=17&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.492742",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=18&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.462604",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=36&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.492993",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=35&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULLultrafine",
+    "basis": "6-31G*",
+    "bond": "-40.450018",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=79&basis=1&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULLultrafine",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.492742",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=79&basis=18&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "STO-3G",
+    "bond": "-39.803689",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=20&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "3-21G",
+    "bond": "-40.089555",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=2&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "3-21G*",
+    "bond": "-40.089555",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=8&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-31G",
+    "bond": "-40.293542",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=9&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-31G*",
+    "bond": "-40.345921",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=1&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-31G**",
+    "bond": "-40.377754",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=3&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-31+G**",
+    "bond": "-40.378882",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=4&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-311G*",
+    "bond": "-40.362381",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=7&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-311G**",
+    "bond": "-40.392260",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=21&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.397511",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=19&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.416336",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=10&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.421160",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=22&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "TZVP",
+    "bond": "-40.394822",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=32&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "cc-pVDZ",
+    "bond": "-40.375037",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=5&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "cc-pVTZ",
+    "bond": "-40.421277",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=6&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "cc-pVQZ",
+    "bond": "-40.432961",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=25&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.381865",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=17&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.423664",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=18&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.433677",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=26&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.421277",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=27&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.382354",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=36&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.423897",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=35&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "STO-3G",
+    "bond": "-39.803692",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=20&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "3-21G",
+    "bond": "-40.089963",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=2&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "3-21G*",
+    "bond": "-40.089963",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=8&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-31G",
+    "bond": "-40.293769",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=9&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-31G*",
+    "bond": "-40.346897",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=1&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-31G**",
+    "bond": "-40.378427",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=3&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-31+G**",
+    "bond": "-40.379602",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=4&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-311G*",
+    "bond": "-40.363592",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=7&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-311G**",
+    "bond": "-40.393035",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=21&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.398304",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=19&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.417259",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=10&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.422020",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=22&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "TZVP",
+    "bond": "-40.395726",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=32&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "cc-pVDZ",
+    "bond": "-40.375626",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=5&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "cc-pVTZ",
+    "bond": "-40.422120",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=6&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "cc-pVQZ",
+    "bond": "-40.433881",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=25&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.382538",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=17&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.424498",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=18&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.434594",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=26&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.422120",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=27&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.383028",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=36&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.424731",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=35&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "STO-3G",
+    "bond": "-39.806344",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=20&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "3-21G",
+    "bond": "-40.094489",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=2&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "3-21G*",
+    "bond": "-40.094489",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=8&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-31G",
+    "bond": "-40.298517",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=9&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-31G*",
+    "bond": "-40.353370",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=1&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-31G**",
+    "bond": "-40.386129",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=3&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-31+G**",
+    "bond": "-40.387430",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=4&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-311G*",
+    "bond": "-40.370858",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=7&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-311G**",
+    "bond": "-40.401643",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=21&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.407320",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=19&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.427104",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=10&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.432045",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=22&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "TZVP",
+    "bond": "-40.404102",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=32&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pVDZ",
+    "bond": "-40.383989",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=5&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pVTZ",
+    "bond": "-40.432087",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=6&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pVQZ",
+    "bond": "-40.444271",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=25&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.391414",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=17&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.434640",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=18&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.445021",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=26&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.432087",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=27&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.385590",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=23&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.433044",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=24&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.391928",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=36&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.434884",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=35&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "STO-3G",
+    "bond": "-39.806490",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=20&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "3-21G",
+    "bond": "-40.096225",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=2&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "3-21G*",
+    "bond": "-40.096225",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=8&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-31G",
+    "bond": "-40.300111",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=9&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-31G*",
+    "bond": "-40.356017",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=1&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-31G**",
+    "bond": "-40.389588",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=3&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-31+G**",
+    "bond": "-40.391034",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=4&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-311G*",
+    "bond": "-40.374177",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=7&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-311G**",
+    "bond": "-40.405948",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=21&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.411856",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=19&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.433026",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=10&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.438222",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=22&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "TZVP",
+    "bond": "-40.408419",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=32&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pVDZ",
+    "bond": "-40.387679",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=5&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pVTZ",
+    "bond": "-40.438185",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=6&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pVQZ",
+    "bond": "-40.450973",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=25&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.395888",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=17&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.441016",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=18&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.451814",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=26&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.438185",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=27&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.389364",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=23&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.439205",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=24&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.396452",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=36&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.441275",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=35&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.360483",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=1&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.396269",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=4&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.390371",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=5&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.455189",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=6&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.481245",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=25&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.398825",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=17&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.460438",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=18&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.482613",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=26&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.399414",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=36&charge=0"
+  },
+  {
+    "level": "QCISD(T)=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.461262",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=70&basis=35&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "STO-3G",
+    "bond": "-39.806581",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=20&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "3-21G",
+    "bond": "-40.096275",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=2&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "3-21G*",
+    "bond": "-40.096275",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=8&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-31G",
+    "bond": "-40.300287",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=9&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-31G*",
+    "bond": "-40.356167",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=1&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-31G**",
+    "bond": "-40.389827",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=3&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-31+G**",
+    "bond": "-40.391267",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=4&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-311G*",
+    "bond": "-40.374238",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=7&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-311G**",
+    "bond": "-40.406117",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=21&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.412131",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=19&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.433138",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=10&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.438317",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=22&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "TZVP",
+    "bond": "-40.408541",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=32&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "cc-pVDZ",
+    "bond": "-40.388043",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=5&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "cc-pVTZ",
+    "bond": "-40.438299",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=6&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "cc-pVQZ",
+    "bond": "-40.450994",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=25&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.396233",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=17&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.441118",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=18&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.451815",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=26&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.360636",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=1&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.396503",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=4&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.390734",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=5&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.455302",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=6&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.481256",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=25&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.399168",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=17&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.460538",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=76&basis=18&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "STO-3G",
+    "bond": "-39.806340",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=20&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "3-21G",
+    "bond": "-40.093973",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=2&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "3-21G*",
+    "bond": "-40.093973",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=8&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-31G",
+    "bond": "-40.298215",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=9&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-31G*",
+    "bond": "-40.352155",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=1&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-31G**",
+    "bond": "-40.385284",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=3&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-31+G**",
+    "bond": "-40.386514",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=4&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-311G*",
+    "bond": "-40.369343",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=7&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-311G**",
+    "bond": "-40.400664",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=21&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.406300",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=19&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.425905",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=10&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.430921",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=22&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "TZVP",
+    "bond": "-40.402963",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=32&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pVDZ",
+    "bond": "-40.383238",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=5&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pVTZ",
+    "bond": "-40.430991",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=6&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pVQZ",
+    "bond": "-40.443065",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=25&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.390526",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=17&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.433543",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=18&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.443816",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=26&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.430992",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=27&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.384805",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=23&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.431911",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=24&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.391038",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=36&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.433787",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=35&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "STO-3G",
+    "bond": "-39.806343",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=20&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "3-21G",
+    "bond": "-40.094352",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=2&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "3-21G*",
+    "bond": "-40.094352",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=8&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-31G",
+    "bond": "-40.298436",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=9&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-31G*",
+    "bond": "-40.353056",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=1&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-31G**",
+    "bond": "-40.385948",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=3&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-31+G**",
+    "bond": "-40.387235",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=4&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-311G*",
+    "bond": "-40.370526",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=7&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-311G**",
+    "bond": "-40.401436",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=21&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.407096",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=19&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.426826",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=10&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.431775",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=22&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "TZVP",
+    "bond": "-40.403849",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=32&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "cc-pVDZ",
+    "bond": "-40.383849",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=5&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "cc-pVTZ",
+    "bond": "-40.431822",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=6&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "cc-pVQZ",
+    "bond": "-40.443975",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=25&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.391245",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=17&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.434374",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=18&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.444725",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=26&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.431821",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=27&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.391758",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=36&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.434618",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=35&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "STO-3G",
+    "bond": "-39.806744",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=20&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "3-21G",
+    "bond": "-40.095850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=2&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.095850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=8&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-31G",
+    "bond": "-40.299618",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=9&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-31G*",
+    "bond": "-40.357481",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=1&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.391093",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=3&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.392418",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=4&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.389519",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=7&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.420986",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=21&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.414459",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=19&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.449589",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=10&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.454868",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=22&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "TZVP",
+    "bond": "-40.421646",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=32&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.386506",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=5&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.448679",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=6&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.473977",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=25&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.394143",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=17&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.453634",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=18&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.475247",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=26&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.394681",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=36&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.454441",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=35&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "STO-3G",
+    "bond": "-39.806490",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=20&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "3-21G",
+    "bond": "-40.096172",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=2&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "3-21G*",
+    "bond": "-40.096172",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=8&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-31G",
+    "bond": "-40.300081",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=9&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-31G*",
+    "bond": "-40.355919",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=1&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-31G**",
+    "bond": "-40.389529",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=3&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-31+G**",
+    "bond": "-40.390967",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=4&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-311G*",
+    "bond": "-40.374057",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=7&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-311G**",
+    "bond": "-40.405866",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=21&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.411792",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=19&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.432934",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=10&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.438134",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=22&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "TZVP",
+    "bond": "-40.408319",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=32&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pVDZ",
+    "bond": "-40.387626",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=5&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pVTZ",
+    "bond": "-40.438098",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=6&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pVQZ",
+    "bond": "-40.450887",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=25&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.395819",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=17&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.440929",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=18&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.451727",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=26&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.438098",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=27&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.389306",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=23&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.439117",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=24&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.396383",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=36&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.441188",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=35&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "STO-3G",
+    "bond": "-39.806897",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=20&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "3-21G",
+    "bond": "-40.097691",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=2&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "3-21G*",
+    "bond": "-40.097691",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=8&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-31G",
+    "bond": "-40.301280",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=9&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-31G*",
+    "bond": "-39.806897",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=1&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-31G**",
+    "bond": "-40.394725",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=3&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-31+G**",
+    "bond": "-40.396203",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=4&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-311G*",
+    "bond": "-40.393155",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=7&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-311G**",
+    "bond": "-40.425535",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=21&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-31G(2df,p)",
+    "bond": "-40.419232",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=19&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-311+G(3df,2p)",
+    "bond": "-40.455895",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=10&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "6-311+G(3df,2pd)",
+    "bond": "-40.461436",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=22&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "TZVP",
+    "bond": "-40.426215",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=32&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pVDZ",
+    "bond": "-40.390318",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=5&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pVTZ",
+    "bond": "-40.455100",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=6&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pVQZ",
+    "bond": "-40.481151",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=25&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "aug-cc-pVDZ",
+    "bond": "-40.398756",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=17&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "aug-cc-pVTZ",
+    "bond": "-40.460349",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=18&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "aug-cc-pVQZ",
+    "bond": "-40.482518",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=26&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pV(T+d)Z",
+    "bond": "-40.455101",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=27&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pCVDZ",
+    "bond": "-40.426819",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=23&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "cc-pCVTZ",
+    "bond": "-40.488989",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=24&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "daug-cc-pVDZ",
+    "bond": "-40.399345",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=36&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "daug-cc-pVTZ",
+    "bond": "-40.461173",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=35&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "CEP-31G",
+    "bond": "-7.798224",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=11&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "CEP-31G*",
+    "bond": "-7.813554",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=12&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "CEP-121G",
+    "bond": "-7.801939",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=13&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "CEP-121G*",
+    "bond": "-7.818767",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=14&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "LANL2DZ",
+    "bond": "-40.185427",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=15&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "SDD",
+    "bond": "-40.185613",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=16&charge=0"
+  },
+  {
+    "level": "HF",
+    "basis": "Def2TZVPP",
+    "bond": "-40.214483",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=1&basis=38&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "CEP-31G",
+    "bond": "-8.108008",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=11&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "CEP-31G*",
+    "bond": "-8.113850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=12&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "CEP-121G",
+    "bond": "-8.112862",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=13&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "CEP-121G*",
+    "bond": "-8.120071",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=14&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "LANL2DZ",
+    "bond": "-40.284270",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=15&charge=0"
+  },
+  {
+    "level": "LSDA",
+    "basis": "SDD",
+    "bond": "-40.285317",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=51&basis=16&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "CEP-31G",
+    "bond": "-8.004302",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=11&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "CEP-31G*",
+    "bond": "-8.010627",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=12&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "CEP-121G",
+    "bond": "-8.010634",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=13&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "CEP-121G*",
+    "bond": "-8.018952",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=14&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "LANL2DZ",
+    "bond": "-40.476102",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=15&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "SDD",
+    "bond": "-40.476161",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=16&charge=0"
+  },
+  {
+    "level": "BLYP",
+    "basis": "Def2TZVPP",
+    "bond": "-40.501673",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=13&basis=38&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "CEP-31G",
+    "bond": "-8.024392",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=11&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "CEP-31G*",
+    "bond": "-8.031974",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=12&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "CEP-121G",
+    "bond": "-8.030391",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=13&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "CEP-121G*",
+    "bond": "-8.039799",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=14&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "LANL2DZ",
+    "bond": "-40.477008",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=15&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "SDD",
+    "bond": "-40.476996",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=16&charge=0"
+  },
+  {
+    "level": "B1B95",
+    "basis": "Def2TZVPP",
+    "bond": "-40.498847",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=55&basis=38&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "CEP-31G",
+    "bond": "-8.051139",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=11&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "CEP-31G*",
+    "bond": "-8.058985",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=12&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "CEP-121G",
+    "bond": "-8.056334",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=13&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "CEP-121G*",
+    "bond": "-8.066086",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=14&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "LANL2DZ",
+    "bond": "-40.514471",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=15&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "SDD",
+    "bond": "-40.514458",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=16&charge=0"
+  },
+  {
+    "level": "B3LYP",
+    "basis": "Def2TZVPP",
+    "bond": "-40.539119",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=8&basis=38&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "CEP-31G",
+    "bond": "-8.051139",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=11&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "CEP-31G*",
+    "bond": "-8.058985",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=12&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "CEP-121G",
+    "bond": "-8.056334",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=13&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "CEP-121G*",
+    "bond": "-8.066086",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=14&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "LANL2DZ",
+    "bond": "-40.514471",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=15&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "SDD",
+    "bond": "-40.514458",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=16&charge=0"
+  },
+  {
+    "level": "B3LYPultrafine",
+    "basis": "Def2TZVPP",
+    "bond": "-40.539119",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=68&basis=38&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "CEP-31G",
+    "bond": "-8.069969",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=11&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "CEP-31G*",
+    "bond": "-8.077316",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=12&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "CEP-121G",
+    "bond": "-8.074125",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=13&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "CEP-121G*",
+    "bond": "-8.082995",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=14&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "LANL2DZ",
+    "bond": "-40.500790",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=15&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "SDD",
+    "bond": "-40.500766",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=16&charge=0"
+  },
+  {
+    "level": "B3PW91",
+    "basis": "Def2TZVPP",
+    "bond": "-40.522215",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=16&basis=38&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "CEP-31G",
+    "bond": "-8.058934",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=11&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "CEP-31G*",
+    "bond": "-8.066669",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=12&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "CEP-121G",
+    "bond": "-8.063068",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=13&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "CEP-121G*",
+    "bond": "-8.072341",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=14&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "LANL2DZ",
+    "bond": "-40.501396",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=15&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "SDD",
+    "bond": "-40.501377",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=16&charge=0"
+  },
+  {
+    "level": "mPW1PW91",
+    "basis": "Def2TZVPP",
+    "bond": "-40.522900",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=25&basis=38&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "CEP-31G",
+    "bond": "-8.024513",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=11&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "CEP-31G*",
+    "bond": "-8.032366",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=12&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "CEP-121G",
+    "bond": "-8.032032",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=13&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "CEP-121G*",
+    "bond": "-8.041505",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=14&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "LANL2DZ",
+    "bond": "-40.479714",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=15&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "SDD",
+    "bond": "-40.479678",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=16&charge=0"
+  },
+  {
+    "level": "M06-2X",
+    "basis": "Def2TZVPP",
+    "bond": "-40.501858",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=58&basis=38&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "CEP-31G",
+    "bond": "-8.033589",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=11&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "CEP-31G*",
+    "bond": "-8.039479",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=12&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "CEP-121G",
+    "bond": "-8.038671",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=13&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "CEP-121G*",
+    "bond": "-8.046199",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=14&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "LANL2DZ",
+    "bond": "-40.442947",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=15&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "SDD",
+    "bond": "-40.442942",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=16&charge=0"
+  },
+  {
+    "level": "PBEPBE",
+    "basis": "Def2TZVPP",
+    "bond": "-40.464373",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=61&basis=38&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "CEP-31G",
+    "bond": "-8.033582",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=11&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "CEP-31G*",
+    "bond": "-8.039472",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=12&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "CEP-121G",
+    "bond": "-8.038663",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=13&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "CEP-121G*",
+    "bond": "-8.046192",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=14&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "LANL2DZ",
+    "bond": "-40.442939",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=15&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "SDD",
+    "bond": "-40.442934",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=16&charge=0"
+  },
+  {
+    "level": "PBEPBEultrafine",
+    "basis": "Def2TZVPP",
+    "bond": "-40.464373",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=69&basis=38&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "CEP-31G",
+    "bond": "-8.039264",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=11&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "CEP-31G*",
+    "bond": "-8.047004",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=12&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "CEP-121G",
+    "bond": "-8.043474",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=13&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "CEP-121G*",
+    "bond": "-8.052748",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=14&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "LANL2DZ",
+    "bond": "-40.453966",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=15&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "SDD",
+    "bond": "-40.453947",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=16&charge=0"
+  },
+  {
+    "level": "PBE1PBE",
+    "basis": "Def2TZVPP",
+    "bond": "-40.475404",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=54&basis=38&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "CEP-31G",
+    "bond": "-8.037862",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=11&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "CEP-31G*",
+    "bond": "-8.045611",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=12&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "CEP-121G",
+    "bond": "-8.042045",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=13&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "CEP-121G*",
+    "bond": "-8.051346",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=14&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "LANL2DZ",
+    "bond": "-40.457218",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=15&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "SDD",
+    "bond": "-40.457192",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=16&charge=0"
+  },
+  {
+    "level": "HSEh1PBE",
+    "basis": "Def2TZVPP",
+    "bond": "-40.478905",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=57&basis=38&charge=0"
+  },
+  {
+    "level": "TPSSh",
+    "basis": "Def2TZVPP",
+    "bond": "-40.538301",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=75&basis=38&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "CEP-31G",
+    "bond": "-8.054050",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=11&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "CEP-31G*",
+    "bond": "-8.061653",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=12&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "CEP-121G",
+    "bond": "-8.058433",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=13&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "CEP-121G*",
+    "bond": "-8.067591",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=14&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "LANL2DZ",
+    "bond": "-40.499241",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=15&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "SDD",
+    "bond": "-40.499218",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=16&charge=0"
+  },
+  {
+    "level": "wB97X-D",
+    "basis": "Def2TZVPP",
+    "bond": "-40.520942",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=60&basis=38&charge=0"
+  },
+  {
+    "level": "B97D3",
+    "basis": "Def2TZVPP",
+    "bond": "-40.512477",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=90&basis=38&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "CEP-31G",
+    "bond": "-7.885374",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=11&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "CEP-31G*",
+    "bond": "-7.942153",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=12&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "CEP-121G",
+    "bond": "-7.898255",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=13&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "CEP-121G*",
+    "bond": "-7.958627",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=14&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "LANL2DZ",
+    "bond": "-40.278267",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=15&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "SDD",
+    "bond": "-40.278976",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=16&charge=0"
+  },
+  {
+    "level": "MP2",
+    "basis": "Def2TZVPP",
+    "bond": "-40.412106",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=3&basis=38&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "CEP-31G",
+    "bond": "-7.885374",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=11&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "CEP-31G*",
+    "bond": "-7.942153",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=12&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "CEP-121G",
+    "bond": "-7.898255",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=13&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "CEP-121G*",
+    "bond": "-7.958627",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=14&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "LANL2DZ",
+    "bond": "-40.279152",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=15&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "SDD",
+    "bond": "-40.291776",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=16&charge=0"
+  },
+  {
+    "level": "MP2=FULL",
+    "basis": "Def2TZVPP",
+    "bond": "-40.430838",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=2&basis=38&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "CEP-31G",
+    "bond": "-7.900170",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=11&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "CEP-31G*",
+    "bond": "-7.959446",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=12&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "CEP-121G",
+    "bond": "-7.912763",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=13&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "CEP-121G*",
+    "bond": "-7.975770",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=14&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "LANL2DZ",
+    "bond": "-40.292758",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=15&charge=0"
+  },
+  {
+    "level": "MP3",
+    "basis": "SDD",
+    "bond": "-40.293412",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=62&basis=16&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "CEP-31G",
+    "bond": "-7.904893",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=11&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "CEP-31G*",
+    "bond": "-7.964659",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=12&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "CEP-121G",
+    "bond": "-7.918769",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=13&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "CEP-121G*",
+    "bond": "-7.982246",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=14&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "LANL2DZ",
+    "bond": "-40.297747",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=15&charge=0"
+  },
+  {
+    "level": "MP4",
+    "basis": "SDD",
+    "bond": "-40.298440",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=4&basis=16&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "CEP-31G",
+    "bond": "-7.904893",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=11&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "CEP-31G*",
+    "bond": "-7.964659",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=12&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "CEP-121G",
+    "bond": "-7.918769",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=13&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "CEP-121G*",
+    "bond": "-7.982246",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=14&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "LANL2DZ",
+    "bond": "-40.298568",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=15&charge=0"
+  },
+  {
+    "level": "MP4=FULL",
+    "basis": "SDD",
+    "bond": "-40.312136",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=44&basis=16&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "CEP-31G",
+    "bond": "-7.977480",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=11&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "CEP-31G*",
+    "bond": "-8.001319",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=12&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "CEP-121G",
+    "bond": "-7.985107",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=13&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "CEP-121G*",
+    "bond": "-8.011338",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=14&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "LANL2DZ",
+    "bond": "-40.428594",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=15&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "SDD",
+    "bond": "-40.428806",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=16&charge=0"
+  },
+  {
+    "level": "B2PLYP",
+    "basis": "Def2TZVPP",
+    "bond": "-40.487183",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=56&basis=38&charge=0"
+  },
+  {
+    "level": "B2PLYP=FULL",
+    "basis": "Def2TZVPP",
+    "bond": "-40.492565",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=59&basis=38&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "CEP-31G",
+    "bond": "-7.901544",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=11&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "CEP-31G*",
+    "bond": "-7.957285",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=12&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "CEP-121G",
+    "bond": "-7.913947",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=13&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "CEP-121G*",
+    "bond": "-7.973013",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=14&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "LANL2DZ",
+    "bond": "-40.293781",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=15&charge=0"
+  },
+  {
+    "level": "CID",
+    "basis": "SDD",
+    "bond": "-40.294401",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=14&basis=16&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "CEP-31G",
+    "bond": "-7.901593",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=11&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "CEP-31G*",
+    "bond": "-7.957894",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=12&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "CEP-121G",
+    "bond": "-7.914445",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=13&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "CEP-121G*",
+    "bond": "-7.974004",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=14&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "LANL2DZ",
+    "bond": "-40.293864",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=15&charge=0"
+  },
+  {
+    "level": "CISD",
+    "basis": "SDD",
+    "bond": "-40.294495",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=15&basis=16&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "CEP-31G",
+    "bond": "-7.905716",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=11&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "CEP-31G*",
+    "bond": "-7.963784",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=12&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "CEP-121G",
+    "bond": "-7.919253",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=13&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "CEP-121G*",
+    "bond": "-7.980761",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=14&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "LANL2DZ",
+    "bond": "-40.298511",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=15&charge=0"
+  },
+  {
+    "level": "QCISD",
+    "basis": "SDD",
+    "bond": "-40.299184",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=5&basis=16&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "CEP-31G",
+    "bond": "-7.906853",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=11&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "CEP-31G*",
+    "bond": "-7.966051",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=12&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "CEP-121G",
+    "bond": "-7.920996",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=13&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "CEP-121G*",
+    "bond": "-7.983695",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=14&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "LANL2DZ",
+    "bond": "-40.299754",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=15&charge=0"
+  },
+  {
+    "level": "QCISD(T)",
+    "basis": "SDD",
+    "bond": "-40.300451",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=10&basis=16&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "CEP-31G",
+    "bond": "-7.907111",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=11&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "CEP-31G*",
+    "bond": "-7.966380",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=12&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "CEP-121G",
+    "bond": "-7.921077",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=13&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "CEP-121G*",
+    "bond": "-7.983854",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=14&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "LANL2DZ",
+    "bond": "-40.300030",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=15&charge=0"
+  },
+  {
+    "level": "QCISD(TQ)",
+    "basis": "SDD",
+    "bond": "-40.300722",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=66&basis=16&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "CEP-31G",
+    "bond": "-7.905653",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=11&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "CEP-31G*",
+    "bond": "-7.963028",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=12&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "CEP-121G",
+    "bond": "-7.918651",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=13&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "CEP-121G*",
+    "bond": "-7.979525",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=14&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "LANL2DZ",
+    "bond": "-40.298405",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=15&charge=0"
+  },
+  {
+    "level": "CCD",
+    "basis": "SDD",
+    "bond": "-40.299065",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=6&basis=16&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "CEP-31G",
+    "bond": "-7.905706",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=11&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "CEP-31G*",
+    "bond": "-7.963649",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=12&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "CEP-121G",
+    "bond": "-7.919142",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=13&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "CEP-121G*",
+    "bond": "-7.980508",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=14&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "LANL2DZ",
+    "bond": "-40.298489",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=15&charge=0"
+  },
+  {
+    "level": "CCSD",
+    "basis": "SDD",
+    "bond": "-40.299158",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=11&basis=16&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "CEP-31G",
+    "bond": "-7.905706",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=11&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "CEP-31G*",
+    "bond": "-7.963649",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=12&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "CEP-121G",
+    "bond": "-7.919142",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=13&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "CEP-121G*",
+    "bond": "-7.980508",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=14&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "LANL2DZ",
+    "bond": "-40.299289",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=15&charge=0"
+  },
+  {
+    "level": "CCSD=FULL",
+    "basis": "SDD",
+    "bond": "-40.312804",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=65&basis=16&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "CEP-31G",
+    "bond": "-7.906850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=11&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "CEP-31G*",
+    "bond": "-7.966018",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=12&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "CEP-121G",
+    "bond": "-7.920937",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=13&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "CEP-121G*",
+    "bond": "-7.983612",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=14&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "LANL2DZ",
+    "bond": "-40.299745",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=15&charge=0"
+  },
+  {
+    "level": "CCSD(T)",
+    "basis": "SDD",
+    "bond": "-40.300440",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=12&basis=16&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "CEP-31G",
+    "bond": "-7.906850",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=11&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "CEP-31G*",
+    "bond": "-7.966018",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=12&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "CEP-121G",
+    "bond": "-7.920937",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=13&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "CEP-121G*",
+    "bond": "-7.983612",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=14&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "LANL2DZ",
+    "bond": "-40.300559",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=15&charge=0"
+  },
+  {
+    "level": "CCSD(T)=FULL",
+    "basis": "SDD",
+    "bond": "-40.314129",
+    "url": "https://cccbdb.nist.gov/energy3x.asp?method=63&basis=16&charge=0"
+  }
+]

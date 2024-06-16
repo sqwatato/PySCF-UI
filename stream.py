@@ -192,7 +192,7 @@ tabDatabase, tabTextInput, tabFileInput = st.tabs(
     ["Database", "Text Input", "File Input"])
 
 basis_option = st.selectbox(
-    "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z"])
+    "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z", "sto-3g"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
                               "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
 # verbose_option = st.slider("Verbose", min_value=0, max_value=9, value=2)
@@ -297,17 +297,17 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             rdkit_mol = Chem.Mol(raw_mol)
             rdDetermineBonds.DetermineBonds(rdkit_mol, charge=0)
 
-            # data = compute_pyscf(
-                # atom, basis, verbose_option, temp, press)
+            data = compute_pyscf(
+                atom, basis, verbose_option, temp, press)
             
-            tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
-            response = requests.post(api_url, params=tdict)
+            # tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
+            # response = requests.post(api_url, params=tdict)
             
-            if response.status_code == 200:
-                data = response.json()
-                print("Yay, it worked!")
-            else:
-                print(f"Error: {response.status_code} - {response.text}")   
+            # if response.status_code == 200:
+            #     data = response.json()
+            #     print("Yay, it worked!")
+            # else:
+            #     print(f"Error: {response.status_code} - {response.text}")   
             data['Atoms'] = rdkit_mol.GetNumAtoms()
             data['Bonds'] = rdkit_mol.GetNumBonds()
             data['Rings'] = rdkit_mol.GetRingInfo().NumRings()
