@@ -9,7 +9,8 @@ import py3Dmol
 from rdkit import Chem
 from rdkit.Chem import rdDetermineBonds
 from rdkit.Chem.rdmolfiles import MolFromXYZFile
-from rdkit.Chem import Descriptors, Draw, AllChem
+from rdkit.Chem import Descriptors, AllChem
+from rdkit.Chem.Draw import MolToImage
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -378,8 +379,8 @@ with tab1:
                 with result_col_2:
                     speck_plot(
                         data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
-                    st.image(Draw.MolToImage(data['Rdkit Molecule'], size=(200, 200)))
-                    st.image(Draw.MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
+                    st.image(MolToImage(data['Rdkit Molecule'], size=(200, 200)))
+                    st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
                 # linebreak
                 st.write("")
                 st.write("")
