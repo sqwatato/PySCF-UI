@@ -23,6 +23,7 @@ from utils import getAtomicToMoleculeName
 # R^2
 from sklearn.metrics import r2_score
 import requests
+import timeit
 
 api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = getAtomicToMoleculeName()
@@ -300,9 +301,10 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             tmpmol = Chem.AddHs(rdkit_mol)
             AllChem.EmbedMolecule(tmpmol)
             smiles = Chem.MolToSmiles(tmpmol)
-
+            start = timeit.default_timer()
             data = compute_pyscf(
                 atom, basis, verbose_option, temp, press)
+            total_time = timeit.default_timer() - start
             
             # tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
             # response = requests.post(api_url, params=tdict)
@@ -321,6 +323,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             data['Basis'] = basis
             data['Molecule Name'] = getMoleculeName(atom)
             data['Smiles'] = smiles
+            data['Real Compute Time'] = total_time
             
             st.session_state['results'].append(data)
             st.rerun()
@@ -341,6 +344,10 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
+        st.text("Total Real Time: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
+        st.text("Total Time From Log: " + str(sum(x['Runtime'] + x['Hessian Runtime'] for x in st.session_state['results'])) + "s")
+        st.text("Total Runtime: " + str(sum(x['Runtime'] for x in st.session_state['results'])) + "s")
+        st.text("Total Hessian Runtime: " + str(sum(x['Hessian Runtime'] for x in st.session_state['results'])) + "s")
         for result_item in st.session_state['results']:
             data = result_item
             energy = {
@@ -363,7 +370,7 @@ with tab1:
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(data['Molecule Name']):
+            with st.expander(data['Molecule Name'] + ": " + str(round(data['Real Compute Time'], 2)) + "s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
                     f"{data['Molecule Name']} | {data['Basis']} | Runtime: {data['Runtime']} seconds | Hessian Runtime: {data['Hessian Runtime']} seconds")
@@ -427,6 +434,7 @@ with tab2:
             'Molecule',
             'Molecule Name',
             'Smiles',
+            'Real Compute Time'
         ]
         
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
