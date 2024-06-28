@@ -62,17 +62,25 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     
     outputFile = open("output-test.txt", "r")
     # Extract energy and time information
-    time = None
-    hessian_time = None
+    scf_cpu_time = None
+    scf_wall_time = None
+    hessian_cpu_time = None
+    hessian_wall_time = None
     energy = None
     for line in outputFile.readlines():
         if line.startswith("    CPU time for SCF"):
-            time = float(line.split(" ")[-2])
+            words = [i for i in line.split() if i]
+            # ['CPU', 'time', 'for', 'SCF', '3.00', 'sec,', 'wall', 'time', '0.51', 'sec']
+            scf_cpu_time = float(words[4])
+            scf_wall_time = float(words[8])
 
-        elif line.startswith("converged SCF energy = "):
-            energy = float([i for i in line.split() if i != ''][4])
+        # elif line.startswith("converged SCF energy = "):
+        #     energy = float([i for i in line.split() if i != ''][4])
         elif line.startswith("    CPU time for UHF hessian"):
-            hessian_time = float(line.split(" ")[-2])
+            words = [i for i in line.split() if i]
+            # ['CPU', 'time', 'for', 'UHF', 'hessian', '7.12', 'sec,', 'wall', 'time', '4.87', 'sec']
+            hessian_cpu_time = float(words[5])
+            hessian_wall_time = float(words[9])
     
     #Helmholtz Free Energy
     F_elec = (thermo_info['E_elec'][0] - temperature * thermo_info['S_elec' ][0], 'Eh')
@@ -97,8 +105,10 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     
     data = {
         # 'energy': energy,
-        'Runtime': time,
-        'Hessian Runtime': hessian_time,
+        'SCF CPU Runtime': scf_cpu_time,
+        'SCF Wall Runtime': scf_wall_time,
+        'Hessian CPU Runtime': hessian_cpu_time,
+        'Hessian Wall Runtime': hessian_wall_time,
         'Converged SCF-HF Nuclear Energy (Ha)': mf.energy_nuc(),
         'Converged SCF-HF Electronic Energy (Ha)': mf.energy_elec(),
         'Converged SCF-HF Total Energy (Ha)': mf.energy_tot(),
@@ -196,7 +206,7 @@ tabDatabase, tabTextInput, tabFileInput = st.tabs(
 basis_option = st.selectbox(
     "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z", "sto-3g"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
-                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "9, max"])
+                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "6", "7", "8", "9, max"])
 # verbose_option = st.slider("Verbose", min_value=0, max_value=9, value=2)
 
 #Second Input (NEW) - Pressure of the system
@@ -344,10 +354,13 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
-        st.text("Total Real Time: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
-        st.text("Total Time From Log: " + str(sum(x['Runtime'] + x['Hessian Runtime'] for x in st.session_state['results'])) + "s")
-        st.text("Total Runtime: " + str(sum(x['Runtime'] for x in st.session_state['results'])) + "s")
-        st.text("Total Hessian Runtime: " + str(sum(x['Hessian Runtime'] for x in st.session_state['results'])) + "s")
+        st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
+        st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
+        st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        
+        
         for result_item in st.session_state['results']:
             data = result_item
             energy = {
@@ -365,7 +378,7 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'Runtime', 'Hessian Runtime']
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime']
             
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
@@ -373,7 +386,11 @@ with tab1:
             with st.expander(data['Molecule Name'] + ": " + str(round(data['Real Compute Time'], 2)) + "s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(
-                    f"{data['Molecule Name']} | {data['Basis']} | Runtime: {data['Runtime']} seconds | Hessian Runtime: {data['Hessian Runtime']} seconds")
+                    f"{data['Molecule Name']} | {data['Basis']}")
+                result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']}s")
+                result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']}s")
+                result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']}s")
+                result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']}s")
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
                 result_col_1.write(
@@ -391,8 +408,20 @@ with tab1:
                 # linebreak
                 st.write("")
                 st.write("")
-                st.table(data=enerdf)
-                st.table(data=entrodf)
+                
+                
+                col_config = {i:st.column_config.NumberColumn(i, format="%.4f") for i in enerdf.columns}
+                st.dataframe(
+                    data=enerdf, 
+                    use_container_width=True,
+                    column_config=col_config
+                )
+                col_config = {i:st.column_config.NumberColumn(i, format="%.4f") for i in entrodf.columns}
+                st.dataframe(
+                    data=entrodf, 
+                    use_container_width=True,
+                    column_config=col_config
+                )
                 
 
 with tab2:
