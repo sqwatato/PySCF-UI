@@ -25,7 +25,12 @@ from sklearn.metrics import r2_score
 import requests
 import timeit
 
-api_url = "http://0.0.0.0:8000/calculate"
+st.set_page_config(
+    page_title="PySCF UI",
+    page_icon="📈",
+)
+
+# api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = getAtomicToMoleculeName()
 trend_threshold = 0.95
 
