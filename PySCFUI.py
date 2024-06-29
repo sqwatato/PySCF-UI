@@ -181,8 +181,11 @@ def getMoleculeName(atom):
         except:
             pass
     name = ""
-    for key in d:
-        name += key + str(d[key])
+    for key,value in d.items():
+        if value > 1:
+            name += key + str(value)
+        else:
+            name += key
     return name
 
 
