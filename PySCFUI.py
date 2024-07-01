@@ -53,8 +53,8 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     mol = gto.Mole()
     mol.atom = atom
     mol.basis = basis_option
-    # mol.verbose = verbose_option
-    mol.verbose = int(verbose_option[0])
+    mol.verbose = verbose_option
+    # mol.verbose = int(verbose_option[0])
     mol.output = 'output-test.txt'
     mol.build()
 
@@ -213,9 +213,10 @@ tabDatabase, tabTextInput, tabFileInput = st.tabs(
 
 basis_option = st.selectbox(
     "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z", "sto-3g"])
-verbose_option = st.selectbox("Verbose", index=2, options=[
-                              "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "6", "7", "8", "9, max"])
-# verbose_option = st.slider("Verbose", min_value=0, max_value=9, value=2)
+# verbose_option = st.selectbox("Verbose", index=2, options=[
+                            #   "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "6", "7", "8", "9, max"])
+
+verbose_option = st.slider("Verbose", min_value=3, max_value=9, value=5)
 
 #Second Input (NEW) - Pressure of the system
 # pressure = 101325 #in Pascals (Pa), 101325 Pa = 1 atm
