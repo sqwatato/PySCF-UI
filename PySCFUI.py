@@ -212,7 +212,7 @@ tabDatabase, tabTextInput, tabFileInput = st.tabs(
     ["Database", "Text Input", "File Input"])
 
 basis_option = st.selectbox(
-    "Basis", ["cc-pVTZ", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z", "sto-3g"])
+    "Basis", ["ccpvtz", "cc-pVDZ", "cc-pVQZ", "cc-pV5Z", "sto-3g"])
 verbose_option = st.selectbox("Verbose", index=2, options=[
                               "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "6", "7", "8", "9, max"])
 # verbose_option = st.slider("Verbose", min_value=0, max_value=9, value=2)
