@@ -1,11 +1,11 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Instructions",
+    page_title="Quickstart Guide",
     page_icon="📝",
 )
 
-st.title("Instructions")
+st.title("Quickstart Guide")
 st.write("This UI is intended to serve as an easy and intuitive way to perform self-consistent field calculations, thermodynamic analyses, and harmonic oscillator calculations for molecules using the PySCF library. Here are some instructions on how to use the current features of the UI.")
 st.write("PySCF UI was created mainly for future use in organic, biochemical, and pharmaceutical synthesis. As such, all future updates and features will aim to combine general *ab initio* computational method features with aesthetic updates and specialized updates in line with these fields.")
 st.header("Selecting Molecular Geometries")
