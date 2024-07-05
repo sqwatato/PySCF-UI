@@ -19,4 +19,4 @@ program package.” *The Journal of Chemical Physics*, vol.
 st.write("""3. NIST Computational Chemistry Comparison and
 Benchmark Database, NIST Standard Reference
 Database Number 101, Release 22, May 2022, edited by
-Russell D. Johnson III. https:// doi.org/10.18434/t47c7z.""")
+Russell D. Johnson III. https://doi.org/10.18434/t47c7z.""")
