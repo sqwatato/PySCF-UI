@@ -12,4 +12,4 @@ st.write("The UI allows for both custom .xyz file-type molecular geometries, as 
 st.header("Basis Sets")
 st.write("PySCF UI currently allows for users to select any of the basis sets built into the PySCF library. These basis sets are Gaussian-type orbital basis sets (PySCF does not have Slater-type orbital basis sets currently built into the library).")
 st.write("Please note that not all of the basis sets exist for all the atoms; thus, the UI will throw an error if a basis set has not been found for a particular atom. To see the list of all basis sets offered by PySCF, and the atoms for which those basis sets are offered, please visit the link below:")
-         
+st.write("[link]https://pyscf.org/_modules/pyscf/gto/basis.html")  
