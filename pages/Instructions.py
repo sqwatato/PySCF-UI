@@ -15,3 +15,4 @@ st.write("Please note that not all of the basis sets exist for all the atoms; th
 st.write("https://pyscf.org/_modules/pyscf/gto/basis.html")  
 st.header("Verbose")
 st.write("The verbose quantity refers to the amount of information displayed in the PySCF logs once the calculation is finished. The minimum verbose level provided by the UI is 3; this is the bare minimum that provides the energy and runtime for the molecule. We recommend to use verbose 5 to get the runtime and energies for each cycle in the SCF calculation process; however, if you would like more data on the process, select a verbose value higher than 5. The maximum verbose value is 9.")
+st.write("To see what features are provided at each verbose level, please visit the PySCF developer guide. To get a basic understanding of the features of PySCF (including verbose), please visit the PySCF user guide.")
