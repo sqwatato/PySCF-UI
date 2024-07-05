@@ -5,5 +5,10 @@ st.set_page_config(
     page_icon="🏅",
 )
 
-st.title("References & Acknolegdments")
-st.write("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
+st.title("References & Acknowlegdements")
+st.write("This UI is free to use and is intended for educational purposes. The researchers involved in this project are affiliated with the Aspiring Scholars Directed Research Program in Fremont, California, and are part of the Quantum Chemistry Group in the McMahan Lab.")
+st.header("References")
+st.write("Sun, Qiming, et al. "PySCF: the Python-based simulations
+of chemistry framework." Wiley Interdisciplinary Reviews:
+Computational Molecular Science, vol. 8, no. 1, 2018,
+e1340. https://doi.org/10.1098/rspa.1951.0048.")
