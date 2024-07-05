@@ -7,6 +7,7 @@ st.set_page_config(
 
 st.title("References & Acknowlegdements")
 st.write("This UI is free to use and is intended for educational purposes. The researchers involved in this project are affiliated with the Aspiring Scholars Directed Research Program in Fremont, California, and are part of the Quantum Chemistry Group in the McMahan Lab.")
+st.write("We would like to thank ASDRP, Dr. Larry McMahan, and all the researchers who have, are, and will be in the Quantum Chemistry group for their contributions to this UI. We would also like to thank our collaborators, the Quantum Computing I Group, for their support.")
 st.header("References")
 st.write("""1. Sun, Qiming, et al. "PySCF: the Python-based simulations
 of chemistry framework." *Wiley Interdisciplinary Reviews:
