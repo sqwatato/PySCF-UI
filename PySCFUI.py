@@ -403,7 +403,7 @@ with tab1:
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
                 result_col_1.write(
-                    f"Molecular Weight: {data['Weight']}")
+                    f"Molecular Weight: {data['Weight']}Da")
                 # energy data
                 for key, value in data.items():
                     if key not in excluded_keys:
