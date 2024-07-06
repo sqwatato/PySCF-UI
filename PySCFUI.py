@@ -392,10 +392,8 @@ with tab1:
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(data['Molecule Name'] + ": " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(data['Molecule Name'] + "|"+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
-                result_col_1.write(
-                    f"{data['Molecule Name']} | {data['Basis']}")
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
