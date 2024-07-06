@@ -106,7 +106,7 @@ pydeck==0.8.1b0
 Pygments==2.16.1
 pymdown-extensions==10.7
 pyparsing==3.1.1
-pyscf==2.4.0
+pyscf==2.6.0
 python-dateutil==2.8.2
 python-json-logger==2.0.7
 pytz==2023.3.post1
