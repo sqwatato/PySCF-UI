@@ -266,7 +266,7 @@ with tabFileInput:
         st.write("H -0.6311940 0.6311940 -0.6311940")
         st.write("H 0.6311940 -0.6311940 -0.631194")
     # Display file uploader for a single text file and processes it
-    uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt"])
+    uploaded_file = st.file_uploader("Upload a XYZ input", type=["txt","xyz"])
     text_contents = process_text_file(uploaded_file)
     xyz_input = st.text_area(
         "XYZ Input", value=text_contents, key="filexyz") if text_contents else None
