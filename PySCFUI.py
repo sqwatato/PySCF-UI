@@ -41,6 +41,8 @@ if 'results' not in st.session_state:
     st.session_state['results'] = []
 if 'computing' not in st.session_state:
     st.session_state['computing'] = False
+if 'counter' not in st.session_state:
+    st.session_state['counter'] = 0
 
 # get all files in directory names precomputed_molecules:
 precomputed_molecules = list(map(lambda x: x.split(
@@ -109,7 +111,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     Ξ_vib = (thermo_info['G_vib'][0]/(-1*temperature), 'Eh/K')
     Ξ_tot = (thermo_info['G_tot'][0]/(-1*temperature), 'Eh/K')   
     
-    data = {
+     = {
         # 'energy': energy,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
@@ -118,7 +120,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
         'Converged SCF-HF Nuclear Energy (Ha)': mf.energy_nuc(),
         'Converged SCF-HF Electronic Energy (Ha)': mf.energy_elec(),
         'Converged SCF-HF Total Energy (Ha)': mf.energy_tot(),
-        # thermodynamic data
+        # thermodynamic 
         # Heat Capacity
         'Constant Volume Heat Capacity (Ha/K)': thermo_info['Cv_tot'][0],
         'Constant Pressure Heat Capacity (Ha/K)': thermo_info['Cp_tot'][0],
@@ -167,7 +169,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
             'Rotational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_rot[0],
     }
 
-    return data
+    return 
 
 
 def getMoleculeName(atom):
@@ -344,8 +346,8 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             data['Molecule Name'] = getMoleculeName(atom)
             data['Smiles'] = smiles
             data['Real Compute Time'] = total_time
-            counter = counter + 1
-            data['Counter'] = counter
+            st.session_state['counter'] += 1
+            data['Run Order'] = st.session_state['counter']
             st.session_state['results'].append(data)
             st.rerun()
             
@@ -389,12 +391,12 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime']
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime']
             
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(str(data['Counter'])+ data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(str(data['Run Order'])+ data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
