@@ -33,6 +33,7 @@ st.set_page_config(
 # api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = getAtomicToMoleculeName()
 trend_threshold = 0.95
+counter = 0
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -40,7 +41,7 @@ if 'results' not in st.session_state:
     st.session_state['results'] = []
 if 'computing' not in st.session_state:
     st.session_state['computing'] = False
-counter = 0
+
 # get all files in directory names precomputed_molecules:
 precomputed_molecules = list(map(lambda x: x.split(
     ".")[0], os.listdir("precomputed_molecules")))
@@ -343,8 +344,8 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             data['Molecule Name'] = getMoleculeName(atom)
             data['Smiles'] = smiles
             data['Real Compute Time'] = total_time
-            counter += 1
-            data['Counter'] = str(counter)
+            counter = counter + 1
+            data['Counter'] = counter
             st.session_state['results'].append(data)
             st.rerun()
             
@@ -393,7 +394,7 @@ with tab1:
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(data['Counter']+ data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(str(data['Counter'])+ data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
