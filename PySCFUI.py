@@ -464,6 +464,7 @@ with tab2:
             'Bonds',
             # 'Rings',
             'Weight',
+            'Run Order'
         ]
         
         exclude = [
