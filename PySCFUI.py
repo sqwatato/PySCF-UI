@@ -33,7 +33,6 @@ st.set_page_config(
 # api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = getAtomicToMoleculeName()
 trend_threshold = 0.95
-counter = 0
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
@@ -396,7 +395,7 @@ with tab1:
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(str(data['Run Order'])+ data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
@@ -464,7 +463,6 @@ with tab2:
             'Bonds',
             # 'Rings',
             'Weight',
-            'Run Order'
         ]
         
         exclude = [
@@ -475,7 +473,8 @@ with tab2:
             'Molecule',
             'Molecule Name',
             'Smiles',
-            'Real Compute Time'
+            'Real Compute Time',
+            'Run Order'
         ]
         
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
