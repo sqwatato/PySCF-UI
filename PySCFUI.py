@@ -111,7 +111,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
     Ξ_vib = (thermo_info['G_vib'][0]/(-1*temperature), 'Eh/K')
     Ξ_tot = (thermo_info['G_tot'][0]/(-1*temperature), 'Eh/K')   
     
-     = {
+    data = {
         # 'energy': energy,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
@@ -169,7 +169,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
             'Rotational Planck Potential/Gibbs Free Potential (Ha/K)': Ξ_rot[0],
     }
 
-    return 
+    return data
 
 
 def getMoleculeName(atom):
