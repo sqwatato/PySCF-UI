@@ -395,7 +395,7 @@ with tab1:
             with st.expander(str(len(st.session_state['queue']))+data['Molecule Name'] + " | "+data['Basis']+": " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
-                resultscol_1.write(f"{str(len(st.session_state['queue'])}")
+                resultscol_1.write(f"{str(len(st.session_state['queue']))}")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
                 result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
