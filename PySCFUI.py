@@ -24,7 +24,7 @@ from utils import getAtomicToMoleculeName
 from sklearn.metrics import r2_score
 import requests
 import timeit
-import basis_stack_exchange as bse
+import basis_set_exchange as bse
 
 st.set_page_config(
     page_title="PySCF UI",
