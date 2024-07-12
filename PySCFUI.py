@@ -24,6 +24,7 @@ from utils import getAtomicToMoleculeName
 from sklearn.metrics import r2_score
 import requests
 import timeit
+import basis_stack_exchange as bse
 
 st.set_page_config(
     page_title="PySCF UI",
@@ -48,13 +49,22 @@ precomputed_molecules = list(map(lambda x: x.split(
     ".")[0], os.listdir("precomputed_molecules")))
 
 
-def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
+def compute_pyscf(atom, basis_source, basis_option, verbose_option, temperature, pressure):
     # print(atom)
     # print(basis_option)
     # print(verbose_option)
     mol = gto.Mole()
     mol.atom = atom
-    mol.basis = basis_option
+    if basis_source == "PySCF":
+        mol.basis = basis_option
+    elif basis_source == "BSE":
+        mol.basis = {'H':gto.basis.parse(bse.get_basis(basis_option,elements=[1],fmt='nwchem',header=False)), 
+             'C':gto.basis.parse(bse.get_basis(basis_option,elements=[6],fmt='nwchem',header=False)),
+             'N':gto.basis.parse(bse.get_basis(basis_option,elements=[7],fmt='nwchem',header=False)),
+             'O':gto.basis.parse(bse.get_basis(basis_option,elements=[8],fmt='nwchem',header=False)),
+             'F':gto.basis.parse(bse.get_basis(basis_option,elements=[9],fmt='nwchem',header=False)),
+             'P':gto.basis.parse(bse.get_basis(basis_option,elements=[15],fmt='nwchem',header=False)),
+             'S':gto.basis.parse(bse.get_basis(basis_option,elements=[16],fmt='nwchem',header=False))}
     mol.verbose = verbose_option
     # mol.verbose = int(verbose_option[0])
     mol.output = 'output-test.txt'
@@ -62,7 +72,7 @@ def compute_pyscf(atom, basis_option, verbose_option, temperature, pressure):
 
     # mf = scf.RHF(mol)
     # mf.kernel()
-    mf =mol.UHF().run()
+    mf = mol.UHF().run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
@@ -331,7 +341,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             smiles = Chem.MolToSmiles(tmpmol)
             start = timeit.default_timer()
             data = compute_pyscf(
-                atom, basis, verbose_option, temp, press)
+                atom, bse_pyscf, basis, verbose_option, temp, press)
             total_time = timeit.default_timer() - start
             
             # tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
