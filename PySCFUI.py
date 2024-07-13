@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from pyscf import gto, scf
+from pyscf import gto, scf, dft
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import threading
 import time
@@ -73,8 +73,9 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     # mf = scf.RHF(mol)
     # mf.kernel()
     if method == "Unrestricted Hartree-Fock":
-        mf = mol.UHF().run()
-    elif method == "Restricted Hartree-Fock":
+        mf = scf.UHF(mol)
+        mf.kernel()
+    elif method == "Unrestricted Kohn-Sham Density Functional Theory":
         mf = mol.RHF().run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
