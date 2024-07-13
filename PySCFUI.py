@@ -76,7 +76,8 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         mf = scf.UHF(mol)
         mf.kernel()
     elif method == "Unrestricted Kohn-Sham Density Functional Theory":
-        mf = mol.RHF().run()
+        mf = dft.UKS(mol)
+        mf.kernel()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
@@ -227,7 +228,7 @@ def addToQueue(atom, basis):
 tabQM9Database, tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
     ["QM9 Database", "CCCBDB PySCF UI Database", "Text Input", "File Input"])
 method_option = st.selectbox(
-    "Method", ["Restricted Hartree-Fock","Unrestricted Hartree-Fock"])
+    "Method", ["Unrestricted Kohn-Sham Density Functional Theory","Unrestricted Hartree-Fock"])
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
 if bse_pyscf == 'PySCF':
     basis_option = st.selectbox(
