@@ -49,7 +49,7 @@ precomputed_molecules = list(map(lambda x: x.split(
     ".")[0], os.listdir("precomputed_molecules")))
 
 
-def compute_pyscf(atom, basis_source, basis_option, verbose_option, temperature, pressure):
+def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temperature, pressure):
     # print(atom)
     # print(basis_option)
     # print(verbose_option)
@@ -72,7 +72,10 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, temperature,
 
     # mf = scf.RHF(mol)
     # mf.kernel()
-    mf = mol.UHF().run()
+    if method == "Unrestricted Hartree-Fock":
+        mf = mol.UHF().run()
+    elif method == "Restricted Hartree-Fock":
+        mf = mol.RHF().run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
@@ -222,7 +225,8 @@ def addToQueue(atom, basis):
 
 tabQM9Database, tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
     ["QM9 Database", "CCCBDB PySCF UI Database", "Text Input", "File Input"])
-
+method_option = st.selectbox(
+    "Method", ["Restricted Hartree-Fock","Unrestricted Hartree-Fock"])
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
 if bse_pyscf == 'PySCF':
     basis_option = st.selectbox(
@@ -354,7 +358,7 @@ if st.button("Compute", disabled=compute_disabled, type="primary", use_container
             smiles = Chem.MolToSmiles(tmpmol)
             start = timeit.default_timer()
             data = compute_pyscf(
-                atom, bse_pyscf, basis, verbose_option, temp, press)
+                atom, bse_pyscf, basis, verbose_option, method_option, temp, press)
             total_time = timeit.default_timer() - start
             
             # tdict = {"atom": atom, "basis_option": basis, "verbose_option": verbose_option, "temperature": temp, "pressure": press}
