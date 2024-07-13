@@ -127,13 +127,14 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     
     data = {
         # 'energy': energy,
+        'Method': method,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
         'Hessian Wall Runtime': hessian_wall_time,
-        'Converged SCF-HF Nuclear Energy (Ha)': mf.energy_nuc(),
-        'Converged SCF-HF Electronic Energy (Ha)': mf.energy_elec(),
-        'Converged SCF-HF Total Energy (Ha)': mf.energy_tot(),
+        'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
+        'Converged SCF Electronic Energy (Ha)': mf.energy_elec(),
+        'Converged SCF Total Energy (Ha)': mf.energy_tot(),
         # thermodynamic 
         # Heat Capacity
         'Constant Volume Heat Capacity (Ha/K)': thermo_info['Cv_tot'][0],
@@ -428,13 +429,14 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source']
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source', 'Method']
             
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
             with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
+                result_col_1.write(f"Method: {data['Method']}")
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
@@ -513,7 +515,8 @@ with tab2:
             'Smiles',
             'Real Compute Time',
             'Run Order',
-            'Basis Source'
+            'Basis Source',
+            'Method'
         ]
         
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
