@@ -75,7 +75,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     if method == "Unrestricted Hartree-Fock":
         mf = mol.UHF().run()
     elif method == "Restricted Hartree-Fock":
-        mf = mol.RHF().run()
+        mf = mol.UHF().run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
