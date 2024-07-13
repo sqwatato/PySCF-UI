@@ -220,8 +220,8 @@ def addToQueue(atom, basis):
     st.session_state['queue'].append((atom, basis))
 
 
-tabDatabase, tabTextInput, tabFileInput = st.tabs(
-    ["Database", "Text Input", "File Input"])
+tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
+    ["CCCBDB PySCF UI Database", "Text Input", "File Input"])
 
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
 if bse_pyscf == 'PySCF':
@@ -245,9 +245,9 @@ thermo_row = row(2)
 temp = thermo_row.number_input("Temperature (K)", min_value=0.0, value=298.15)
 press = thermo_row.number_input("Pressure (Pa)", min_value=0.0, value=101325.0)
 
-with tabDatabase:
+with tabCCCBDBDatabase:
     selectedMolecule = st.selectbox(
-        'Search Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
+        'Search UI Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
     if st.button('Add to Queue', use_container_width=True, key="db"):
         if selectedMolecule:
             parseDatafile = open(
