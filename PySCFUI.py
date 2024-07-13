@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
-from pyscf import gto, scf, dft
+from pyscf import gto, scf
 from streamlit.runtime.scriptrunner import add_script_run_ctx
 import threading
 import time
@@ -73,8 +73,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     # mf = scf.RHF(mol)
     # mf.kernel()
     if method == "UHF":
-        mf = scf.UHF(mol)
-        mf.kernel()
+        mf = scf.UHF(mol).run()
     elif method == "UKS":
         mf = dft.UKS(mol)
         mf.kernel()
