@@ -75,7 +75,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     if method == "Unrestricted Hartree-Fock":
         mf = mol.UHF().run()
     elif method == "Restricted Hartree-Fock":
-        mf = mol.UHF().run()
+        mf = mol.RHF().run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
@@ -402,10 +402,10 @@ with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
         st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
+        st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
         st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         
         
         for result_item in st.session_state['results']:
