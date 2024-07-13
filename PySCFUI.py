@@ -127,7 +127,6 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     
     data = {
         # 'energy': energy,
-        'Method': method,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
@@ -436,7 +435,7 @@ with tab1:
             
             with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
-                result_col_1.write(f"Method: {data['Method']}")
+                result_col_1.write(f"Method: {data['Basis Source']}")
                 result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
