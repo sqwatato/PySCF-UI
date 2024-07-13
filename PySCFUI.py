@@ -75,8 +75,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     if method == "UHF":
         mf = scf.UHF(mol).run()
     elif method == "UKS":
-        mf = dft.UKS(mol)
-        mf.kernel()
+        mf = scf.UKS(mol).run()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
