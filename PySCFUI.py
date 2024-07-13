@@ -223,8 +223,8 @@ def addToQueue(atom, basis):
     st.session_state['queue'].append((atom, basis))
 
 
-tabQM9Database, tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
-    ["QM9 Database", "CCCBDB PySCF UI Database", "Text Input", "File Input"])
+tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
+    ["CCCBDB PySCF UI Database", "Text Input", "File Input"])
 method_option = st.selectbox(
     "Method", ["UHF","UKS"], index = 0)
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
@@ -249,19 +249,6 @@ thermo_row = row(2)
 temp = thermo_row.number_input("Temperature (K)", min_value=0.0, value=298.15)
 press = thermo_row.number_input("Pressure (Pa)", min_value=0.0, value=101325.0)
 
-with tabQM9Database:
-    selectedMolecule = st.selectbox(
-        'Search QM9 Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
-    if st.button('Add to Queue', use_container_width=True, key="qm9db"):
-        if selectedMolecule:
-            parseDatafile = open(
-                "precomputed_molecules/" + selectedMolecule + ".geom.txt", "r").readlines()[4:]
-            parseDatafile = "\n".join(parseDatafile[:-1])
-            addToQueue(parseDatafile, basis_option)
-        else:
-            st.warning(
-                "Please select a molecule using dropdown menu or inputting a text file.")
-            
 with tabCCCBDBDatabase:
     selectedMolecule = st.selectbox(
         'Search UI Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
