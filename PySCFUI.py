@@ -252,7 +252,7 @@ press = thermo_row.number_input("Pressure (Pa)", min_value=0.0, value=101325.0)
 with tabQM9Database:
     selectedMolecule = st.selectbox(
         'Search QM9 Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
-    if st.button('Add to Queue', use_container_width=True, key="db"):
+    if st.button('Add to Queue', use_container_width=True, key="qm9db"):
         if selectedMolecule:
             parseDatafile = open(
                 "precomputed_molecules/" + selectedMolecule + ".geom.txt", "r").readlines()[4:]
