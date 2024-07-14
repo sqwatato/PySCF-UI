@@ -130,7 +130,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         'Hessian CPU Runtime': hessian_cpu_time,
         'Hessian Wall Runtime': hessian_wall_time,
         'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
-        'Converged SCF Electronic Energy (Ha)': mf.energy_elec(),
+        'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[0],
         'Converged SCF Total Energy (Ha)': mf.energy_tot(),
         # thermodynamic 
         # Heat Capacity
