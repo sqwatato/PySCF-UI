@@ -491,7 +491,6 @@ with tab2:
             'Basis',
             'Rings',
             'Rdkit Molecule',
-            'Converged SCF-HF Electronic Energy (Ha)',
             'Molecule',
             'Molecule Name',
             'Smiles',
