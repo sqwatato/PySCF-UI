@@ -513,8 +513,7 @@ with tab2:
                  print(label, target)
                  print(df[label].values, df[target].values)
                 # Linear Regression
-                coeffs_linear = np.polyfit(
-                    df[label].values, df[target].values, 1)
+                coeffs_linear = np.polyfit(df[label].values, df[target].values, 1)
                 poly1d_fn_linear = np.poly1d(coeffs_linear)
                 x = np.linspace(min(df[label]), max(df[label]), 100)
 
