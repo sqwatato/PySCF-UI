@@ -500,11 +500,13 @@ with tab2:
             'Basis Source',
             'Method'
         ]
-        st.write(i for i in st.session_state['results'][0].keys() if i not in independent)
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
         dependent = [i for i in dependent if i not in exclude]
         # print(dependent)
-        
+        st.write(independent)
+        st.write(dependent)
+        st.write(exclude)
+        st.write(st.session_state['results'][0].keys())
         df_columns = list(st.session_state['results'][0].keys())
         df_columns.remove('Rdkit Molecule')
         
