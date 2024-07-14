@@ -510,8 +510,8 @@ with tab2:
         
         for label in independent:
             for target in dependent:
-                print(label, target)
-                print(df[label].values, df[target].values)
+                st.write(label, target)
+                st.write(df[label].values, df[target].values)
                 # Linear Regression
                 coeffs_linear = np.polyfit(df[label].values, df[target].values, 1)
                 poly1d_fn_linear = np.poly1d(coeffs_linear)
