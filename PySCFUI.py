@@ -25,6 +25,7 @@ from sklearn.metrics import r2_score
 import requests
 import timeit
 import basis_set_exchange as bse
+import json
 
 st.set_page_config(
     page_title="PySCF UI",
@@ -394,8 +395,24 @@ with tab1:
         st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         
-        
+        cleaned_data = []
         for result_item in st.session_state['results']:
+            tmpvar = result_item.copy()
+            tmpvar.pop('Rdkit Molecule')
+            cleaned_data.append(tmpvar)
+        
+        st.download_button(
+            label="Download Results as JSON",
+            data=json.dumps(cleaned_data),
+            file_name='results.json',
+        )
+        st.download_button(
+            label="Download Results as CSV",
+            data=pd.DataFrame(cleaned_data).to_csv(),
+            file_name='results.csv',
+        )
+        
+        for index, result_item in enumerate(st.session_state['results']):
             data = result_item
             energy = {
                 'Internal Energy (E - Ha)':[data['Internal Energy (at given T) (Ha)'],data['Electronic Internal Energy (Ha)'],data['Vibrational Internal Energy (Ha)'],data['Translational Internal Energy (Ha)'],data['Rotational Internal Energy (Ha)']],
@@ -454,6 +471,45 @@ with tab1:
                     use_container_width=True,
                     column_config=col_config
                 )
+                
+                # 2 download csv button for each dataframe and 1 download molecule button on the same row
+                download_col_1, download_col_2, download_col_3 = st.columns(3)
+                with download_col_1:
+                    st.download_button(
+                        label="Download Energy JSON",
+                        data=enerdf.to_json(),
+                        file_name=f"{result_item['Molecule Name']}_energy.json",
+                    )
+                    st.download_button(
+                        label="Download Energy CSV",
+                        data=enerdf.to_csv(),
+                        file_name=f"{result_item['Molecule Name']}_energy.csv",
+                        mime="text/csv",
+                    )
+                with download_col_2:
+                    st.download_button(
+                        label="Download Entropy JSON",
+                        data=entrodf.to_json(),
+                        file_name=f"{result_item['Molecule Name']}_entropy.json",
+                    )
+                    st.download_button(
+                        label="Download Entropy CSV",
+                        data=entrodf.to_csv(),
+                        file_name=f"{result_item['Molecule Name']}_entropy.csv",
+                        mime="text/csv",
+                    )
+                with download_col_3:
+                    st.download_button(
+                        label="Download Full Result JSON",
+                        data=json.dumps(cleaned_data[index]),
+                        file_name=f"{result_item['Molecule Name']}.json",
+                    )
+                    st.download_button(
+                        label="Download Full Result CSV",
+                        data=pd.DataFrame(cleaned_data[index], index=[0]).to_csv(),
+                        file_name=f"{result_item['Molecule Name']}.csv",
+                        mime="text/csv",
+                    )
                 
 
 with tab2:
