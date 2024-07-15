@@ -389,11 +389,22 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
-        st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
-        st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        
+        data_for_df = [{
+            'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
+            'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+            'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
+            'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+            'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
+        }]
+        
+        df_runtimes = pd.DataFrame(data_for_df)
+        st.dataframe(df_runtimes, hide_index=True)
         
         cleaned_data = []
         for result_item in st.session_state['results']:
@@ -408,7 +419,7 @@ with tab1:
         )
         st.download_button(
             label="Download Results as CSV",
-            data=pd.DataFrame(cleaned_data).to_csv(),
+            data=pd.DataFrame(cleaned_data).to_csv().encode('utf-8'),
             file_name='results.csv',
         )
         
@@ -440,6 +451,39 @@ with tab1:
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
                 result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
+                
+                mol_runtime_data = {
+                    'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
+                    'SCF Wall Runtime (s)': data['SCF Wall Runtime'],
+                    'Hessian CPU Runtime (s)': data['Hessian CPU Runtime'],
+                    'Hessian Wall Runtime (s)': data['Hessian Wall Runtime'],
+                    'Real Compute Time (s)': data['Real Compute Time']
+                }
+                st.dataframe(pd.DataFrame(mol_runtime_data, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_general_data = {
+                    'Atoms': data['Atoms'],
+                    'Bonds': data['Bonds'],
+                    'Rings': data['Rings'],
+                    'Weight (Da)': data['Weight']
+                }
+                st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_generale_energies = {
+                    'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
+                    'Converged SCF Electronic Energy (Ha)': data['Converged SCF Electronic Energy (Ha)'],
+                    'Converged SCF Total Energy (Ha)': data['Converged SCF Total Energy (Ha)'],
+                    'Zero-Point Energy (Ha)': data['Zero-Point Energy (Ha)'],
+                    '0K Internal Energy (Ha)': data['0K Internal Energy (Ha)'],
+                }
+                st.dataframe(pd.DataFrame(mol_generale_energies, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_heat_data = {
+                    'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],
+                    'Constant Pressure Heat Capacity (Ha/K)': data['Constant Pressure Heat Capacity (Ha/K)'],
+                }
+                st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
+                
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
                 result_col_1.write(
@@ -479,36 +523,42 @@ with tab1:
                         label="Download Energy JSON",
                         data=enerdf.to_json(),
                         file_name=f"{result_item['Molecule Name']}_energy.json",
+                        key=f"{index}:energy-json"
                     )
                     st.download_button(
                         label="Download Energy CSV",
-                        data=enerdf.to_csv(),
+                        data=enerdf.to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}_energy.csv",
                         mime="text/csv",
+                        key=f"{index}:energy-csv"
                     )
                 with download_col_2:
                     st.download_button(
                         label="Download Entropy JSON",
                         data=entrodf.to_json(),
                         file_name=f"{result_item['Molecule Name']}_entropy.json",
+                        key=f"{index}:entropy-json"
                     )
                     st.download_button(
                         label="Download Entropy CSV",
-                        data=entrodf.to_csv(),
+                        data=entrodf.to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}_entropy.csv",
                         mime="text/csv",
+                        key=f"{index}:entropy-csv"
                     )
                 with download_col_3:
                     st.download_button(
                         label="Download Full Result JSON",
                         data=json.dumps(cleaned_data[index]),
                         file_name=f"{result_item['Molecule Name']}.json",
+                        key=f"{index}:full-json"
                     )
                     st.download_button(
                         label="Download Full Result CSV",
-                        data=pd.DataFrame(cleaned_data[index], index=[0]).to_csv(),
+                        data=pd.DataFrame(cleaned_data[index], index=[0]).to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}.csv",
                         mime="text/csv",
+                        key=f"{index}:full-csv"
                     )
                 
 

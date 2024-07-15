@@ -390,11 +390,22 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
-        st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
-        st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
-        st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        # st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
+        
+        data_for_df = [{
+            'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
+            'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+            'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
+            'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+            'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
+        }]
+        
+        df_runtimes = pd.DataFrame(data_for_df)
+        st.dataframe(df_runtimes, hide_index=True)
         
         cleaned_data = []
         for result_item in st.session_state['results']:
@@ -409,7 +420,7 @@ with tab1:
         )
         st.download_button(
             label="Download Results as CSV",
-            data=json.dumps(cleaned_data),
+            data=pd.DataFrame(cleaned_data).to_csv().encode('utf-8'),
             file_name='results.csv',
         )
         
@@ -441,6 +452,23 @@ with tab1:
                 result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
                 result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
+                
+                mol_runtime_data = {
+                    'SCF CPU Runtime': data['SCF CPU Runtime'],
+                    'SCF Wall Runtime': data['SCF Wall Runtime'],
+                    'Hessian CPU Runtime': data['Hessian CPU Runtime'],
+                    'Hessian Wall Runtime': data['Hessian Wall Runtime']
+                }
+                st.dataframe(pd.DataFrame(mol_runtime_data, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_general_data = {
+                    'Atoms': data['Atoms'],
+                    'Bonds': data['Bonds'],
+                    'Rings': data['Rings'],
+                    'Weight': data['Weight']
+                }
+                st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
+                
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
                 result_col_1.write(
@@ -480,36 +508,42 @@ with tab1:
                         label="Download Energy JSON",
                         data=enerdf.to_json(),
                         file_name=f"{result_item['Molecule Name']}_energy.json",
+                        key=f"{index}:energy-json"
                     )
                     st.download_button(
                         label="Download Energy CSV",
-                        data=enerdf.to_csv(),
+                        data=enerdf.to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}_energy.csv",
                         mime="text/csv",
+                        key=f"{index}:energy-csv"
                     )
                 with download_col_2:
                     st.download_button(
                         label="Download Entropy JSON",
                         data=entrodf.to_json(),
                         file_name=f"{result_item['Molecule Name']}_entropy.json",
+                        key=f"{index}:entropy-json"
                     )
                     st.download_button(
                         label="Download Entropy CSV",
-                        data=entrodf.to_csv(),
+                        data=entrodf.to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}_entropy.csv",
                         mime="text/csv",
+                        key=f"{index}:entropy-csv"
                     )
                 with download_col_3:
                     st.download_button(
-                        label="Download Molecule Result JSON",
+                        label="Download Full Result JSON",
                         data=json.dumps(cleaned_data[index]),
                         file_name=f"{result_item['Molecule Name']}.json",
+                        key=f"{index}:full-json"
                     )
                     st.download_button(
-                        label="Download Molecule Result CSV",
-                        data=pd.DataFrame(cleaned_data[index]).to_csv(),
+                        label="Download Full Result CSV",
+                        data=pd.DataFrame(cleaned_data[index], index=[0]).to_csv().encode('utf-8'),
                         file_name=f"{result_item['Molecule Name']}.csv",
                         mime="text/csv",
+                        key=f"{index}:full-csv"
                     )
                 
 
@@ -750,7 +784,7 @@ System: uname_result(system='Darwin', node='jaydens-macbook.lan', release='23.0.
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1  h5py 3.10.0
-Date: Mon Jul 15 14:38:01 2024
+Date: Mon Jul 15 14:57:43 2024
 PySCF version 2.6.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -792,7 +826,7 @@ number of NR pGTOs = 27
 number of NR cGTOs = 9
 basis = sto3g
 ecp = {}
-CPU time:        54.32
+CPU time:        38.99
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -809,14 +843,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpikp20tgq
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp_nric256
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 5  beta = 5
 cond(S) = 10.776944709700592
 Set gradient conv threshold to 3.16228e-05
 E1 = -77.36956845900059  Ecoul = 24.63899026058369
 init E= -39.1974547987479
-    CPU time for initialize scf      0.03 sec, wall time      0.03 sec
+    CPU time for initialize scf      0.04 sec, wall time      0.12 sec
   alpha nocc = 5  HOMO = -0.560473786908113  LUMO = 0.491684335832494
   beta  nocc = 5  HOMO = -0.516796235096965  LUMO = 0.498256917568666
   alpha mo_energy =
@@ -828,7 +862,7 @@ init E= -39.1974547987479
 multiplicity <S^2> = 5.7842221e-05  2S+1 = 1.0001157
 E1 = -79.7829915251591  Ecoul = 26.529567113643548
 cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
-    CPU time for cycle= 1      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 1      0.02 sec, wall time      0.03 sec
   alpha nocc = 5  HOMO = -0.502408492799349  LUMO = 0.739492462583398
   beta  nocc = 5  HOMO = -0.502238163904263  LUMO = 0.739727958706262
   alpha mo_energy =
@@ -840,7 +874,7 @@ cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
 multiplicity <S^2> = 9.4248542e-06  2S+1 = 1.0000188
 E1 = -79.46101999472903  Ecoul = 26.20132023402293
 cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
-    CPU time for cycle= 2      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 2      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.522632742501155  LUMO = 0.717778395202233
   beta  nocc = 5  HOMO = -0.522556846277786  LUMO = 0.717899759473981
   alpha mo_energy =
@@ -852,7 +886,7 @@ cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
 multiplicity <S^2> = 3.3754661e-06  2S+1 = 1.0000068
 E1 = -79.51594515467232  Ecoul = 26.255976678603353
 cycle= 3 E= -39.7268450764  delta_E= -0.000269  |g|= 0.00458  |ddm|= 0.027
-    CPU time for cycle= 3      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 3      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520883472750566  LUMO = 0.719952410454213
   beta  nocc = 5  HOMO = -0.520871408257467  LUMO = 0.720025507538607
   alpha mo_energy =
@@ -888,7 +922,7 @@ cycle= 5 E= -39.7268609509014  delta_E= -1.37e-07  |g|= 0.000192  |ddm|= 0.00056
 multiplicity <S^2> = 1.1475265e-12  2S+1 = 1
 E1 = -79.51056839636934  Ecoul = 26.25058395560126
 cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.000956
-    CPU time for cycle= 6      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 6      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844943949368  LUMO = 0.720008567650027
   beta  nocc = 5  HOMO = -0.52084494771664  LUMO = 0.720008549509665
   alpha mo_energy =
@@ -900,7 +934,7 @@ cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.00095
 multiplicity <S^2> = 2.3980817e-14  2S+1 = 1
 E1 = -79.5105693533352  Ecoul = 26.250584912566552
 cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-06
-    CPU time for cycle= 7      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 7      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844997818959  LUMO = 0.720008661277373
   beta  nocc = 5  HOMO = -0.520845001678442  LUMO = 0.720008656497089
   alpha mo_energy =
@@ -912,10 +946,10 @@ cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-0
 multiplicity <S^2> = 2.6645353e-15  2S+1 = 1
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 Extra cycle  E= -39.7268610410997  delta_E= -5.68e-14  |g|= 3.16e-08  |ddm|= 1.72e-07
-    CPU time for scf_cycle      0.06 sec, wall time      0.05 sec
-    CPU time for SCF      0.06 sec, wall time      0.05 sec
+    CPU time for scf_cycle      0.10 sec, wall time      0.16 sec
+    CPU time for SCF      0.10 sec, wall time      0.17 sec
 converged SCF energy = -39.7268610410997  <S^2> = 2.6645353e-15  2S+1 = 1
     CPU time for UHF partial hessian      0.15 sec, wall time      0.09 sec
-    CPU time for UHF hessian      0.25 sec, wall time      0.20 sec
+    CPU time for UHF hessian      0.22 sec, wall time      0.12 sec
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
