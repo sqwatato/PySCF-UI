@@ -18,7 +18,7 @@ st.write("Currently, the UI offers two self-consistent field (SCF) methods: unre
 st.write("To see the list of all methods offered by PySCF and get a quick introduction to PySCF, please click the User Guide link below:")
 st.write("https://pyscf.org/user.html")
 st.header("PySCF Basis Sets")
-st.write("PySCF UI currently allows for users to select any of the basis sets built into the PySCF library. These basis sets are Gaussian-type orbital basis sets (PySCF does not have Slater-type orbital basis sets currently built into the library).")
+st.write("PySCF UI currently allows for users to select any of the basis sets built into the PySCF library (except for those in the old *Dyall's basis sets* submodule. These basis sets are Gaussian-type orbital basis sets (PySCF does not have Slater-type orbital basis sets currently built into the library).")
 st.write("Please note that not all of the basis sets exist for all the atoms; thus, the UI will throw an error if a basis set has not been found for a particular atom.") 
 st.write("To see the list of all basis sets offered by PySCF and the atoms for which those basis sets are offered, please visit the link below:")
 st.write("https://pyscf.org/_modules/pyscf/gto/basis.html")  
