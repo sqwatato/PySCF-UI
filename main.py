@@ -56,7 +56,7 @@ def endThread():
     root.destroy()
 
 root = tk.Tk()
-root.title("PySCF")
+root.title("PySCF UI")
 root.protocol("WM_DELETE_WINDOW", endThread)
 
 w, h = root.winfo_screenwidth(), root.winfo_screenheight()
