@@ -20,4 +20,4 @@ st.write("""3. NIST Computational Chemistry Comparison and
 Benchmark Database, NIST Standard Reference
 Database Number 101, Release 22, May 2022, edited by
 Russell D. Johnson III. https://doi.org/10.18434/t47c7z.""")
-st.write("""Pritchard, Benjamin, et al. "A New Basis Set Exchange: An Open, Up-to-date Resource for the Molecular Sciences Community." *Journal of Chemical Information and Modeling*, vol. 59, no. 11, 2019. https://doi.org/10.1021/acs.jcim.9b00725.""")
+st.write("""4. Pritchard, Benjamin, et al. "A New Basis Set Exchange: An Open, Up-to-date Resource for the Molecular Sciences Community." *Journal of Chemical Information and Modeling*, vol. 59, no. 11, 2019. https://doi.org/10.1021/acs.jcim.9b00725.""")
