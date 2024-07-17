@@ -73,13 +73,17 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
 
     # mf = scf.RHF(mol)
     # mf.kernel()
+    scf_start_time = timeit.default_timer()
     if method == "UHF":
         mf = scf.UHF(mol).run()
     elif method == "UKS":
         mf = scf.UKS(mol).run()
+    scf_total_time = timeit.default_timer() - scf_start_time
+    hessian_start_time = timeit.default_timer()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
+    hessian_total_time = timeit.default_timer() - hessian_start_time
     
     outputFile = open("output-test.txt", "r")
     # Extract energy and time information
@@ -130,6 +134,8 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
         'Hessian Wall Runtime': hessian_wall_time,
+        'SCF Real Time': scf_total_time,
+        'Hessian Real Time': hessian_total_time,
         'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
         'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[0],
         'Converged SCF Total Energy (Ha)': mf.energy_tot(),
@@ -395,22 +401,45 @@ with tab1:
         # st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         # st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         
-        data_for_df = [{
-            'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
-            'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
-            'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
-            'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
-            'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
-        }]
-        
-        df_runtimes = pd.DataFrame(data_for_df)
-        st.dataframe(df_runtimes, hide_index=True)
+        # data_for_df = [{
+        #     'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
+        #     'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+        #     'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
+        #     'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+        #     'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
+        # }]
+        data_for_df = {
+            'CPU Runtime (s)': [0, 0],
+            'Wall Runtime (s)': [0, 0],
+            'Real Compute Time (s)': [0, 0]
+        }
         
         cleaned_data = []
+        results_mol_runtime_data = []
+        
         for result_item in st.session_state['results']:
             tmpvar = result_item.copy()
             tmpvar.pop('Rdkit Molecule')
             cleaned_data.append(tmpvar)
+            results_mol_runtime_data.append(
+                {
+                    'CPU Runtime (s)': [result_item['SCF CPU Runtime'], result_item['Hessian CPU Runtime']],
+                    'Wall Runtime (s)': [result_item['SCF Wall Runtime'], result_item['Hessian Wall Runtime']],
+                    'Real Compute Time (s)': [result_item['SCF Real Time'], result_item['Hessian Real Time']]
+                }
+            )
+            data_for_df['CPU Runtime (s)'][0] += result_item['SCF CPU Runtime']
+            data_for_df['CPU Runtime (s)'][1] += result_item['Hessian CPU Runtime']
+            data_for_df['Wall Runtime (s)'][0] += result_item['SCF Wall Runtime']
+            data_for_df['Wall Runtime (s)'][1] += result_item['Hessian Wall Runtime']
+            data_for_df['Real Compute Time (s)'][0] += result_item['SCF Real Time']
+            data_for_df['Real Compute Time (s)'][1] += result_item['Hessian Real Time']
+        
+        
+        df_runtimes = pd.DataFrame(data_for_df, index=['SCF', 'Hessian'])
+        col_config = {i:st.column_config.NumberColumn(i, format="%.2f") for i in df_runtimes.columns}
+        st.dataframe(df_runtimes, column_config=col_config)
+            
         
         st.download_button(
             label="Download Results as JSON",
@@ -440,7 +469,7 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source']
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source', 'SCF Real Time', 'Hessian Real Time']
             
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
@@ -452,14 +481,25 @@ with tab1:
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
                 result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
                 
-                mol_runtime_data = {
-                    'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
-                    'SCF Wall Runtime (s)': data['SCF Wall Runtime'],
-                    'Hessian CPU Runtime (s)': data['Hessian CPU Runtime'],
-                    'Hessian Wall Runtime (s)': data['Hessian Wall Runtime'],
-                    'Real Compute Time (s)': data['Real Compute Time']
-                }
-                st.dataframe(pd.DataFrame(mol_runtime_data, index=[0]), hide_index=True, use_container_width=True)
+                # mol_runtime_data = {
+                #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
+                #     'Wall Runtime (s)': [data['SCF Wall Runtime'], data['Hessian Wall Runtime']],
+                #     'Real Compute Time (s)': [data['SCF Real Time'], data['Hessian Real Time']]
+                # }
+                
+                mol_runtime_data = results_mol_runtime_data[index]
+                
+                # {
+                #     'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
+                #     'SCF Wall Runtime (s)': data['SCF Wall Runtime'],
+                #     'Hessian CPU Runtime (s)': data['Hessian CPU Runtime'],
+                #     'Hessian Wall Runtime (s)': data['Hessian Wall Runtime'],
+                #     'Real Compute Time (s)': data['Real Compute Time']
+                # }
+                
+                
+                
+                st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian']), use_container_width=True)
                 
                 mol_general_data = {
                     'Atoms': data['Atoms'],
@@ -469,14 +509,14 @@ with tab1:
                 }
                 st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
                 
-                mol_generale_energies = {
+                mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
                     'Converged SCF Electronic Energy (Ha)': data['Converged SCF Electronic Energy (Ha)'],
                     'Converged SCF Total Energy (Ha)': data['Converged SCF Total Energy (Ha)'],
                     'Zero-Point Energy (Ha)': data['Zero-Point Energy (Ha)'],
                     '0K Internal Energy (Ha)': data['0K Internal Energy (Ha)'],
                 }
-                st.dataframe(pd.DataFrame(mol_generale_energies, index=[0]), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_energies, index=['Value']).transpose(), use_container_width=True)
                 
                 mol_heat_data = {
                     'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],

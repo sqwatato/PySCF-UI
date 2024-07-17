@@ -74,13 +74,17 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
 
     # mf = scf.RHF(mol)
     # mf.kernel()
+    scf_start_time = timeit.default_timer()
     if method == "UHF":
         mf = scf.UHF(mol).run()
     elif method == "UKS":
         mf = scf.UKS(mol).run()
+    scf_total_time = timeit.default_timer() - scf_start_time
+    hessian_start_time = timeit.default_timer()
     hessian = mf.Hessian().kernel()
     harmanalysis = thermo.harmonic_analysis(mf.mol, hessian)
     thermo_info =  thermo.thermo(mf, harmanalysis['freq_au'], temperature, pressure)
+    hessian_total_time = timeit.default_timer() - hessian_start_time
     
     outputFile = open("output-test.txt", "r")
     # Extract energy and time information
@@ -131,6 +135,8 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
         'Hessian Wall Runtime': hessian_wall_time,
+        'SCF Real Time': scf_total_time,
+        'Hessian Real Time': hessian_total_time,
         'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
         'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[0],
         'Converged SCF Total Energy (Ha)': mf.energy_tot(),
@@ -396,22 +402,45 @@ with tab1:
         # st.text("Total Log Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         # st.text("Log SCF Wall Runtime: " + str(round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         
-        data_for_df = [{
-            'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
-            'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
-            'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
-            'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
-            'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
-        }]
-        
-        df_runtimes = pd.DataFrame(data_for_df)
-        st.dataframe(df_runtimes, hide_index=True)
+        # data_for_df = [{
+        #     'Total Real Runtime': round(sum(x['Real Compute Time'] for x in st.session_state['results']), 2),
+        #     'Log Hessian Wall Runtime': round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+        #     'Total Log CPU Runtime': round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']), 2),
+        #     'Total Log Wall Runtime': round(sum(x['SCF Wall Runtime'] + x['Hessian Wall Runtime'] for x in st.session_state['results']), 2),
+        #     'Log SCF Wall Runtime': round(sum(x['SCF Wall Runtime'] for x in st.session_state['results']), 2)
+        # }]
+        data_for_df = {
+            'CPU Runtime (s)': [0, 0],
+            'Wall Runtime (s)': [0, 0],
+            'Real Compute Time (s)': [0, 0]
+        }
         
         cleaned_data = []
+        results_mol_runtime_data = []
+        
         for result_item in st.session_state['results']:
             tmpvar = result_item.copy()
             tmpvar.pop('Rdkit Molecule')
             cleaned_data.append(tmpvar)
+            results_mol_runtime_data.append(
+                {
+                    'CPU Runtime (s)': [result_item['SCF CPU Runtime'], result_item['Hessian CPU Runtime']],
+                    'Wall Runtime (s)': [result_item['SCF Wall Runtime'], result_item['Hessian Wall Runtime']],
+                    'Real Compute Time (s)': [result_item['SCF Real Time'], result_item['Hessian Real Time']]
+                }
+            )
+            data_for_df['CPU Runtime (s)'][0] += result_item['SCF CPU Runtime']
+            data_for_df['CPU Runtime (s)'][1] += result_item['Hessian CPU Runtime']
+            data_for_df['Wall Runtime (s)'][0] += result_item['SCF Wall Runtime']
+            data_for_df['Wall Runtime (s)'][1] += result_item['Hessian Wall Runtime']
+            data_for_df['Real Compute Time (s)'][0] += result_item['SCF Real Time']
+            data_for_df['Real Compute Time (s)'][1] += result_item['Hessian Real Time']
+        
+        
+        df_runtimes = pd.DataFrame(data_for_df)
+        col_config = {i:st.column_config.NumberColumn(i, format="%.2f") for i in df_runtimes.columns}
+        st.dataframe(df_runtimes, hide_index=True, column_config=col_config)
+            
         
         st.download_button(
             label="Download Results as JSON",
@@ -441,7 +470,7 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source']
+            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source', 'SCF Real Time', 'Hessian Real Time']
             
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
@@ -453,21 +482,48 @@ with tab1:
                 result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
                 result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
                 
-                mol_runtime_data = {
-                    'SCF CPU Runtime': data['SCF CPU Runtime'],
-                    'SCF Wall Runtime': data['SCF Wall Runtime'],
-                    'Hessian CPU Runtime': data['Hessian CPU Runtime'],
-                    'Hessian Wall Runtime': data['Hessian Wall Runtime']
-                }
-                st.dataframe(pd.DataFrame(mol_runtime_data, index=[0]), hide_index=True, use_container_width=True)
+                # mol_runtime_data = {
+                #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
+                #     'Wall Runtime (s)': [data['SCF Wall Runtime'], data['Hessian Wall Runtime']],
+                #     'Real Compute Time (s)': [data['SCF Real Time'], data['Hessian Real Time']]
+                # }
+                
+                mol_runtime_data = results_mol_runtime_data[index]
+                
+                # {
+                #     'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
+                #     'SCF Wall Runtime (s)': data['SCF Wall Runtime'],
+                #     'Hessian CPU Runtime (s)': data['Hessian CPU Runtime'],
+                #     'Hessian Wall Runtime (s)': data['Hessian Wall Runtime'],
+                #     'Real Compute Time (s)': data['Real Compute Time']
+                # }
+                
+                
+                
+                st.dataframe(pd.DataFrame(mol_runtime_data), hide_index=True, use_container_width=True)
                 
                 mol_general_data = {
                     'Atoms': data['Atoms'],
                     'Bonds': data['Bonds'],
                     'Rings': data['Rings'],
-                    'Weight': data['Weight']
+                    'Weight (Da)': data['Weight']
                 }
                 st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_general_energies = {
+                    'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
+                    'Converged SCF Electronic Energy (Ha)': data['Converged SCF Electronic Energy (Ha)'],
+                    'Converged SCF Total Energy (Ha)': data['Converged SCF Total Energy (Ha)'],
+                    'Zero-Point Energy (Ha)': data['Zero-Point Energy (Ha)'],
+                    '0K Internal Energy (Ha)': data['0K Internal Energy (Ha)'],
+                }
+                st.dataframe(pd.DataFrame(mol_general_energies, index=[0]), hide_index=True, use_container_width=True)
+                
+                mol_heat_data = {
+                    'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],
+                    'Constant Pressure Heat Capacity (Ha/K)': data['Constant Pressure Heat Capacity (Ha/K)'],
+                }
+                st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
                 
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
@@ -780,11 +836,11 @@ with tab3:
 #INFO: ******************** input file end ********************
 
 
-System: uname_result(system='Darwin', node='jaydens-macbook.lan', release='23.0.0', version='Darwin Kernel Version 23.0.0: Fri Sep 15 14:41:34 PDT 2023; root:xnu-10002.1.13~1/RELEASE_ARM64_T8103', machine='arm64', processor='arm')  Threads 1
+System: uname_result(system='Darwin', node='Jaydens-MacBook.local', release='23.0.0', version='Darwin Kernel Version 23.0.0: Fri Sep 15 14:41:34 PDT 2023; root:xnu-10002.1.13~1/RELEASE_ARM64_T8103', machine='arm64', processor='arm')  Threads 1
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1  h5py 3.10.0
-Date: Mon Jul 15 14:57:43 2024
+Date: Tue Jul 16 19:05:49 2024
 PySCF version 2.6.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -805,10 +861,6 @@ PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/py
 [INPUT]  5 H      0.624767000000  -0.624767000000  -0.624767000000 AA    1.180638521666  -1.180638521666  -1.180638521666 Bohr   0.0
 [INPUT] ---------------- BASIS SET ---------------- 
 [INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
-[INPUT] H
-[INPUT] 0    0    [3    /1   ]  3.42525091        0.15432897
-                                0.62391373        0.53532814
-                                0.1688554         0.44463454
 [INPUT] C
 [INPUT] 0    0    [3    /1   ]  71.616837         0.15432897
                                 13.045096         0.53532814
@@ -819,6 +871,10 @@ PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/py
 [INPUT] 1    0    [3    /1   ]  2.9412494         0.15591627
                                 0.6834831         0.60768372
                                 0.2222899         0.39195739
+[INPUT] H
+[INPUT] 0    0    [3    /1   ]  3.42525091        0.15432897
+                                0.62391373        0.53532814
+                                0.1688554         0.44463454
 
 nuclear repulsion = 13.533123399669
 number of shells = 7
@@ -826,7 +882,7 @@ number of NR pGTOs = 27
 number of NR cGTOs = 9
 basis = sto3g
 ecp = {}
-CPU time:        38.99
+CPU time:        14.54
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -843,14 +899,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp_nric256
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpwprh87kq
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 5  beta = 5
 cond(S) = 10.776944709700592
 Set gradient conv threshold to 3.16228e-05
 E1 = -77.36956845900059  Ecoul = 24.63899026058369
 init E= -39.1974547987479
-    CPU time for initialize scf      0.04 sec, wall time      0.12 sec
+    CPU time for initialize scf      0.04 sec, wall time      0.04 sec
   alpha nocc = 5  HOMO = -0.560473786908113  LUMO = 0.491684335832494
   beta  nocc = 5  HOMO = -0.516796235096965  LUMO = 0.498256917568666
   alpha mo_energy =
@@ -862,7 +918,7 @@ init E= -39.1974547987479
 multiplicity <S^2> = 5.7842221e-05  2S+1 = 1.0001157
 E1 = -79.7829915251591  Ecoul = 26.529567113643548
 cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
-    CPU time for cycle= 1      0.02 sec, wall time      0.03 sec
+    CPU time for cycle= 1      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.502408492799349  LUMO = 0.739492462583398
   beta  nocc = 5  HOMO = -0.502238163904263  LUMO = 0.739727958706262
   alpha mo_energy =
@@ -874,7 +930,7 @@ cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
 multiplicity <S^2> = 9.4248542e-06  2S+1 = 1.0000188
 E1 = -79.46101999472903  Ecoul = 26.20132023402293
 cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
-    CPU time for cycle= 2      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 2      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.522632742501155  LUMO = 0.717778395202233
   beta  nocc = 5  HOMO = -0.522556846277786  LUMO = 0.717899759473981
   alpha mo_energy =
@@ -886,7 +942,7 @@ cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
 multiplicity <S^2> = 3.3754661e-06  2S+1 = 1.0000068
 E1 = -79.51594515467232  Ecoul = 26.255976678603353
 cycle= 3 E= -39.7268450764  delta_E= -0.000269  |g|= 0.00458  |ddm|= 0.027
-    CPU time for cycle= 3      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 3      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520883472750566  LUMO = 0.719952410454213
   beta  nocc = 5  HOMO = -0.520871408257467  LUMO = 0.720025507538607
   alpha mo_energy =
@@ -922,7 +978,7 @@ cycle= 5 E= -39.7268609509014  delta_E= -1.37e-07  |g|= 0.000192  |ddm|= 0.00056
 multiplicity <S^2> = 1.1475265e-12  2S+1 = 1
 E1 = -79.51056839636934  Ecoul = 26.25058395560126
 cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.000956
-    CPU time for cycle= 6      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 6      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844943949368  LUMO = 0.720008567650027
   beta  nocc = 5  HOMO = -0.52084494771664  LUMO = 0.720008549509665
   alpha mo_energy =
@@ -946,10 +1002,10 @@ cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-0
 multiplicity <S^2> = 2.6645353e-15  2S+1 = 1
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 Extra cycle  E= -39.7268610410997  delta_E= -5.68e-14  |g|= 3.16e-08  |ddm|= 1.72e-07
-    CPU time for scf_cycle      0.10 sec, wall time      0.16 sec
-    CPU time for SCF      0.10 sec, wall time      0.17 sec
+    CPU time for scf_cycle      0.07 sec, wall time      0.05 sec
+    CPU time for SCF      0.07 sec, wall time      0.05 sec
 converged SCF energy = -39.7268610410997  <S^2> = 2.6645353e-15  2S+1 = 1
-    CPU time for UHF partial hessian      0.15 sec, wall time      0.09 sec
-    CPU time for UHF hessian      0.22 sec, wall time      0.12 sec
+    CPU time for UHF partial hessian      0.13 sec, wall time      0.07 sec
+    CPU time for UHF hessian      0.18 sec, wall time      0.10 sec
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
