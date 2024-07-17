@@ -436,10 +436,13 @@ with tab1:
             data_for_df['Real Compute Time (s)'][0] += result_item['SCF Real Time']
             data_for_df['Real Compute Time (s)'][1] += result_item['Hessian Real Time']
         
+        data_for_df['CPU Runtime (s)'].append(data_for_df['CPU Runtime (s)'][0] + data_for_df['CPU Runtime (s)'][1])
+        data_for_df['Wall Runtime (s)'].append(data_for_df['Wall Runtime (s)'][0] + data_for_df['Wall Runtime (s)'][1])
+        data_for_df['Real Compute Time (s)'].append(data_for_df['Real Compute Time (s)'][0] + data_for_df['Real Compute Time (s)'][1])
         
-        df_runtimes = pd.DataFrame(data_for_df)
+        df_runtimes = pd.DataFrame(data_for_df, index=['SCF', 'Hessian', 'Total'])
         col_config = {i:st.column_config.NumberColumn(i, format="%.2f") for i in df_runtimes.columns}
-        st.dataframe(df_runtimes, hide_index=True, column_config=col_config)
+        st.dataframe(df_runtimes, column_config=col_config, use_container_width=True)
             
         
         st.download_button(
@@ -477,10 +480,6 @@ with tab1:
             
             with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
-                result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
-                result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
-                result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
-                result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
                 
                 # mol_runtime_data = {
                 #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
@@ -489,6 +488,9 @@ with tab1:
                 # }
                 
                 mol_runtime_data = results_mol_runtime_data[index]
+                mol_runtime_data['CPU Runtime (s)'].append(mol_runtime_data['CPU Runtime (s)'][0] + mol_runtime_data['CPU Runtime (s)'][1])
+                mol_runtime_data['Wall Runtime (s)'].append(mol_runtime_data['Wall Runtime (s)'][0] + mol_runtime_data['Wall Runtime (s)'][1])
+                mol_runtime_data['Real Compute Time (s)'].append(mol_runtime_data['Real Compute Time (s)'][0] + mol_runtime_data['Real Compute Time (s)'][1])
                 
                 # {
                 #     'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
@@ -500,7 +502,7 @@ with tab1:
                 
                 
                 
-                st.dataframe(pd.DataFrame(mol_runtime_data), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian', 'Total']), use_container_width=True, column_config={i:st.column_config.NumberColumn(i, format="%.2f") for i in mol_runtime_data.keys()})
                 
                 mol_general_data = {
                     'Atoms': data['Atoms'],
@@ -517,7 +519,7 @@ with tab1:
                     'Zero-Point Energy (Ha)': data['Zero-Point Energy (Ha)'],
                     '0K Internal Energy (Ha)': data['0K Internal Energy (Ha)'],
                 }
-                st.dataframe(pd.DataFrame(mol_general_energies, index=[0]), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_energies, index=['Value']).transpose(), use_container_width=True)
                 
                 mol_heat_data = {
                     'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],
@@ -840,7 +842,7 @@ System: uname_result(system='Darwin', node='Jaydens-MacBook.local', release='23.
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1  h5py 3.10.0
-Date: Tue Jul 16 19:05:49 2024
+Date: Wed Jul 17 12:19:59 2024
 PySCF version 2.6.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -882,7 +884,7 @@ number of NR pGTOs = 27
 number of NR cGTOs = 9
 basis = sto3g
 ecp = {}
-CPU time:        14.54
+CPU time:         6.39
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -899,14 +901,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpwprh87kq
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp2y9tv9v1
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 5  beta = 5
 cond(S) = 10.776944709700592
 Set gradient conv threshold to 3.16228e-05
 E1 = -77.36956845900059  Ecoul = 24.63899026058369
 init E= -39.1974547987479
-    CPU time for initialize scf      0.04 sec, wall time      0.04 sec
+    CPU time for initialize scf      0.04 sec, wall time      0.05 sec
   alpha nocc = 5  HOMO = -0.560473786908113  LUMO = 0.491684335832494
   beta  nocc = 5  HOMO = -0.516796235096965  LUMO = 0.498256917568666
   alpha mo_energy =
@@ -930,7 +932,7 @@ cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
 multiplicity <S^2> = 9.4248542e-06  2S+1 = 1.0000188
 E1 = -79.46101999472903  Ecoul = 26.20132023402293
 cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
-    CPU time for cycle= 2      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 2      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.522632742501155  LUMO = 0.717778395202233
   beta  nocc = 5  HOMO = -0.522556846277786  LUMO = 0.717899759473981
   alpha mo_energy =
@@ -966,7 +968,7 @@ cycle= 4 E= -39.7268608138729  delta_E= -1.57e-05  |g|= 0.000306  |ddm|= 0.00838
 multiplicity <S^2> = 4.4807522e-07  2S+1 = 1.0000009
 E1 = -79.5105616875251  Ecoul = 26.25057733695474
 cycle= 5 E= -39.7268609509014  delta_E= -1.37e-07  |g|= 0.000192  |ddm|= 0.000561
-    CPU time for cycle= 5      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 5      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520845641794075  LUMO = 0.720009738855115
   beta  nocc = 5  HOMO = -0.520845840461543  LUMO = 0.720009793008151
   alpha mo_energy =
@@ -990,7 +992,7 @@ cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.00095
 multiplicity <S^2> = 2.3980817e-14  2S+1 = 1
 E1 = -79.5105693533352  Ecoul = 26.250584912566552
 cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-06
-    CPU time for cycle= 7      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 7      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844997818959  LUMO = 0.720008661277373
   beta  nocc = 5  HOMO = -0.520845001678442  LUMO = 0.720008656497089
   alpha mo_energy =
@@ -1002,10 +1004,10 @@ cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-0
 multiplicity <S^2> = 2.6645353e-15  2S+1 = 1
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 Extra cycle  E= -39.7268610410997  delta_E= -5.68e-14  |g|= 3.16e-08  |ddm|= 1.72e-07
-    CPU time for scf_cycle      0.07 sec, wall time      0.05 sec
-    CPU time for SCF      0.07 sec, wall time      0.05 sec
+    CPU time for scf_cycle      0.05 sec, wall time      0.06 sec
+    CPU time for SCF      0.06 sec, wall time      0.07 sec
 converged SCF energy = -39.7268610410997  <S^2> = 2.6645353e-15  2S+1 = 1
     CPU time for UHF partial hessian      0.13 sec, wall time      0.07 sec
-    CPU time for UHF hessian      0.18 sec, wall time      0.10 sec
+    CPU time for UHF hessian      0.19 sec, wall time      0.10 sec
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 E1 = -79.51056926054727  Ecoul = 26.250584819778567

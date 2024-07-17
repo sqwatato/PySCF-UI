@@ -435,10 +435,13 @@ with tab1:
             data_for_df['Real Compute Time (s)'][0] += result_item['SCF Real Time']
             data_for_df['Real Compute Time (s)'][1] += result_item['Hessian Real Time']
         
+        data_for_df['CPU Runtime (s)'].append(data_for_df['CPU Runtime (s)'][0] + data_for_df['CPU Runtime (s)'][1])
+        data_for_df['Wall Runtime (s)'].append(data_for_df['Wall Runtime (s)'][0] + data_for_df['Wall Runtime (s)'][1])
+        data_for_df['Real Compute Time (s)'].append(data_for_df['Real Compute Time (s)'][0] + data_for_df['Real Compute Time (s)'][1])
         
-        df_runtimes = pd.DataFrame(data_for_df, index=['SCF', 'Hessian'])
+        df_runtimes = pd.DataFrame(data_for_df, index=['SCF', 'Hessian', 'Total'])
         col_config = {i:st.column_config.NumberColumn(i, format="%.2f") for i in df_runtimes.columns}
-        st.dataframe(df_runtimes, column_config=col_config)
+        st.dataframe(df_runtimes, column_config=col_config, use_container_width=True)
             
         
         st.download_button(
@@ -476,10 +479,6 @@ with tab1:
             
             with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
                 result_col_1, result_col_2 = st.columns([2, 1])
-                result_col_1.write(f"SCF CPU Runtime: {data['SCF CPU Runtime']} s")
-                result_col_1.write(f"SCF Wall Runtime: {data['SCF Wall Runtime']} s")
-                result_col_1.write(f"Hessian CPU Runtime: {data['Hessian CPU Runtime']} s")
-                result_col_1.write(f"Hessian Wall Runtime: {data['Hessian Wall Runtime']} s")
                 
                 # mol_runtime_data = {
                 #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
@@ -488,6 +487,9 @@ with tab1:
                 # }
                 
                 mol_runtime_data = results_mol_runtime_data[index]
+                mol_runtime_data['CPU Runtime (s)'].append(mol_runtime_data['CPU Runtime (s)'][0] + mol_runtime_data['CPU Runtime (s)'][1])
+                mol_runtime_data['Wall Runtime (s)'].append(mol_runtime_data['Wall Runtime (s)'][0] + mol_runtime_data['Wall Runtime (s)'][1])
+                mol_runtime_data['Real Compute Time (s)'].append(mol_runtime_data['Real Compute Time (s)'][0] + mol_runtime_data['Real Compute Time (s)'][1])
                 
                 # {
                 #     'SCF CPU Runtime (s)': data['SCF CPU Runtime'],
@@ -499,7 +501,7 @@ with tab1:
                 
                 
                 
-                st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian']), use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian', 'Total']), use_container_width=True, column_config={i:st.column_config.NumberColumn(i, format="%.2f") for i in mol_runtime_data.keys()})
                 
                 mol_general_data = {
                     'Atoms': data['Atoms'],
