@@ -510,7 +510,8 @@ with tab1:
                     'Rings': data['Rings'],
                     'Weight (Da)': data['Weight']
                 }
-                st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
+                # st.dataframe(pd.DataFrame(mol_general_data, index=['Value']), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose(), use_container_width=True)
                 
                 mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
@@ -525,7 +526,8 @@ with tab1:
                     'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],
                     'Constant Pressure Heat Capacity (Ha/K)': data['Constant Pressure Heat Capacity (Ha/K)'],
                 }
-                st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
+                # st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_heat_data, index=['Value']).transpose(), use_container_width=True)
                 
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
@@ -842,7 +844,7 @@ System: uname_result(system='Darwin', node='Jaydens-MacBook.local', release='23.
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1  h5py 3.10.0
-Date: Wed Jul 17 12:19:59 2024
+Date: Wed Jul 17 12:25:03 2024
 PySCF version 2.6.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -863,6 +865,10 @@ PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/py
 [INPUT]  5 H      0.624767000000  -0.624767000000  -0.624767000000 AA    1.180638521666  -1.180638521666  -1.180638521666 Bohr   0.0
 [INPUT] ---------------- BASIS SET ---------------- 
 [INPUT] l, kappa, [nprim/nctr], expnt,             c_1 c_2 ...
+[INPUT] H
+[INPUT] 0    0    [3    /1   ]  3.42525091        0.15432897
+                                0.62391373        0.53532814
+                                0.1688554         0.44463454
 [INPUT] C
 [INPUT] 0    0    [3    /1   ]  71.616837         0.15432897
                                 13.045096         0.53532814
@@ -873,10 +879,6 @@ PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/py
 [INPUT] 1    0    [3    /1   ]  2.9412494         0.15591627
                                 0.6834831         0.60768372
                                 0.2222899         0.39195739
-[INPUT] H
-[INPUT] 0    0    [3    /1   ]  3.42525091        0.15432897
-                                0.62391373        0.53532814
-                                0.1688554         0.44463454
 
 nuclear repulsion = 13.533123399669
 number of shells = 7
@@ -884,7 +886,7 @@ number of NR pGTOs = 27
 number of NR cGTOs = 9
 basis = sto3g
 ecp = {}
-CPU time:         6.39
+CPU time:         6.06
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -901,14 +903,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp2y9tv9v1
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpnithkd_4
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 5  beta = 5
 cond(S) = 10.776944709700592
 Set gradient conv threshold to 3.16228e-05
 E1 = -77.36956845900059  Ecoul = 24.63899026058369
 init E= -39.1974547987479
-    CPU time for initialize scf      0.04 sec, wall time      0.05 sec
+    CPU time for initialize scf      0.03 sec, wall time      0.04 sec
   alpha nocc = 5  HOMO = -0.560473786908113  LUMO = 0.491684335832494
   beta  nocc = 5  HOMO = -0.516796235096965  LUMO = 0.498256917568666
   alpha mo_energy =
@@ -968,7 +970,7 @@ cycle= 4 E= -39.7268608138729  delta_E= -1.57e-05  |g|= 0.000306  |ddm|= 0.00838
 multiplicity <S^2> = 4.4807522e-07  2S+1 = 1.0000009
 E1 = -79.5105616875251  Ecoul = 26.25057733695474
 cycle= 5 E= -39.7268609509014  delta_E= -1.37e-07  |g|= 0.000192  |ddm|= 0.000561
-    CPU time for cycle= 5      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 5      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520845641794075  LUMO = 0.720009738855115
   beta  nocc = 5  HOMO = -0.520845840461543  LUMO = 0.720009793008151
   alpha mo_energy =
@@ -1004,10 +1006,10 @@ cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-0
 multiplicity <S^2> = 2.6645353e-15  2S+1 = 1
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 Extra cycle  E= -39.7268610410997  delta_E= -5.68e-14  |g|= 3.16e-08  |ddm|= 1.72e-07
-    CPU time for scf_cycle      0.05 sec, wall time      0.06 sec
-    CPU time for SCF      0.06 sec, wall time      0.07 sec
+    CPU time for scf_cycle      0.06 sec, wall time      0.05 sec
+    CPU time for SCF      0.06 sec, wall time      0.06 sec
 converged SCF energy = -39.7268610410997  <S^2> = 2.6645353e-15  2S+1 = 1
-    CPU time for UHF partial hessian      0.13 sec, wall time      0.07 sec
-    CPU time for UHF hessian      0.19 sec, wall time      0.10 sec
+    CPU time for UHF partial hessian      0.13 sec, wall time      0.06 sec
+    CPU time for UHF hessian      0.19 sec, wall time      0.09 sec
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 E1 = -79.51056926054727  Ecoul = 26.250584819778567

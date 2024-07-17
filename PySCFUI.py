@@ -509,7 +509,8 @@ with tab1:
                     'Rings': data['Rings'],
                     'Weight (Da)': data['Weight']
                 }
-                st.dataframe(pd.DataFrame(mol_general_data, index=[0]), hide_index=True, use_container_width=True)
+                # st.dataframe(pd.DataFrame(mol_general_data, index=['Value']), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose(), use_container_width=True)
                 
                 mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
@@ -524,7 +525,8 @@ with tab1:
                     'Constant Volume Heat Capacity (Ha/K)': data['Constant Volume Heat Capacity (Ha/K)'],
                     'Constant Pressure Heat Capacity (Ha/K)': data['Constant Pressure Heat Capacity (Ha/K)'],
                 }
-                st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
+                # st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_heat_data, index=['Value']).transpose(), use_container_width=True)
                 
                 result_col_1.write(
                     f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
