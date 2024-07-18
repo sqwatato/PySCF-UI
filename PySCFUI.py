@@ -130,6 +130,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     
     data = {
         # 'energy': energy,
+        'Method': method,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
@@ -472,13 +473,17 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source', 'SCF Real Time', 'Hessian Real Time']
-            
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(f"{str(st.session_state['results'].index(data) + 1)}.{data['Molecule Name']} | {data['Method']} | {data['Basis']} ({data['Basis Source']} Basis): {str(round(data['Real Compute Time'], 2))} s"):
+                
                 result_col_1, result_col_2 = st.columns([2, 1])
+                with result_col_1:
+                    st.image(MolToImage(data['Rdkit Molecule'], size=(200, 200)))
+                
+                with result_col_2:
+                    st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
                 
                 # mol_runtime_data = {
                 #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
@@ -504,13 +509,14 @@ with tab1:
                 st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian', 'Total']), use_container_width=True, column_config={i:st.column_config.NumberColumn(i, format="%.2f") for i in mol_runtime_data.keys()})
                 
                 mol_general_data = {
-                    'Atoms': data['Atoms'],
-                    'Bonds': data['Bonds'],
-                    'Rings': data['Rings'],
-                    'Weight (Da)': data['Weight']
+                    'Number of Atoms': data['Atoms'],
+                    'Number of Bonds': data['Bonds'],
+                    'Number ofRings': data['Rings'],
+                    'Weight (Da)': data['Weight'],
+                    'Smiles': data['Smiles']
                 }
                 # st.dataframe(pd.DataFrame(mol_general_data, index=['Value']), hide_index=True, use_container_width=True)
-                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose(), use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose().astype(str), use_container_width=True)
                 
                 mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
@@ -527,21 +533,11 @@ with tab1:
                 }
                 # st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
                 st.dataframe(pd.DataFrame(mol_heat_data, index=['Value']).transpose(), use_container_width=True)
-                
-                result_col_1.write(
-                    f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
-                result_col_1.write(
-                    f"Molecular Weight: {data['Weight']} Da")
-                # energy data
-                for key, value in data.items():
-                    if key not in excluded_keys:
-                        result_col_1.write(f"{key}: {value}")
 
-                with result_col_2:
-                    speck_plot(
-                        data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
-                    st.image(MolToImage(data['Rdkit Molecule'], size=(200, 200)))
-                    st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
+                # with result_col_2:
+                #     speck_plot(
+                #         data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                
                 # linebreak
                 st.write("")
                 st.write("")

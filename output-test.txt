@@ -131,6 +131,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
     
     data = {
         # 'energy': energy,
+        'Method': method,
         'SCF CPU Runtime': scf_cpu_time,
         'SCF Wall Runtime': scf_wall_time,
         'Hessian CPU Runtime': hessian_cpu_time,
@@ -473,13 +474,17 @@ with tab1:
                 'Gibbs Free Entropy (Ξ - Ha/K)':[data['Planck Potential/Gibbs Free Potential (Ha/K)'],data['Electronic Planck Potential/Gibbs Free Potential (Ha/K)'],data['Vibrational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Translational Planck Potential/Gibbs Free Potential (Ha/K)'],data['Rotational Planck Potential/Gibbs Free Potential (Ha/K)']],
             }
             
-            excluded_keys = ['Internal Energy (at given T) (Ha)', 'Electronic Internal Energy (Ha)', 'Vibrational Internal Energy (Ha)', 'Translational Internal Energy (Ha)', 'Rotational Internal Energy (Ha)', 'Helmholtz Free Energy (Ha)', 'Electronic Helmholtz Free Energy (Ha)', 'Vibrational Helmholtz Free Energy (Ha)', 'Translational Helmholtz Free Energy (Ha)', 'Rotational Helmholtz Free Energy (Ha)', 'Gibbs Free Energy (Ha)', 'Electronic Gibbs Free Energy (Ha)', 'Vibrational Gibbs Free Energy (Ha)', 'Translational Gibbs Free Energy (Ha)', 'Rotational Gibbs Free Energy (Ha)', 'Enthalpy (Ha)', 'Electronic Enthalpy (Ha)', 'Vibrational Enthalpy (Ha)', 'Translational Enthalpy (Ha)', 'Rotational Enthalpy (Ha)', 'Entropy (Ha/K)', 'Electronic Entropy (Ha/K)', 'Vibrational Entropy (Ha/K)', 'Translational Entropy (Ha/K)', 'Rotational Entropy (Ha/K)', 'Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Electronic Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Vibrational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Translational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Rotational Massieu Potential/Helmholtz Free Potential (Ha/K)', 'Planck Potential/Gibbs Free Potential (Ha/K)', 'Electronic Planck Potential/Gibbs Free Potential (Ha/K)', 'Vibrational Planck Potential/Gibbs Free Potential (Ha/K)', 'Translational Planck Potential/Gibbs Free Potential (Ha/K)', 'Rotational Planck Potential/Gibbs Free Potential (Ha/K)'] + ['Molecule', 'Rdkit Molecule', 'Basis', 'Molecule Name', 'Run Order','Atoms', 'Bonds', 'Rings', 'Weight', 'SCF CPU Runtime', 'SCF Wall Runtime', 'Hessian CPU Runtime', 'Hessian Wall Runtime', 'Basis Source', 'SCF Real Time', 'Hessian Real Time']
-            
             pd.set_option("display.precision", 16)
             entrodf = pd.DataFrame(entropy, index = ["Total","Electronic","Vibrational","Translational","Rotational"])
             
-            with st.expander(str(st.session_state['results'].index(data) + 1) + "." + data['Molecule Name'] + " | "+data['Basis']+" (" + data['Basis Source']+" Basis): " + str(round(data['Real Compute Time'], 2)) + " s"):
+            with st.expander(f"{str(st.session_state['results'].index(data) + 1)}.{data['Molecule Name']} | {data['Method']} | {data['Basis']} ({data['Basis Source']} Basis): {str(round(data['Real Compute Time'], 2))} s"):
+                
                 result_col_1, result_col_2 = st.columns([2, 1])
+                with result_col_1:
+                    st.image(MolToImage(data['Rdkit Molecule'], size=(300, 300)))
+                
+                with result_col_2:
+                    st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(300, 300)))
                 
                 # mol_runtime_data = {
                 #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
@@ -505,13 +510,14 @@ with tab1:
                 st.dataframe(pd.DataFrame(mol_runtime_data, index=['SCF', 'Hessian', 'Total']), use_container_width=True, column_config={i:st.column_config.NumberColumn(i, format="%.2f") for i in mol_runtime_data.keys()})
                 
                 mol_general_data = {
-                    'Atoms': data['Atoms'],
-                    'Bonds': data['Bonds'],
-                    'Rings': data['Rings'],
-                    'Weight (Da)': data['Weight']
+                    'Number of Atoms': data['Atoms'],
+                    'Number of Bonds': data['Bonds'],
+                    'Number ofRings': data['Rings'],
+                    'Weight (Da)': data['Weight'],
+                    'Smiles': data['Smiles']
                 }
                 # st.dataframe(pd.DataFrame(mol_general_data, index=['Value']), hide_index=True, use_container_width=True)
-                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose(), use_container_width=True)
+                st.dataframe(pd.DataFrame(mol_general_data, index=['Value']).transpose().astype(str), use_container_width=True)
                 
                 mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
@@ -528,21 +534,11 @@ with tab1:
                 }
                 # st.dataframe(pd.DataFrame(mol_heat_data, index=[0]), hide_index=True, use_container_width=True)
                 st.dataframe(pd.DataFrame(mol_heat_data, index=['Value']).transpose(), use_container_width=True)
-                
-                result_col_1.write(
-                    f"\# of Atoms: {data['Atoms']} | \# of Bonds: {data['Bonds']} | \# of Rings:  {data['Rings']}")
-                result_col_1.write(
-                    f"Molecular Weight: {data['Weight']} Da")
-                # energy data
-                for key, value in data.items():
-                    if key not in excluded_keys:
-                        result_col_1.write(f"{key}: {value}")
 
-                with result_col_2:
-                    speck_plot(
-                        data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
-                    st.image(MolToImage(data['Rdkit Molecule'], size=(200, 200)))
-                    st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
+                # with result_col_2:
+                #     speck_plot(
+                #         data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                
                 # linebreak
                 st.write("")
                 st.write("")
@@ -844,7 +840,7 @@ System: uname_result(system='Darwin', node='Jaydens-MacBook.local', release='23.
 Python 3.8.18 | packaged by conda-forge | (default, Oct 10 2023, 15:46:56) 
 [Clang 16.0.6 ]
 numpy 1.24.4  scipy 1.10.1  h5py 3.10.0
-Date: Wed Jul 17 12:25:03 2024
+Date: Thu Jul 18 14:41:34 2024
 PySCF version 2.6.0
 PySCF path  /Users/jaydenl/anaconda3/envs/pyscfui/lib/python3.8/site-packages/pyscf
 
@@ -886,7 +882,7 @@ number of NR pGTOs = 27
 number of NR cGTOs = 9
 basis = sto3g
 ecp = {}
-CPU time:         6.06
+CPU time:        14.24
 
 
 ******** <class 'pyscf.scf.uhf.UHF'> ********
@@ -903,14 +899,14 @@ SCF conv_tol_grad = None
 SCF max_cycles = 50
 direct_scf = True
 direct_scf_tol = 1e-13
-chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmpnithkd_4
+chkfile to save SCF result = /var/folders/_x/xd2ms3z958s6pfllwphw48vm0000gn/T/tmp9lqf8h22
 max_memory 4000 MB (current use 0 MB)
 number electrons alpha = 5  beta = 5
 cond(S) = 10.776944709700592
 Set gradient conv threshold to 3.16228e-05
 E1 = -77.36956845900059  Ecoul = 24.63899026058369
 init E= -39.1974547987479
-    CPU time for initialize scf      0.03 sec, wall time      0.04 sec
+    CPU time for initialize scf      0.04 sec, wall time      0.05 sec
   alpha nocc = 5  HOMO = -0.560473786908113  LUMO = 0.491684335832494
   beta  nocc = 5  HOMO = -0.516796235096965  LUMO = 0.498256917568666
   alpha mo_energy =
@@ -934,7 +930,7 @@ cycle= 1 E= -39.7203010118466  delta_E= -0.523  |g|= 0.102  |ddm|= 1.54
 multiplicity <S^2> = 9.4248542e-06  2S+1 = 1.0000188
 E1 = -79.46101999472903  Ecoul = 26.20132023402293
 cycle= 2 E= -39.7265763610371  delta_E= -0.00628  |g|= 0.0185  |ddm|= 0.155
-    CPU time for cycle= 2      0.01 sec, wall time      0.00 sec
+    CPU time for cycle= 2      0.00 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.522632742501155  LUMO = 0.717778395202233
   beta  nocc = 5  HOMO = -0.522556846277786  LUMO = 0.717899759473981
   alpha mo_energy =
@@ -982,7 +978,7 @@ cycle= 5 E= -39.7268609509014  delta_E= -1.37e-07  |g|= 0.000192  |ddm|= 0.00056
 multiplicity <S^2> = 1.1475265e-12  2S+1 = 1
 E1 = -79.51056839636934  Ecoul = 26.25058395560126
 cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.000956
-    CPU time for cycle= 6      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 6      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844943949368  LUMO = 0.720008567650027
   beta  nocc = 5  HOMO = -0.52084494771664  LUMO = 0.720008549509665
   alpha mo_energy =
@@ -994,7 +990,7 @@ cycle= 6 E= -39.7268610410991  delta_E= -9.02e-08  |g|= 7.89e-07  |ddm|= 0.00095
 multiplicity <S^2> = 2.3980817e-14  2S+1 = 1
 E1 = -79.5105693533352  Ecoul = 26.250584912566552
 cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-06
-    CPU time for cycle= 7      0.00 sec, wall time      0.00 sec
+    CPU time for cycle= 7      0.01 sec, wall time      0.00 sec
   alpha nocc = 5  HOMO = -0.520844997818959  LUMO = 0.720008661277373
   beta  nocc = 5  HOMO = -0.520845001678442  LUMO = 0.720008656497089
   alpha mo_energy =
@@ -1006,10 +1002,10 @@ cycle= 7 E= -39.7268610410996  delta_E= -5.68e-13  |g|= 1.17e-07  |ddm|= 1.59e-0
 multiplicity <S^2> = 2.6645353e-15  2S+1 = 1
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 Extra cycle  E= -39.7268610410997  delta_E= -5.68e-14  |g|= 3.16e-08  |ddm|= 1.72e-07
-    CPU time for scf_cycle      0.06 sec, wall time      0.05 sec
-    CPU time for SCF      0.06 sec, wall time      0.06 sec
+    CPU time for scf_cycle      0.07 sec, wall time      0.06 sec
+    CPU time for SCF      0.07 sec, wall time      0.06 sec
 converged SCF energy = -39.7268610410997  <S^2> = 2.6645353e-15  2S+1 = 1
-    CPU time for UHF partial hessian      0.13 sec, wall time      0.06 sec
-    CPU time for UHF hessian      0.19 sec, wall time      0.09 sec
+    CPU time for UHF partial hessian      0.13 sec, wall time      0.07 sec
+    CPU time for UHF hessian      0.18 sec, wall time      0.09 sec
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
 E1 = -79.51056926054727  Ecoul = 26.250584819778567
