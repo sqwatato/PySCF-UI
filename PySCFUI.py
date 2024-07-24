@@ -1,9 +1,9 @@
 import streamlit as st
-import streamlit.components.v1 as components
+# import streamlit.components.v1 as components
 from pyscf import gto, scf
 from streamlit.runtime.scriptrunner import add_script_run_ctx
-import threading
-import time
+# import threading
+# import time
 from stmol import *
 import py3Dmol
 from rdkit import Chem
@@ -13,7 +13,7 @@ from rdkit.Chem import Descriptors, AllChem
 from rdkit.Chem.Draw import MolToImage
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from collections import defaultdict
 import altair as alt
 import os
@@ -22,13 +22,13 @@ from streamlit_extras.row import row
 from utils import getAtomicToMoleculeName
 # R^2
 from sklearn.metrics import r2_score
-import requests
+# import requests
 import timeit
 import basis_set_exchange as bse
 import json
-import ipyspeck
-import ipywidgets as widgets
-from IPython.display import display
+# import ipyspeck
+# import ipywidgets as widgets
+# from IPython.display import display
 
 st.set_page_config(
     page_title="PySCF UI",
