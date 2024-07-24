@@ -26,6 +26,9 @@ import requests
 import timeit
 import basis_set_exchange as bse
 import json
+import ipyspeck
+import ipywidgets as widgets
+from IPython.display import display
 
 st.set_page_config(
     page_title="PySCF UI",
@@ -417,7 +420,6 @@ with tab1:
         
         cleaned_data = []
         results_mol_runtime_data = []
-        
         for result_item in st.session_state['results']:
             tmpvar = result_item.copy()
             tmpvar.pop('Rdkit Molecule')
@@ -478,12 +480,52 @@ with tab1:
             
             with st.expander(f"{str(st.session_state['results'].index(data) + 1)}.{data['Molecule Name']} | {data['Method']} | {data['Basis']} ({data['Basis Source']} Basis): {str(round(data['Real Compute Time'], 2))} s"):
                 
-                result_col_1, result_col_2 = st.columns([2, 1])
+                # Assuming data and index are defined elsewhere in your code
+                mblock = Chem.MolToMolBlock(data['Rdkit Molecule'])
+
+                # Create columns for the parameters
+                col1, col2, col3, col4 = st.columns(4)
+
+                # Place each parameter in a separate column
+                with col1:
+                    bcolor = st.color_picker('Pick A Color', '#000000', key=f"{index}:3dbcolor")
+                with col2:
+                    style = st.selectbox('style', ['line', 'cross', 'stick', 'sphere', 'cartoon', 'clicksphere'], index=3, key=f"{index}:3dstyle")
+                with col3:
+                    spin = st.checkbox('Spin', value=False, key=f"{index}:3dspin")
+
+                # Create the 3D view
+                xyzview = py3Dmol.view()
+                xyzview.addModel(mblock, 'mol')
+                xyzview.setStyle({style: {'color': 'spectrum'}})
+                xyzview.setBackgroundColor(bcolor)
+                if spin:
+                    xyzview.spin(True)
+                else:
+                    xyzview.spin(False)
+                xyzview.zoomTo()
+
+                # Display the 3D model
+                showmol(xyzview, height=500, width=800)
+                
+                result_col_1, result_col_2 = st.columns(2)
                 with result_col_1:
                     st.image(MolToImage(data['Rdkit Molecule'], size=(200, 200)))
                 
                 with result_col_2:
                     st.image(MolToImage(Chem.MolFromSmiles(data['Smiles']), size=(200, 200)))
+                    
+                
+#                     tmp = """5
+# name
+# C	0.0000000	0.0000000	0.0000000
+# H	0.6247670	0.6247670	0.6247670
+# H	-0.6247670	-0.6247670	0.6247670
+# H	-0.6247670	0.6247670	-0.6247670
+# H	0.6247670	-0.6247670	-0.6247670"""
+#                     speck_plot(tmp, component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+
+                    
                 
                 # mol_runtime_data = {
                 #     'CPU Runtime (s)': [data['SCF CPU Runtime'], data['Hessian CPU Runtime']],
@@ -535,13 +577,12 @@ with tab1:
                 st.dataframe(pd.DataFrame(mol_heat_data, index=['Value']).transpose(), use_container_width=True)
 
                 # with result_col_2:
-                #     speck_plot(
-                #         data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
+                #     speck_plot(data['Molecule'], component_h=200, component_w=200, wbox_height="auto", wbox_width="auto")
                 
                 # linebreak
                 st.write("")
                 st.write("")
-                
+
                 
                 col_config = {i:st.column_config.NumberColumn(i, format="%.4f") for i in enerdf.columns}
                 st.dataframe(
@@ -640,9 +681,13 @@ with tab2:
             'Molecule',
             'Molecule Name',
             'Smiles',
-            'Real Compute Time',
+            'SCF Wall Time',
+            'Hessian Wall Time',
+            'SCF CPU Time',
+            'Hessian CPU Time',
             'Run Order',
             'Basis Source',
+            'Method',
         ]
         dependent = [i for i in st.session_state['results'][0].keys() if i not in independent]
         dependent = [i for i in dependent if i not in exclude]
