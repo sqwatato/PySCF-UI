@@ -490,7 +490,7 @@ with tab1:
                 with col1:
                     bcolor = st.color_picker('Pick A Color', '#000000', key=f"{index}:3dbcolor")
                 with col2:
-                    style = st.selectbox('style', ['line', 'cross', 'stick', 'sphere', 'cartoon', 'clicksphere'], index=3, key=f"{index}:3dstyle")
+                    style = st.selectbox('style', ['line', 'cross', 'stick', 'sphere', 'cartoon', 'VDW', 'MS'], index=3, key=f"{index}:3dstyle")
                 with col3:
                     spin = st.checkbox('Spin', value=False, key=f"{index}:3dspin")
 
