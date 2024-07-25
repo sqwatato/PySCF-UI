@@ -29,6 +29,7 @@ import json
 # import ipyspeck
 # import ipywidgets as widgets
 # from IPython.display import display
+from ipyspeck import stspeck
 
 st.set_page_config(
     page_title="PySCF UI",
@@ -480,33 +481,40 @@ with tab1:
             
             with st.expander(f"{str(st.session_state['results'].index(data) + 1)}.{data['Molecule Name']} | {data['Method']} | {data['Basis']} ({data['Basis Source']} Basis): {str(round(data['Real Compute Time'], 2))} s"):
                 
-                # Assuming data and index are defined elsewhere in your code
-                mblock = Chem.MolToMolBlock(data['Rdkit Molecule'])
+                # # Assuming data and index are defined elsewhere in your code
+                # mblock = Chem.MolToMolBlock(data['Rdkit Molecule'])
 
-                # Create columns for the parameters
-                col1, col2, col3, col4 = st.columns(4)
+                # # Create columns for the parameters
+                # col1, col2, col3, col4 = st.columns(4)
 
-                # Place each parameter in a separate column
-                with col1:
-                    bcolor = st.color_picker('Pick A Color', '#000000', key=f"{index}:3dbcolor")
-                with col2:
-                    style = st.selectbox('style', ['line', 'cross', 'stick', 'sphere', 'cartoon', 'VDW', 'MS'], index=3, key=f"{index}:3dstyle")
-                with col3:
-                    spin = st.checkbox('Spin', value=False, key=f"{index}:3dspin")
+                # # Place each parameter in a separate column
+                # with col1:
+                #     bcolor = st.color_picker('Pick A Color', '#000000', key=f"{index}:3dbcolor")
+                # with col2:
+                #     style = st.selectbox('style', ['line', 'cross', 'stick', 'sphere', 'cartoon', 'VDW', 'MS'], index=3, key=f"{index}:3dstyle")
+                # with col3:
+                #     spin = st.checkbox('Spin', value=False, key=f"{index}:3dspin")
 
-                # Create the 3D view
-                xyzview = py3Dmol.view()
-                xyzview.addModel(mblock, 'mol')
-                xyzview.setStyle({style: {'color': 'spectrum'}})
-                xyzview.setBackgroundColor(bcolor)
-                if spin:
-                    xyzview.spin(True)
-                else:
-                    xyzview.spin(False)
-                xyzview.zoomTo()
+                # # Create the 3D view
+                # xyzview = py3Dmol.view()
+                # xyzview.addModel(mblock, 'mol')
+                # xyzview.setStyle({style: {'color': 'spectrum'}})
+                # xyzview.setBackgroundColor(bcolor)
+                # if spin:
+                #     xyzview.spin(True)
+                # else:
+                #     xyzview.spin(False)
+                # xyzview.zoomTo()
 
-                # Display the 3D model
-                showmol(xyzview, height=500, width=800)
+                # # Display the 3D model
+                # showmol(xyzview, height=500, width=800)
+                
+
+                res = stspeck.Speck(
+                data=data['Molecule'],
+                    width="670px",
+                    height="600px"
+                )
                 
                 result_col_1, result_col_2 = st.columns(2)
                 with result_col_1:
