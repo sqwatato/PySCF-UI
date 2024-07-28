@@ -253,6 +253,7 @@ tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
     ["CCCBDB PySCF UI Database", "Text Input", "File Input"])
 method_option = st.selectbox(
     "Method", ["UHF","UKS","RHF", "RKS"], index = 0)
+st.write("*Please note that restricted SCF will only work for molecules and atoms that have closed shells (i.e., all their electrons are paired), and will not work for open-shell systems with unpaired electrons. For more information on this, please see the Quickstart Guide.*")
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
 if bse_pyscf == 'PySCF':
     basis_option = st.selectbox(
