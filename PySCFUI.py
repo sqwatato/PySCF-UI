@@ -19,7 +19,7 @@ import altair as alt
 import os
 from pyscf.hessian import thermo
 from streamlit_extras.row import row
-from utils import getAtomicToMoleculeName
+import utils
 # R^2
 from sklearn.metrics import r2_score
 # import requests
@@ -37,7 +37,7 @@ st.set_page_config(
 )
 
 # api_url = "http://0.0.0.0:8000/calculate"
-moleculeNames = getAtomicToMoleculeName()
+moleculeNames = utils.getAtomicToMoleculeName()
 trend_threshold = 0.95
 
 if 'queue' not in st.session_state:
@@ -82,6 +82,18 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         mf = scf.UHF(mol).run()
     elif method == "UKS":
         mf = scf.UKS(mol).run()
+    elif method == "RHF":
+        mf = scf.RHF(mol).run()
+    elif method == "RKS":
+        mf = scf.RKS(mol).run()
+    
+    method_search = {
+        "UHF": "UHF",
+        "UKS": "UHF",
+        "RHF": "RHF",
+        "RKS": "RHF"
+    }
+        
     scf_total_time = timeit.default_timer() - scf_start_time
     hessian_start_time = timeit.default_timer()
     hessian = mf.Hessian().kernel()
@@ -105,11 +117,13 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
 
         # elif line.startswith("converged SCF energy = "):
         #     energy = float([i for i in line.split() if i != ''][4])
-        elif line.startswith("    CPU time for UHF hessian"):
+        elif line.startswith(f"    CPU time for {method_search[method]} hessian"):
             words = [i for i in line.split() if i]
             # ['CPU', 'time', 'for', 'UHF', 'hessian', '7.12', 'sec,', 'wall', 'time', '4.87', 'sec']
             hessian_cpu_time = float(words[5])
             hessian_wall_time = float(words[9])
+    print(scf_cpu_time)
+    print(hessian_cpu_time)
     
     #Helmholtz Free Energy
     F_elec = (thermo_info['E_elec'][0] - temperature * thermo_info['S_elec' ][0], 'Eh')
@@ -238,17 +252,20 @@ def addToQueue(atom, basis):
 tabCCCBDBDatabase, tabTextInput, tabFileInput = st.tabs(
     ["CCCBDB PySCF UI Database", "Text Input", "File Input"])
 method_option = st.selectbox(
-    "Method", ["UHF","UKS"], index = 0)
+    "Method", ["UHF","UKS","RHF", "RKS"], index = 0)
 bse_pyscf = st.radio("Source of Basis Sets",['PySCF','BSE'])
 if bse_pyscf == 'PySCF':
     basis_option = st.selectbox(
-    "Basis", ['ano','anorcc', 'anoroosdz', 'anoroostz', 'roosdz', 'roostz', 'ccpvdz', 'ccpvtz', 'ccpvqz', 'ccpv5z', 'ccpvdpdz', 'augccpvdz', 'augccpvtz', 'augccpvqz', 'augccpv5z', 'augccpvdpdz', 'ccpvdzdk', 'ccpvtzdk', 'ccpvqzdk', 'ccpv5zdk', 'ccpvdzdkh', 'ccpvtzdkh', 'ccpvqzdkh', 'ccpv5zdkh', 'augccpvdzdk', 'augccpvtzdk', 'augccpvqzdk', 'augccpv5zdk', 'augccpvdzdkh', 'augccpvtzdkh', 'augccpvqzdkh', 'augccpv5zdkh', 'ccpvdzjkfit', 'ccpvtzjkfit', 'ccpvqzjkfit', 'ccpv5zjkfit', 'ccpvdzri', 'ccpvtzri', 'ccpvqzri', 'ccpv5zri', 'augccpvdzjkfit', 'augccpvdzpjkfit', 'augccpvtzjkfit', 'augccpvqzjkfit', 'augccpv5zjkfit', 'heavyaugccpvdzjkfit', 'heavyaugccpvtzjkfit', 'heavyaugccpvdzri', 'heavyaugccpvtzri', 'augccpvdzri', 'augccpvdzpri', 'augccpvqzri', 'augccpvtzri', 'augccpv5zri', 'ccpvtzdk3', 'ccpvqzdk3', 'augccpvtzdk3', 'augccpvqzdk3', 'dyalldz', 'dyallqz', 'dyalltz', 'faegredz', 'iglo', 'iglo3', '321++g', '321++g*', '321++gs', '321g', '321g*', '321gs', '431g', '631++g', '631++g*', '631++gs', '631++g**', '631++gss', '631+g', '631+g*', '631+gs', '631+g**', '631+gss', '6311++g', '6311++g*', '6311++gs', '6311++g**', '6311++gss', '6311+g', '6311+g*', '6311+gs', '6311+g**', '6311+gss', '6311g', '6311g*', '6311gs', '6311g**', '6311gss', '631g', '631g*', '631gs', '631g**', '631gss', 'sto3g', 'sto6g', 'minao', 'dz', 'dzpdunning', 'dzvp', 'dzvp2', 'dzp', 'tzp', 'qzp', 'adzp', 'atzp', 'aqzp', 'dzpdk', 'tzpdk', 'qzpdk', 'dzpdkh', 'tzpdkh', 'qzpdkh', 'def2svp', 'def2svpd', 'def2tzvpd', 'def2tzvppd', 'def2tzvpp', 'def2tzvp', 'def2qzvpd', 'def2qzvppd', 'def2qzvpp', 'def2qzvp', 'def2svpjfit', 'def2svpjkfit', 'def2tzvpjfit', 'def2tzvpjkfit', 'def2tzvppjfit', 'def2tzvppjkfit', 'def2qzvpjfit', 'def2qzvpjkfit', 'def2qzvppjfit', 'def2qzvppjkfit', 'def2universaljfit', 'def2universaljkfit', 'def2svpri', 'def2svpdri' , 'def2tzvpri', 'def2tzvpdri', 'def2tzvppri', 'def2tzvppdri', 'def2qzvpri' , 'def2qzvppri', 'def2qzvppdri', 'tzv', 'weigend', 'weigend+etb', 'weigendcfit', 'weigendjfit', 'weigendjkfit', 'demon', 'demoncfit', 'ahlrichs', 'ahlrichscfit', 'ccpvtzfit', 'ccpvdzfit', 'ccpwcvtzmp2fit', 'ccpvqzmp2fit', 'ccpv5zmp2fit', 'augccpwcvtzmp2fit', 'augccpvqzmp2fit', 'augccpv5zmp2fit', 'ccpcvdz' , 'ccpcvtz', 'ccpcvqz', 'ccpcv5z', 'ccpcv6z', 'ccpwcvdz', 'ccpwcvtz', 'ccpwcvqz', 'ccpwcv5z', 'ccpwcvdzdk', 'ccpwcvtzdk', 'ccpwcvqzdk', 'ccpwcv5zdk', 'ccpwcvtzdk3', 'ccpwcvqzdk3', 'augccpwcvdz', 'augccpwcvtz', 'augccpwcvqz', 'augccpwcv5z', 'augccpwcvtzdk', 'augccpwcvqzdk', 'augccpwcv5zdk', 'augccpwcvtzdk3', 'augccpwcvqzdk3', 'dgaussa1cfit', 'dgaussa1xfit', 'dgaussa2cfit', 'dgaussa2xfit', 'ccpvdzpp', 'ccpvtzpp', 'ccpvqzpp', 'ccpv5zpp', 'crenbl', 'crenbs', 'lanl2dz', 'lanl2tz', 'lanl08','sbkjc','stuttgart', 'stuttgartdz', 'stuttgartrlc', 'stuttgartrsc', 'stuttgartrsc_mdf', 'ccpwcvdzpp', 'ccpwcvtzpp', 'ccpwcvqzpp', 'ccpwcv5zpp', 'ccpvdzppnr', 'ccpvtzppnr', 'augccpvdzpp', 'augccpvtzpp', 'augccpvqzpp', 'augccpv5zpp', 'pc0', 'pc1', 'pc2', 'pc3', 'pc4' 'augpc0', 'augpc1', 'augpc2', 'augpc3', 'augpc4', 'pcseg0', 'pcseg1', 'pcseg2', 'pcseg3', 'pcseg4', 'augpcseg0', 'augpcseg1', 'augpcseg2', 'augpcseg3', 'augpcseg4', 'sarcdkh', 'bfdvdz', 'bfdvtz', 'bfdvqz', 'bfdv5z', 'bfd', 'bfdpp', 'ccpcvdzf12optri', 'ccpcvtzf12optri', 'ccpcvqzf12optri', 'ccpvdzf12optri', 'ccpvtzf12optri', 'ccpvqzf12optri', 'ccpv5zf12', 'ccpvdzf12rev2', 'ccpvtzf12rev2', 'ccpvqzf12rev2', 'ccpv5zf12rev2', 'ccpvdzf12nz', 'ccpvtzf12nz', 'ccpvqzf12nz', 'augccpvdzoptri', 'augccpvtzoptri', 'augccpvqzoptri', 'augccpv5zoptri', 'pobtzvp', 'pobtzvpp', 'crystalccpvdz', 'ccecp', 'ccecpccpvdz', 'ccecpccpvtz', 'ccecpccpvqz', 'ccecpccpv5z', 'ccecpccpv6z', 'ccecpaugccpvdz', 'ccecpaugccpvtz', 'ccecpaugccpvqz', 'ccecpaugccpv5z', 'ccecpaugccpv6z', 'ccecphe', 'ccecpheccpvdz', 'ccecpheccpvtz', 'ccecpheccpvqz', 'ccecpheccpv5z', 'ccecpheccpv6z', 'ccecpheaugccpvdz', 'ccecpheaugccpvtz', 'ccecpheaugccpvqz', 'ccecpheaugccpv5z', 'ccecpheaugccpv6z', 'ccecpreg', 'ccecpregccpvdz', 'ccecpregccpvtz', 'ccecpregccpvqz', 'ccecpregccpv5z', 'ccecpregaugccpvdz', 'ccecpregaugccpvtz', 'ccecpregaugccpvqz', 'ccecpregaugccpv5z', 'ecpds10mdfso', 'ecpds28mdfso', 'ecpds28mwbso', 'ecpds46mdfso', 'ecpds60mdfso', 'ecpds60mwbso', 'ecpds78mdfso', 'ecpds92mdfbso', 'ecpds92mdfbqso','gthaugdzvp', 'gthaugqzv2p', 'gthaugqzv3p', 'gthaugtzv2p', 'gthaugtzvp', 'gthdzv', 'gthdzvp', 'gthqzv2p', 'gthqzv3p', 'gthszv', 'gthtzv2p', 'gthtzvp', 'gthccdzvp', 'gthcctzvp', 'gthccqzvp', 'gthszvmolopt', 'gthdzvpmolopt', 'gthtzvpmolopt', 'gthtzv2pmolopt', 'gthszvmoloptsr', 'gthdzvpmoloptsr', 'gthblyp', 'gthbp', 'gthhcth120' 'gthhcth407', 'gtholyp', 'gthlda', 'gthpade', 'gthpbe', 'gthpbesol', 'gthhf', 'gthhfrev'], index=101)
+    "Basis", utils.getPyscfBasisSets(), index=utils.getPyscfBasisSets().index("sto3g"))
+    
+    utils.getPyscfBasisSets()
+    
 # verbose_option = st.selectbox("Verbose", index=2, options=[
                             #   "3, energy only", "4, cycles and energy", "5, cycles energy and runtime", "6", "7", "8", "9, max"])
     st.write("*Please note that the PySCF basis sets may not have sets for the particular atoms in the queued molecule. If the selected basis set cannot be found for any atom in the molecule, the UI will return an error. For more information on this, please see the Quickstart Guide.*")
 elif bse_pyscf == 'BSE':
-    basis_option = st.selectbox(
-    "Basis", ['2ZaPa-NR', '2ZaPa-NR-CV', '3-21G', '3ZaPa-NR', '3ZaPa-NR-CV', '4-31G', '4ZaPa-NR', '4ZaPa-NR-CV', '5ZaPa-NR', '5ZaPa-NR-CV', '6-21G', '6-31++G', '6-31++G*', '6-31++G**', '6-31+G', '6-31+G*', '6-31+G**', '6-311++G', '6-311++G(2d,2p)', '6-311++G(3df,3pd)', '6-311++G*', '6-311++G**', '6-311+G', '6-311+G(2d,p)', '6-311+G*', '6-311+G**', '6-311G', '6-311G(d,p)', '6-311G*', '6-311G**', '6-311G**-RIFIT', '6-311xxG(d,p)', '6-31G', '6-31G(2df,p)', '6-31G(3df,3pd)', '6-31G(d,p)', '6-31G*', '6-31G**', '6-31G**-RIFIT', '6ZaPa-NR', '7ZaPa-NR', 'admm-1', 'admm-2', 'admm-3', 'AHGBS-5', 'AHGBS-7', 'AHGBS-9', 'AHGBSP1-5', 'AHGBSP1-7', 'AHGBSP1-9', 'AHGBSP2-5', 'AHGBSP2-7', 'AHGBSP2-9', 'AHGBSP3-5', 'AHGBSP3-7', 'AHGBSP3-9', 'Ahlrichs pVDZ', 'Ahlrichs VDZ', 'Ahlrichs VTZ', 'ANO-DK3', 'ano-pV5Z', 'ano-pVDZ', 'ano-pVQZ', 'ano-pVTZ', 'ANO-R', 'ANO-R0', 'ANO-R1', 'ANO-R2', 'ANO-R3', 'ANO-RCC', 'ANO-RCC-MB', 'ANO-RCC-VDZ', 'ANO-RCC-VDZP', 'ANO-RCC-VQZP', 'ANO-RCC-VTZP', 'ANO-VT-DZ', 'ANO-VT-QZ', 'ANO-VT-TZ', 'apr-cc-pV(Q+d)Z', 'ATZP-ZORA', 'aug-admm-1', 'aug-admm-2', 'aug-admm-3', 'aug-ano-pV5Z', 'aug-ano-pVDZ', 'aug-ano-pVQZ', 'aug-ano-pVTZ', 'aug-cc-pV(5+d)Z', 'aug-cc-pV(D+d)Z', 'aug-cc-pV(Q+d)Z', 'aug-cc-pV(T+d)Z', 'aug-cc-pV5Z', 'aug-cc-pV5Z-DK', 'aug-cc-pV5Z-OPTRI', 'aug-cc-pV5Z-RIFIT', 'aug-cc-pV6Z', 'aug-cc-pV6Z-RIFIT', 'aug-cc-pVDZ', 'aug-cc-pVDZ-DK', 'aug-cc-pVDZ-OPTRI', 'aug-cc-pVDZ-RIFIT', 'aug-cc-pVQZ', 'aug-cc-pVQZ-DK', 'aug-cc-pVQZ-OPTRI', 'aug-cc-pVQZ-RIFIT', 'aug-cc-pVTZ', 'aug-cc-pVTZ-DK', 'aug-cc-pVTZ-J', 'aug-cc-pVTZ-OPTRI', 'aug-cc-pVTZ-RIFIT', 'aug-pc-0', 'aug-pc-1', 'aug-pc-2', 'aug-pc-3', 'aug-pc-4', 'aug-pcH-1', 'aug-pcH-2', 'aug-pcH-3', 'aug-pcH-4', 'aug-pcJ-0', 'aug-pcJ-0_2006', 'aug-pcJ-1', 'aug-pcJ-1_2006', 'aug-pcJ-2', 'aug-pcJ-2_2006', 'aug-pcJ-3', 'aug-pcJ-3_2006', 'aug-pcJ-4', 'aug-pcJ-4_2006', 'aug-pcS-0', 'aug-pcS-1', 'aug-pcS-2', 'aug-pcS-3', 'aug-pcS-4', 'aug-pcseg-0', 'aug-pcseg-1', 'aug-pcseg-2', 'aug-pcseg-3', 'aug-pcseg-4', 'aug-pcSseg-0', 'aug-pcSseg-1', 'aug-pcSseg-2', 'aug-pcSseg-3', 'aug-pcSseg-4', 'CADPAC-TZ2P', 'cc-pV(5+d)Z', 'cc-pV(D+d)Z', 'cc-pV(Q+d)Z', 'cc-pV(T+d)Z', 'cc-pV5Z', 'cc-pV5Z(fi/sf/fw)', 'cc-pV5Z(fi/sf/lc)', 'cc-pV5Z(fi/sf/sc)', 'cc-pV5Z(pt/sf/fw)', 'cc-pV5Z(pt/sf/lc)', 'cc-pV5Z(pt/sf/sc)', 'cc-pV5Z-DK', 'cc-pV5Z-F12', 'cc-pV5Z-JKFIT', 'cc-pV5Z-RIFIT', 'cc-pV6Z', 'cc-pV6Z-RIFIT', 'cc-pVDZ', 'cc-pVDZ(fi/sf/fw)', 'cc-pVDZ(fi/sf/lc)', 'cc-pVDZ(fi/sf/sc)', 'cc-pVDZ(pt/sf/fw)', 'cc-pVDZ(pt/sf/lc)', 'cc-pVDZ(pt/sf/sc)', 'cc-pVDZ(seg-opt)', 'cc-pVDZ-DK', 'cc-pVDZ-F12', 'cc-pVDZ-F12-OPTRI', 'cc-pVDZ-F12-OPTRI+', 'cc-pVDZ-RIFIT', 'cc-pVQZ', 'cc-pVQZ(fi/sf/fw)', 'cc-pVQZ(fi/sf/lc)', 'cc-pVQZ(fi/sf/sc)', 'cc-pVQZ(pt/sf/fw)', 'cc-pVQZ(pt/sf/lc)', 'cc-pVQZ(pt/sf/sc)', 'cc-pVQZ-DK', 'cc-pVQZ-F12', 'cc-pVQZ-F12-OPTRI', 'cc-pVQZ-F12-OPTRI+', 'cc-pVQZ-JKFIT', 'cc-pVQZ-RIFIT', 'cc-pVTZ', 'cc-pVTZ(fi/sf/fw)', 'cc-pVTZ(fi/sf/lc)', 'cc-pVTZ(fi/sf/sc)', 'cc-pVTZ(pt/sf/fw)', 'cc-pVTZ(pt/sf/lc)', 'cc-pVTZ(pt/sf/sc)', 'cc-pVTZ(seg-opt)', 'cc-pVTZ-DK', 'cc-pVTZ-F12', 'cc-pVTZ-F12-OPTRI', 'cc-pVTZ-F12-OPTRI+', 'cc-pVTZ-JKFIT', 'cc-pVTZ-RIFIT', 'ccemd-2', 'ccemd-3', 'coemd-2', 'coemd-3', 'coemd-4', 'coemd-ref', 'CRENBL', 'def2-mTZVP', 'def2-mTZVPP', 'def2-mTZVPP-RIJ', 'def2-QZVP', 'def2-QZVP-RIFIT', 'def2-QZVPD', 'def2-QZVPP', 'def2-QZVPP-RIFIT', 'def2-QZVPPD', 'def2-QZVPPD-RIFIT', 'def2-SV(P)', 'def2-SV(P)-JKFIT', 'def2-SV(P)-RIFIT', 'def2-SVP', 'def2-SVP-RIFIT', 'def2-SVPD', 'def2-SVPD-RIFIT', 'def2-TZVP', 'def2-TZVP-RIFIT', 'def2-TZVPD', 'def2-TZVPD-RIFIT', 'def2-TZVPP', 'def2-TZVPP-RIFIT', 'def2-TZVPPD', 'def2-TZVPPD-RIFIT', 'def2-universal-JFIT', 'def2-universal-JKFIT', 'deMon2k-DZVP-GGA', 'DFO+-NRLMOL', 'DFO-NRLMOL', 'dgauss-a1-dftjfit', 'dgauss-a1-dftxfit', 'dgauss-a2-dftjfit', 'dgauss-a2-dftxfit', 'dgauss-dzvp', 'dgauss-dzvp2', 'dgauss-tzvp', 'DZ (Dunning-Hay)', 'DZP (Dunning-Hay)', 'HGBS-5', 'HGBS-7', 'HGBS-9', 'HGBSP1-5', 'HGBSP1-7', 'HGBSP1-9', 'HGBSP2-5', 'HGBSP2-7', 'HGBSP2-9', 'HGBSP3-5', 'HGBSP3-7', 'HGBSP3-9', 'IGLO-II', 'IGLO-III', 'jgauss-dzp', 'jgauss-qz2p', 'jgauss-tzp1', 'jgauss-tzp2', 'jorge-5ZP', 'jorge-5ZP-DKH', 'jorge-6ZP', 'jorge-6ZP-DKH', 'jorge-A5ZP', 'jorge-ADZP', 'jorge-AQZP', 'jorge-ATZP', 'jorge-DZP', 'jorge-DZP-DKH', 'jorge-QZP', 'jorge-QZP-DKH', 'jorge-TZP', 'jorge-TZP-DKH', 'jul-cc-pV(D+d)Z', 'jul-cc-pV(Q+d)Z', 'jul-cc-pV(T+d)Z', 'jun-cc-pV(D+d)Z', 'jun-cc-pV(Q+d)Z', 'jun-cc-pV(T+d)Z', 'Koga unpolarized', 'LANL2DZ', 'LANL2DZdp', 'maug-cc-pV(D+d)Z', 'maug-cc-pV(Q+d)Z', 'maug-cc-pV(T+d)Z', 'may-cc-pV(Q+d)Z', 'may-cc-pV(T+d)Z', 'MIDI', 'MIDI!', 'MIDIX', 'MINI', 'NLO-V', 'NMR-DKH (TZ2P)', 'pc-0', 'pc-1', 'pc-2', 'pc-3', 'pc-4', 'pcemd-2', 'pcemd-3', 'pcemd-4', 'pcH-1', 'pcH-2', 'pcH-3', 'pcH-4', 'pcJ-0', 'pcJ-0_2006', 'pcJ-1', 'pcJ-1_2006', 'pcJ-2', 'pcJ-2_2006', 'pcJ-3', 'pcJ-3_2006', 'pcJ-4', 'pcJ-4_2006', 'pcS-0', 'pcS-1', 'pcS-2', 'pcS-3', 'pcS-4', 'pcseg-0', 'pcseg-1', 'pcseg-2', 'pcseg-3', 'pcseg-4', 'pcSseg-0', 'pcSseg-1', 'pcSseg-2', 'pcSseg-3', 'pcSseg-4', 'pob-DZVP-rev2', 'pob-TZVP', 'pob-TZVP-rev2', 'Roos Augmented Double Zeta ANO', 'Roos Augmented Triple Zeta ANO', 'Sadlej pVTZ', 'sap_grasp_large', 'sap_grasp_small', 'sap_helfem_large', 'sap_helfem_small', 'Sapporo-DZP', 'Sapporo-DZP-2012', 'Sapporo-DZP-2012-diffuse', 'Sapporo-DZP-diffuse', 'Sapporo-QZP', 'Sapporo-QZP-2012', 'Sapporo-QZP-2012-diffuse', 'Sapporo-QZP-diffuse', 'Sapporo-TZP', 'Sapporo-TZP-2012', 'Sapporo-TZP-2012-diffuse', 'Sapporo-TZP-diffuse', 'saug-ano-pV5Z', 'saug-ano-pVDZ', 'saug-ano-pVQZ', 'saug-ano-pVTZ', 'SBKJC Polarized (p,2d) - LFK', 'SBKJC-VDZ', 'SBO4-DZ(d)-3G', 'SBO4-DZ(d,p)-3G', 'SBO4-SZ-3G', 'Scaled MINI', 'sigmaDZHF', 'sigmaSZHF', 'sigmaTZHF', 'STO-2G', 'STO-3G', 'STO-4G', 'STO-5G', 'STO-6G', 'TZP-ZORA', 'UGBS', 'un-ccemd-ref', 'un-pcemd-ref', 'x2c-JFIT', 'x2c-JFIT-universal', 'x2c-QZVPall', 'x2c-QZVPall-2c', 'x2c-QZVPall-2c-s', 'x2c-QZVPall-s', 'x2c-QZVPPall', 'x2c-QZVPPall-2c', 'x2c-QZVPPall-2c-s', 'x2c-QZVPPall-s', 'x2c-SV(P)all', 'x2c-SV(P)all-2c', 'x2c-SV(P)all-s', 'x2c-SVPall', 'x2c-SVPall-2c', 'x2c-SVPall-s', 'x2c-TZVPall', 'x2c-TZVPall-2c', 'x2c-TZVPall-s', 'x2c-TZVPPall', 'x2c-TZVPPall-2c', 'x2c-TZVPPall-s'])
+    basis_option = st.selectbox("Basis", utils.getBSEBasisSets())
+
     st.write("*The listed Basis Set Exchange basis sets are available for C, H, O, N, F, S, and P. Future updates will extend this to include all atoms up to chlorine.*")
 
 verbose_option = st.slider("Verbose", min_value=3, max_value=9, value=5)
@@ -400,6 +417,7 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
+        st.write("*Click on a cell in a table to expand it and display the value to a higher degree of precision.*")
         # st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
         # st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         # st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
@@ -513,7 +531,8 @@ with tab1:
                 res = stspeck.Speck(
                 data=data['Molecule'],
                     width="670px",
-                    height="600px"
+                    height="600px",
+                    key=f"{index}:speck"
                 )
                 
                 result_col_1, result_col_2 = st.columns(2)
