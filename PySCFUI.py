@@ -417,7 +417,7 @@ tab1, tab2, tab3 = st.tabs(['Results', 'View Graphs', 'View Logs'])
 with tab1:
     if 'results' in st.session_state:
         st.subheader("Results")
-        st.write("*Click on a cell in a table to expand it and display the value to a higher degree of precision.*")
+        st.write("*Double click on a cell in a table to expand it and display the value to a higher degree of precision.*")
         # st.text("Total Real Runtime: " + str(round(sum(x['Real Compute Time'] for x in st.session_state['results']),2)) + "s")
         # st.text("Log Hessian Wall Runtime: " + str(round(sum(x['Hessian Wall Runtime'] for x in st.session_state['results']),2)) + "s")
         # st.text("Total Log CPU Runime: " + str(round(sum(x['SCF CPU Runtime'] + x['Hessian CPU Runtime'] for x in st.session_state['results']),2)) + "s")
@@ -856,6 +856,8 @@ with tab2:
 
         #     # Display Equation
         #     # st.write(f"Best Fit Equation ({target}): Y = {coeffs[0]:.4f}x + {coeffs[1]:.4f}")
+    else:
+        st.markdown('2+ molecules required for regression. Please add more molecules.')
 
 with tab3:
     with open('output-test.txt', 'r') as file:
