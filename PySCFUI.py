@@ -38,7 +38,7 @@ st.set_page_config(
 
 # api_url = "http://0.0.0.0:8000/calculate"
 moleculeNames = utils.getAtomicToMoleculeName()
-trend_threshold = 0.95
+trend_threshold = 0.97
 
 if 'queue' not in st.session_state:
     st.session_state['queue'] = []
