@@ -156,7 +156,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         'SCF Real Time': scf_total_time,
         'Hessian Real Time': hessian_total_time,
         'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
-        'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[0],
+        'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[1],
         'Converged SCF Total Energy (Ha)': mf.energy_tot(),
         # thermodynamic 
         # Heat Capacity
