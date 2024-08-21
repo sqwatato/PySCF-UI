@@ -157,6 +157,7 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
         'Hessian Real Time': hessian_total_time,
         'Converged SCF Nuclear Energy (Ha)': mf.energy_nuc(),
         'Converged SCF Electronic Energy (Ha)': mf.energy_elec()[0],
+        'Converged SCF Coulombic Energy (Ha)': mf.energy_elec()[1],
         'Converged SCF Total Energy (Ha)': mf.energy_tot(),
         # thermodynamic 
         # Heat Capacity
@@ -581,7 +582,7 @@ with tab1:
                 mol_general_data = {
                     'Number of Atoms': data['Atoms'],
                     'Number of Bonds': data['Bonds'],
-                    'Number ofRings': data['Rings'],
+                    'Number of Rings': data['Rings'],
                     'Weight (Da)': data['Weight'],
                     'Smiles': data['Smiles']
                 }
@@ -591,6 +592,7 @@ with tab1:
                 mol_general_energies = {
                     'Converged SCF Nuclear Energy (Ha)': data['Converged SCF Nuclear Energy (Ha)'],
                     'Converged SCF Electronic Energy (Ha)': data['Converged SCF Electronic Energy (Ha)'],
+                    'Converged SCF Coulombic Energy (Ha)': data['Converged SCF Coulombic Energy (Ha)'],
                     'Converged SCF Total Energy (Ha)': data['Converged SCF Total Energy (Ha)'],
                     'Zero-Point Energy (Ha)': data['Zero-Point Energy (Ha)'],
                     '0K Internal Energy (Ha)': data['0K Internal Energy (Ha)'],
