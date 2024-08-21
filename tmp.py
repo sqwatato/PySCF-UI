@@ -1,15 +1,5 @@
-from typing import Union
+import os
 
-from fastapi import FastAPI
-
-app = FastAPI()
-
-
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+for filename in os.listdir('./precomputed_molecules'):
+    new_filename = filename.replace(':', '-')
+    os.rename(os.path.join('./precomputed_molecules', filename), os.path.join('./precomputed_molecules', new_filename))

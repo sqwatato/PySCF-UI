@@ -122,8 +122,8 @@ def compute_pyscf(atom, basis_source, basis_option, verbose_option, method, temp
             # ['CPU', 'time', 'for', 'UHF', 'hessian', '7.12', 'sec,', 'wall', 'time', '4.87', 'sec']
             hessian_cpu_time = float(words[5])
             hessian_wall_time = float(words[9])
-    print(scf_cpu_time)
-    print(hessian_cpu_time)
+    # print(scf_cpu_time)
+    # print(hessian_cpu_time)
     
     #Helmholtz Free Energy
     F_elec = (thermo_info['E_elec'][0] - temperature * thermo_info['S_elec' ][0], 'Eh')
@@ -281,7 +281,7 @@ press = thermo_row.number_input("Pressure (Pa)", min_value=0.0, value=101325.0)
 
 with tabCCCBDBDatabase:
     selectedMolecule = st.selectbox(
-        'Search UI Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane:CH4"))
+        'Search UI Molecule Database', precomputed_molecules, index=precomputed_molecules.index("methane-CH4"))
     if st.button('Add to Queue', use_container_width=True, key="db"):
         if selectedMolecule:
             parseDatafile = open(
